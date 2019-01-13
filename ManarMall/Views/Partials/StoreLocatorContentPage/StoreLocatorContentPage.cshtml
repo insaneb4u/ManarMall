@@ -1,0 +1,977 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8680;
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandimage1");
+    var data = content.GetPropertyValue<JArray>("locator");
+
+
+    string name = "";
+    string outletname = "";
+    string unitno = "";
+    string nearbyparking = "";
+}
+
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid slider-main events_slider" style="background-image: url(@brandimage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text">LET<br>
+                  YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+
+@*<section class="container-fluid   store_locator_contr hidden-xs">
+        <div class="container">
+
+
+                <div class="col-lg-6 col-md-5 col-sm-4 store_locator_menu strl_left  eqheight1" id="div_img_cont" style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10 col-sm-12 eqheight1 ">
+                            <button class="mob_btn_disp1"><img src="img/left.png" id="str_ang_img"></button>
+                            <div class="row">
+                                <div class="links_holder_left eqheight1">
+                                    <h1 class="store_heading">
+                                        STORE
+                                        <span>LOCATOR</span>
+                                    </h1>
+                                    <hr>
+
+                                    <div class="links_tabs_left">
+
+                                        <ul class="links_tabs panel-group nav  " id="accordion">
+
+
+
+
+                                            @{
+                                                string url = "";
+
+                                                string caption1 = "";
+                                                string link1 = "";
+
+                                                string caption2 = "";
+                                                string link2 = "";
+
+                                                string caption3 = "";
+                                                string link3 = "";
+
+                                                string caption4 = "";
+                                                string link4 = "";
+                                                int index =0;
+                                                string s = "cnp";
+                                            }
+
+                                            @foreach (var item in data.Children())
+                                            {
+                                                index++;
+                                                var addname = item.Children<JProperty>();
+                                                //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                                var myElement1 = addname.FirstOrDefault(x => x.Name == "addname");
+                                                var myElemenValue1 = myElement1.Value.ToString(); ////This is a JValue type
+
+                                                JArray jsonArray1 = JArray.Parse(myElemenValue1);
+                                                dynamic data1 = JObject.Parse(jsonArray1[0].ToString());
+                                                caption1 = data1.caption;
+                                                link1 = data1.link;
+
+
+
+
+
+
+
+                                                var itemPr = item.Children<JProperty>();
+                                                //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                                var myElemen = itemPr.FirstOrDefault(x => x.Name == "addimage");
+                                                var myElemenValue = myElemen.Value; ////This is a JValue type
+
+
+                                                var itemPr1 = myElemenValue.Children<JProperty>();
+                                                //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                                var myElemen1 = itemPr1.FirstOrDefault(x => x.Name == "items");
+                                                var myElemenValu2 = myElemen1.Value.ToString();
+
+
+                                                JArray jsonArray6 = JArray.Parse(myElemenValu2);
+                                                dynamic data6 = JObject.Parse(jsonArray6[0].ToString());
+                                                url = data6.imageUrl;
+                                                var substring1 = url.Replace("?width=250&height=156.25&mode=crop", "");
+                                                var act_class = "";
+                                                if (index == 1)
+                                                { act_class = "active"; }
+                                                else
+                                                { act_class =""; }
+
+                                             <li class="@act_class"><a data-toggle="tab" class="tb_link" href="@s@index" data-value="@caption1">@caption1</a></li>
+
+                                            }
+
+                                            </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-7 col-sm-8  eqheight1  st_tab_holder">
+                    <div class="tab-content child-div">
+                        @{ string datav1 = ""; string datav2 = ""; string datav3 = "";  int index2 = 0;}
+
+                        @foreach (var item in data.Children())
+                        {
+                            index2++;
+                            var addname = item.Children<JProperty>();
+                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                            var myElement1 = addname.FirstOrDefault(x => x.Name == "addname");
+                            var myElemenValue1 = myElement1.Value.ToString(); ////This is a JValue type
+
+                            JArray jsonArray1 = JArray.Parse(myElemenValue1);
+                            dynamic data1 = JObject.Parse(jsonArray1[0].ToString());
+                            caption1 = data1.caption;
+                            link1 = data1.link;
+
+
+
+                            var outletName = item.Children<JProperty>();
+                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                            var myElement2 = outletName.FirstOrDefault(x => x.Name == "outletName");
+                            var myElemenValue2 = myElement2.Value.ToString(); ////This is a JValue type
+
+                            JArray jsonArray2 = JArray.Parse(myElemenValue2);
+                            dynamic data2 = JObject.Parse(jsonArray2[0].ToString());
+                            caption2 = data2.caption;
+                            link2 = data2.link;
+
+
+
+                            var unitNo = item.Children<JProperty>();
+                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                            var myElement3 = unitNo.FirstOrDefault(x => x.Name == "unitNo");
+                            var myElemenValue3 = myElement3.Value.ToString(); ////This is a JValue type
+
+                            JArray jsonArray3 = JArray.Parse(myElemenValue3);
+                            dynamic data3 = JObject.Parse(jsonArray3[0].ToString());
+                            caption3 = data3.caption;
+                            link3 = data3.link;
+
+
+
+                            var nearbyParkingArea = item.Children<JProperty>();
+                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                            var myElement4 = nearbyParkingArea.FirstOrDefault(x => x.Name == "nearbyParkingArea");
+                            var myElemenValue4 = myElement4.Value.ToString(); ////This is a JValue type
+
+                            JArray jsonArray4 = JArray.Parse(myElemenValue4);
+                            dynamic data4 = JObject.Parse(jsonArray4[0].ToString());
+                            caption4 = data4.caption;
+                            link4 = data4.link;
+
+                            var act_tbl_class = "";
+                            if (index2 == 1)
+                            { act_tbl_class = "in active"; }
+                            else
+                            { act_tbl_class = ""; }
+
+                            <div id="@s@index2" class="row tab-pane fade @act_tbl_class ">
+
+                                <div class="col-lg-12 col-md-12 col-sm-12   ">
+                                    <div class="row ">
+                                        <div class="links_holder_right">
+
+                                            <table class="link_hold_table">
+
+
+
+
+
+                                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                                <tr><td><a href="@link2"> @caption2 </a></td><td>@caption3</td><td class="text-right">@caption4</td> </tr>
+
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        }
+
+
+
+
+                        <div id="ca1" class="row tab-pane fade  ">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12    ">
+                                <div class="row">
+                                    <div class="links_holder_right">
+
+                                        <table class="link_hold_table">
+
+
+
+                                            <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+                                            <tr><td><a href="shop_details.html"> Novo Cinema </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                            <tr><td><a href="shop_details.html"> WSG </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                            <tr><td><a href="shop_details.html"> Tridom  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                            <tr><td><a href="shop_details.html"> Al Qasr Toys  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                            <tr><td><a href="shop_details.html"> Tarab Casette </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                            <tr><td><a href="shop_details.html"> ELC </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+
+    <section class="container-fluid   store_locator_contr hidden-lg hidden-md hidden-sm ">
+        <div class="container">
+
+
+            <div class="accordionWrapper">
+                <div class="row text-center str_loc_heading_pad">
+                    <h1 class="store_heading">
+                        STORE
+                        <span style="display: inline-block;"> LOCATOR</span>
+                    </h1>
+                    <hr class="events_hr">
+
+                </div>
+
+
+                <dl class="accordion">
+
+                    <dt><a href=""><h2 class="accordionItemHeading">F & B</h2></a></dt>
+                    <dd style="background-image:url('~/img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+                                <tr><td><a href="shop_details.html"> The Pizza Company </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Mcdonalds </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Hatam </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Chinese Dragon  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Doner & Gyros </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Masaya  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Yellow Chili  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Pizza Hut </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Hardees </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> KFC </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Crepe De Paris  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Beesket </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Baskin Robbins  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Truffleers  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Daily Fresh </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Candy land  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Cali Burger </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Papparoti </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Alkateam  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Mado  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> 971 Emirati Gourmet </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Chowking  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Saudi Dates </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Al Soufi  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Patchi  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Entertainment</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+                                <tr><td><a href="shop_details.html"> Novo Cinema </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> WSG </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Tridom  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Al Qasr Toys  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Tarab Casette </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> ELC </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Pharmacutical / Supplements</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                <tr><td><a href="shop_details.html">  Life Pharmacy </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Health First  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Dr. Nutrition </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Lifestyle Nutrition </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Boots </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Holland & Barrett </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Fashion & Footwear</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                <tr><td><a href="shop_details.html">  K Corner  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Pabloasky </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Steve madden  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Carpisa </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Vincci  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Nine west </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Payless </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Ecco  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> H&M </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> M&S </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Super dry </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Giordano  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Bait Al Kandoora  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Monsoon Children  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Pierre Cardin </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Louis Feraud  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Al Madani </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Hanayen </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Okaidi  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Sun & Sand Sports </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Next  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Mothercare  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Nayoumi </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> M&Co. </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Beauty & Fragrances</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+                                <tr><td><a href="shop_details.html"> Salas </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Blends of Love  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Abdul Samad Al Qurashi  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Taif Al Emarat  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Emirates Pride  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Yas Perfumes  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Arabian Oud </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Marhaba Perfumes  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Anfasic Dukhoon </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Ajmal </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Khan Al Saboon  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Forever 52  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> MAC </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Sephora </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Paris Gallery </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Chelsea Boutique  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Mikyajy </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Bath & Body Works </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> The Body Shop </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Lush  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Ahmed Al Maghribi </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Cafés</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+                                <tr><td><a href="shop_details.html">  Icons coffee  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Starbucks </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Gloria Jeans  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> The coffee club </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Electronics</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+
+                                <tr><td><a href="shop_details.html">  Emax  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Jumbo </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Sony  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Sony Kiosk  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Minutes </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Mobile Outfitters </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> OSN </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Samsung </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Eyewear / Optical</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                <tr><td><a href="shop_details.html"> Al Jaber  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Samir </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Rivoli Eyezone  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Yateem  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Concord </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Telecommunications</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                <tr><td><a href="shop_details.html">  DU  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Etisalat  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Jewellery /  Gold</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                <tr><td><a href="shop_details.html"> Damas </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Amira </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Atasay  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Jawhara </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Farah </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Al Romaizan </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> MGD </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Pure Gold </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Home Furnishing</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                <tr><td><a href="shop_details.html">  Homes r us  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Ace Hardware  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Floorworld  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Accessories</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+                                <tr><td><a href="shop_details.html"> Cerruti </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Trendy Accessories  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Infinity watches  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Hour Choice </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Rivoli  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> MZ Gifts  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Basel Watch </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Feathers  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Mumuso  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Miniso  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Accessorize </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Police  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+                                <tr><td><a href="shop_details.html"> Claires </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                    <dt><a href=""><h2 class="accordionItemHeading">Exchange</h2></a></dt>
+                    <dd style="background-image:url('img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                        <div class="links_holder_right">
+
+                            <table class="link_hold_table">
+
+
+                                <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+                                <tr><td><a href="shop_details.html"> Al Ansari Exchange  </a></td><td>MM-K07</td><td class="text-right">south - East</td> </tr>
+
+
+
+                            </table>
+                        </div>
+                    </dd>
+
+
+                </dl>
+
+
+
+            </div>
+        </div>
+    </section>*@
+
+
+
+
+
+<section class="container-fluid   store_locator_contr hidden-xs">
+    <div class="container">
+
+
+        <div class="col-lg-6 col-md-5 col-sm-4 store_locator_menu strl_left  eqheight1" id="div_img_cont" style="background-image:url('/img/cosmetics.jpg');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+            <div class="row">
+                <div class="col-lg-7 col-md-10 col-sm-12 eqheight1 ">
+                    <button class="mob_btn_disp1"><img src="img/left.png" id="str_ang_img"></button>
+                    <div class="row">
+                        <div class="links_holder_left eqheight1">
+                            <h1 class="store_heading">
+                                STORE
+                                <span>LOCATOR</span>
+                            </h1>
+                            <hr>
+
+                            <div class="links_tabs_left">
+
+                                <ul class="links_tabs panel-group nav  " id="accordion">
+
+
+                                    @{
+                                        string url = "";
+
+                                        string caption1 = "";
+                                        string link1 = "";
+
+                                        string caption2 = "";
+                                        string link2 = "";
+
+                                        string caption3 = "";
+                                        string link3 = "";
+
+                                        string caption4 = "";
+                                        string link4 = "";
+                                        int index = 0;
+                                        string s = "cnp";
+                                    }
+
+
+                                    @if (data != null)
+                                    {
+
+                                        foreach (var item in data.Children())
+                                        {
+                                            index++;
+                                            var addname = item.Children<JProperty>();
+                                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                            var myElement1 = addname.FirstOrDefault(x => x.Name == "addname");
+                                            var myElemenValue1 = myElement1.Value.ToString(); ////This is a JValue type
+
+                                            if (myElemenValue1 != null)
+                                            {
+                                                JArray jsonArray1 = JArray.Parse(myElemenValue1);
+                                                dynamic data1 = JObject.Parse(jsonArray1[0].ToString());
+                                                caption1 = data1.caption;
+                                                link1 = data1.link;
+                                            }
+
+
+                                            var itemPr = item.Children<JProperty>();
+                                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                            var myElemen = itemPr.FirstOrDefault(x => x.Name == "addimage");
+                                            var myElemenValue = myElemen.Value; ////This is a JValue type
+
+
+                                            var itemPr1 = myElemenValue.Children<JProperty>();
+                                            //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                            var myElemen1 = itemPr1.FirstOrDefault(x => x.Name == "items");
+                                            var myElemenValu2 = myElemen1.Value.ToString();
+
+
+                                            JArray jsonArray6 = JArray.Parse(myElemenValu2);
+                                            dynamic data6 = JObject.Parse(jsonArray6[0].ToString());
+                                            url = data6.imageUrl;
+                                            var substring1 = url.Replace("?width=250&height=156.25&mode=crop", "");
+                                            var act_class = "";
+                                            if (index == 1)
+                                            { act_class = "active"; }
+                                            else
+                                            { act_class = ""; }
+
+                                            <li class="@act_class"><a data-toggle="tab" class="tb_link" href="#@s@index" data-value="@substring1">@caption1</a></li>
+
+                                        }
+                                    }
+
+
+
+
+
+                                </ul>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-7 col-sm-8  eqheight1  st_tab_holder">
+            <div class="tab-content child-div">
+                @{ string datav1 = ""; string datav2 = ""; string datav3 = ""; int index2 = 0;}
+
+                @if (data != null)
+                {
+
+                    foreach (var item in data.Children())
+                    {
+                        index2++;
+                        var addname = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement1 = addname.FirstOrDefault(x => x.Name == "addname");
+                        var myElemenValue1 = myElement1.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray1 = JArray.Parse(myElemenValue1);
+                        dynamic data1 = JObject.Parse(jsonArray1[0].ToString());
+                        caption1 = data1.caption;
+                        link1 = data1.link;
+
+
+
+                        var outletName = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement2 = outletName.FirstOrDefault(x => x.Name == "outletName");
+                        var myElemenValue2 = myElement2.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray2 = JArray.Parse(myElemenValue2);
+                        dynamic data2 = JObject.Parse(jsonArray2[0].ToString());
+                        caption2 = data2.caption;
+                        link2 = data2.link;
+
+
+
+                        var unitNo = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement3 = unitNo.FirstOrDefault(x => x.Name == "unitNo");
+                        var myElemenValue3 = myElement3.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray3 = JArray.Parse(myElemenValue3);
+                        dynamic data3 = JObject.Parse(jsonArray3[0].ToString());
+                        caption3 = data3.caption;
+                        link3 = data3.link;
+
+
+
+                        var nearbyParkingArea = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement4 = nearbyParkingArea.FirstOrDefault(x => x.Name == "nearbyParkingArea");
+                        var myElemenValue4 = myElement4.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray4 = JArray.Parse(myElemenValue4);
+                        dynamic data4 = JObject.Parse(jsonArray4[0].ToString());
+                        caption4 = data4.caption;
+                        link4 = data4.link;
+
+                        var act_tbl_class = "";
+                        if (index2 == 1)
+                        { act_tbl_class = "in active"; }
+                        else
+                        { act_tbl_class = ""; }
+
+                        <div id="@s@index2" class="row tab-pane fade @act_tbl_class ">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12   ">
+                                <div class="row ">
+                                    <div class="links_holder_right">
+
+                                        <table class="link_hold_table">
+
+
+
+
+
+                                            <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> </tr>
+
+
+                                            <tr><td><a href="@link2"> @caption2 </a></td><td>@caption3</td><td class="text-right">@caption4</td> </tr>
+
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    }
+                }
+                </div>
+        </div>
+</section>
+
+
+<section class="container-fluid   store_locator_contr hidden-lg hidden-md hidden-sm ">
+    <div class="container">
+
+
+        <div class="accordionWrapper">
+            <div class="row text-center str_loc_heading_pad">
+                <h1 class="store_heading">
+                    STORE
+                    <span style="display: inline-block;"> LOCATOR</span>
+                </h1>
+                <hr class="events_hr">
+
+            </div>
+
+
+            <dl class="accordion">
+
+
+
+
+
+
+                @if (data != null)
+                {
+
+                    foreach (var item in data.Children())
+                    {
+                        index2++;
+                        var addname = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement1 = addname.FirstOrDefault(x => x.Name == "addname");
+                        var myElemenValue1 = myElement1.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray1 = JArray.Parse(myElemenValue1);
+                        dynamic data1 = JObject.Parse(jsonArray1[0].ToString());
+                        caption1 = data1.caption;
+                        link1 = data1.link;
+
+
+
+                        var outletName = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement2 = outletName.FirstOrDefault(x => x.Name == "outletName");
+                        var myElemenValue2 = myElement2.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray2 = JArray.Parse(myElemenValue2);
+                        dynamic data2 = JObject.Parse(jsonArray2[0].ToString());
+                        caption2 = data2.caption;
+                        link2 = data2.link;
+
+
+
+                        var unitNo = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement3 = unitNo.FirstOrDefault(x => x.Name == "unitNo");
+                        var myElemenValue3 = myElement3.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray3 = JArray.Parse(myElemenValue3);
+                        dynamic data3 = JObject.Parse(jsonArray3[0].ToString());
+                        caption3 = data3.caption;
+                        link3 = data3.link;
+
+
+
+                        var nearbyParkingArea = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElement4 = nearbyParkingArea.FirstOrDefault(x => x.Name == "nearbyParkingArea");
+                        var myElemenValue4 = myElement4.Value.ToString(); ////This is a JValue type
+
+                        JArray jsonArray4 = JArray.Parse(myElemenValue4);
+                        dynamic data4 = JObject.Parse(jsonArray4[0].ToString());
+                        caption4 = data4.caption;
+                        link4 = data4.link;
+
+                        var act_tbl_class = "";
+                        if (index2 == 1)
+                        { act_tbl_class = "in active"; }
+                        else
+                        { act_tbl_class = ""; }
+
+                        var itemPr = item.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElemen = itemPr.FirstOrDefault(x => x.Name == "addimage");
+                        var myElemenValue = myElemen.Value; ////This is a JValue type
+
+
+                        var itemPr1 = myElemenValue.Children<JProperty>();
+                        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                        var myElemen1 = itemPr1.FirstOrDefault(x => x.Name == "items");
+                        var myElemenValu2 = myElemen1.Value.ToString();
+
+
+                        JArray jsonArray6 = JArray.Parse(myElemenValu2);
+                        dynamic data6 = JObject.Parse(jsonArray6[0].ToString());
+                        url = data6.imageUrl;
+                        var substring1 = url.Replace("?width=250&height=156.25&mode=crop", "");
+                        var act_class = "";
+                        if (index == 1)
+                        { act_class = "active"; }
+                        else
+                        { act_class = ""; }
+
+
+                        <dt><a href=""><h2 class="accordionItemHeading">@caption1</h2></a></dt>
+                        <dd style="background-image:url('@substring1');background-repeat: no-repeat; background-position:center; background-size: cover; ">
+                            <div class="links_holder_right">
+                                <table class="link_hold_table">
+
+
+
+
+
+                                    <tr><th>Outlet Name</th><th>Unit No.</th><th class="text-right">Nearby Parking Area</th> <th class="text-right">Parking  </th> </tr>
+                                    <tr><td><a href="@link1"> @caption1 </a></td><td>@caption2</td><td class="text-right">@caption3</td><td class="text-right"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" class="tip_label" title="@caption4"><svg xmlns="http://www.w3.org/2000/svg" width="18" viewBox="0 0 45.95 45.95"><g fill="#D80027"><path d="M22.568 14.98c-1.166 0-1.935.112-2.378.225v7.48c.506.113 1.1.15 1.927.15 3.045 0 4.924-1.542 4.924-4.134.001-2.331-1.617-3.721-4.473-3.721z" /><path d="M40.001 0H5.949A5.442 5.442 0 0 0 .506 5.443v35.065a5.442 5.442 0 0 0 5.443 5.442h34.052a5.441 5.441 0 0 0 5.442-5.442V5.443A5.44 5.44 0 0 0 40.001 0zm2.089 39.635a2.96 2.96 0 0 1-2.961 2.961H6.759a2.962 2.962 0 0 1-2.962-2.961V6.379a2.962 2.962 0 0 1 2.962-2.961h32.369a2.96 2.96 0 0 1 2.961 2.961l.001 33.256z" /><path d="M39.128 5.507H6.759a.873.873 0 0 0-.874.873v33.256c0 .48.391.873.874.873h32.369a.874.874 0 0 0 .873-.873V6.379a.872.872 0 0 0-.873-.872zm-8.733 19.059c-1.953 1.841-4.857 2.668-8.241 2.668-.751 0-1.394-.038-1.964-.113v9.082h-5.633v-25.02c1.772-.301 4.236-.527 7.732-.527 3.534 0 6.046.677 7.739 2.031 1.615 1.277 2.703 3.383 2.703 5.863 0 2.483-.83 4.589-2.336 6.016z" /></g></svg></a></td> </tr>
+
+
+                                </table>
+                            </div>
+
+                        </dd>
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+            </dl>
+
+
+
+        </div>
+    </div>
+</section>

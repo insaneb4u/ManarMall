@@ -1,0 +1,484 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 5061;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandimage1");
+    ImagePickerList customerservices = content.GetImagePickerList("addCustomerServices");
+    ImagePickerList manarmallpolicies = content.GetImagePickerList("addManarmallPolicies");
+
+}
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid abt_banner slider-main " style="background-image: url(@brandimage1.Image.Url);">
+        <div class="row">
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text ">LET<br>
+                YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+<section class="container-fluid  about_info ">
+    <div class="container">
+
+        <!--top -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-xs  ">
+            <h1>About</h1>
+
+            <!-- <div class="open_hr">Mall Opening Hours <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="15" ><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#dbdbdb"/></svg></div> -->
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12  ">
+
+            <div class="row">
+                <div class="abt_info_contr  ">
+                    <div class="col-sm-12 hidden-lg hidden-md hidden-sm visible-xs mob_abt">
+                        <h1>About</h1>
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">MANAR MALL</a></li>
+                        <li><a data-toggle="tab" href="#menu1">al hamra</a></li>
+                    </ul>
+                    <div class="tab-content  ">
+                        <div id="home" class="tab-pane   in active    ">
+                            <p>
+                                @content.GetPropertyValue("manarMall")
+                            </p>
+                            <hr>
+                        </div>
+                        <div id="menu1" class="tab-pane    ">
+                            <p>
+                                @content.GetPropertyValue("alHamra")
+                            </p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--top -->
+
+    </div>
+</section>
+<section class="container-fluid ab_open_info">
+    <div class="container">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-xs  ">
+
+            <div class="open_hr">Mall Opening Hours <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="15" ><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#dbdbdb"/></svg> --></div>
+        </div>
+        <div class="opening_time">
+            <div class="col-sm-12 text-center">
+                <h2>We are open 7 Days per week</h2>
+            </div>
+            <div class="row">
+
+                @{ ImagePickerList Schedule = content.GetImagePickerList("timeSchedule"); }
+
+                @if (Schedule.Count > 0)
+                {
+
+                    foreach (ImagePickerItem item in Schedule.Items)
+                    {
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 eqheight">
+                            <div class="img_ab_cont">
+                                <img src="@item.Image.Url">
+                            </div>
+                            <div class="info_img">
+                                <ul>
+                                    <li class="ab_time_heading">@item.Title</li>
+                                    <li class="ab_time">@item.Description</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+
+
+                }
+
+
+
+
+
+            </div>
+
+        </div>
+</section>
+<section class="container-fluid about_tabs_info">
+    <div class="container ">
+        <div class="  ab_sr_heading_holder">
+            <h2>Services</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="bg_ab_sr">
+        <div class="col-sm-6 eqheight slider_bg_sr" style="background: url(img/ab_bg_sr.png)no-repeat; background-size: cover;  position: absolute; left: 0;">
+        </div>
+        <div class="container ">
+            <div class="ab_servs_sl_cont">
+              
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 eqheight ab_sr_slider1">
+                    <div class="row">
+                        <div class="block-media  slider_cont">
+                            <button class="nt_btn">Next <img src="~/img/right-arrow.png" alt="next"></button>
+                            <div class=" slick1 slider-for">
+                                @{ var data = content.GetPropertyValue<JArray>("textSlider"); }
+                                @if (data != null)
+                                {
+                                    foreach (var item in data.Children())
+                                    {
+                                        var description1 = (string)item["textslidertitle1"];
+                                        var description2 = (string)item["textsliderdescription1"];
+
+
+
+                                        <div>
+                                            <h3>@description1</h3>
+                                            <hr>
+                                            <p>@description2</p>
+                                            <span class="sr_detials_mobile_view">
+
+                                                <div class="sr_bt_cont">
+                                                    <a href="JavaScript:void(0);" data-toggle="modal" data-target="#customer_service" class="serv_btn">customer assistance</a>
+                                                    <a href="JavaScript:void(0);" data-toggle="modal" data-target="#manar_policies" class="serv_btn">Manar policies.</a>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div><!-- /.block-media -->
+                        <div class='slider-nav'>
+                            @if (data != null)
+                            {
+                                string icon = "";
+                                foreach (var item in data.Children())
+                                {
+
+                                    var itemProperties = item.Children<JProperty>();
+                                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                    var myElement = itemProperties.FirstOrDefault(x => x.Name == "supportlogo");
+                                    var myElementValue = myElement.Value; ////This is a JValue type
+
+
+                                    var itemProperties2 = myElementValue.Children<JProperty>();
+                                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                    var myElement2 = itemProperties2.FirstOrDefault(x => x.Name == "items");
+                                    var myElementValue2 = myElement2.Value; ////This is a JValue type
+                                    var temp = myElement2.Value.ToString();
+                                    JArray jsonArray2 = JArray.Parse(temp);
+                                    dynamic data2 = JObject.Parse(jsonArray2[0].ToString());
+                                    icon = data2.description;
+
+
+                                    //  var description1 = (string)myElementValue2["description"];
+
+                                    foreach (JObject data3 in myElementValue2)
+                                    {
+
+
+                                        var url = data3.GetValue("imageUrl").ToString();
+
+                                        var substring = url.Replace("?width=250&height=156.25&mode=crop", "");
+
+                                        <div>
+                                            <ul class="nav_icon">
+                                                <li class="nav_img"><img src="@substring"></li>
+                                                <li class="nav_text"><span>@icon</span></li>
+                                            </ul>
+                                        </div>
+                                    }
+
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 eqheight ab_sr_slider2">
+                    <div class="row">
+                        <div class="block-text  ">
+
+                            <div class="carousel-text slider-for">
+                                @if (data != null)
+                                {
+                                    foreach (var item in data.Children())
+                                    {
+                                        var description1 = (string)item["textslidertitle2"];
+                                        var description2 = (string)item["textsliderdescription2"];
+
+                                        <div>
+                                            <h3>@description1</h3>
+                                            <hr>
+                                            <p>@description2</p>
+                                            <div class="sr_bt_cont">
+                                                <a href="JavaScript:void(0);" data-toggle="modal" data-target="#customer_service" class="serv_btn">customer assistance</a>
+                                                <a href="JavaScript:void(0);" data-toggle="modal" data-target="#manar_policies" class="serv_btn">Manar policies.</a>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <hr class="bt_hr">
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div><!-- /.block-text -->
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+<section class="container-fluid ab_section_info">
+    <div class="container ">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <div class="row">
+                    <div class="ab_section_info_main_cntr">
+                        <div class="ab_section_info_child_cntr ">
+                            <div class="col-sm-12 eqheight map_contr_park">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-xs eqheight" id="myDiv">
+                                    <div class="row  ">
+                                        <button class="zoom_btn"><img src="/img/scale.png"></button>
+                                        <div class="tab-content">
+                                            <div id="cr_pk" class="tab-pane fade in active">
+
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                            <div id="bk_pk" class="tab-pane fade in ">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                            <div id="sp_pk" class="tab-pane fade in ">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 eqheight parking_info">
+                                    <div class="row">
+                                        <div class="park_icon">
+                                            <hr><span class="park_icon_chr">P</span>
+                                        </div>
+                                        <h2>parking space</h2>
+                                        <p>@content.GetPropertyValue("parkingDescription")</p>
+                                        <hr>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-lg hidden-md hidden-sm visible-xs tb_cont_main">
+                                            <div class="row  ">
+                                                <button class="zoom_btn"><img src="/img/scale.png"></button>
+                                                <div class="tab-content">
+                                                    <div id="cr_pk" class="tab-pane fade in active">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                    <div id="bk_pk" class="tab-pane fade in ">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                    <div id="sp_pk" class="tab-pane fade in ">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="parking_area nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#cr_pk">Car Parking</a></li>
+                                            <li><a data-toggle="tab" href="#bk_pk">Bike Parking</a></li>
+                                            <li><a data-toggle="tab" href="#sp_pk">Special Parking</a></li>
+                                        </ul>
+                                        <div class="park_note">*Checkout Payment & Charges Sheet</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- start scrollUp  -->
+<div id="toTop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 284.929 284.929"><path d="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665.953-6.567 2.856L2.856 195.285C.95 197.191 0 199.378 0 201.853c0 2.474.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854s4.664-.951 6.567-2.854l112.204-112.202 112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848 2.478 0 4.668-.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566.001-2.476-.944-4.666-2.846-6.569z" fill="#FFF" /></svg>
+</div>
+</div>
+<!-- right side menu-->
+<!-- Modal  -->
+<div id="customer_service" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">Customer Service</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+                  
+
+                        @foreach(ImagePickerItem item in customerservices.Items)
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                                <a href="@item.Link.Url" class="about_cust_service eqheight "><img src="@item.Image.Url" alt="custome care"><span class="tooltiptext cs_info">@item.Description</span></a>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="manar_policies" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">Manar Policies</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+
+                        @foreach (ImagePickerItem item in manarmallpolicies.Items)
+                        {
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                            <a href="@item.Link.Url" class="about_cust_service eqheight "><img src="@item.Image.Url" alt="custome care"><span class="tooltiptext cs_info">@item.Description</span></a>
+                        </div>
+                        }
+
+
+                    </div>
+                </div>
+                <hr class="bt_hr">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="shuttle_bus" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">shuttle bus schedule</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+                        <table class="bus_sch_tbl" cellspacing="5">
+                            <tr><th><span>TIME</span></th><th><span>PLACE</span></th></tr>
+
+                            <tr><td colspan="2" class="mid_captn"><span>FROM MANAR MALL TO AHM</span></td> </tr>
+
+                            <tr><td class="bs_time"><span>6:00 PM </span></td><td class="bs_root"><span>MANAR MALL<s/pan></td></tr>
+                            <tr><td class="bs_time"><span>6:30 PM </span></td><td class="bs_root"><span>ARRIVAL TIME AT AL HAMRA MALL</span></td></tr>
+                            <tr><td colspan="2" class="mid_captn"><span>FROM MANAR MALL TO AHM</span></td> </tr>
+                            <tr><td class="bs_time"><span>10:00 PM</span> </td><td class="bs_root"><span>MANAR MALL</span></td></tr>
+                            <tr><td class="bs_time"><span>10:30 PM</span></td><td class="bs_root"><span>ARRIVAL TIME AT AL HAMRA MALL</span></td></tr>
+
+                        </table>
+
+                    </div>
+                </div>
+                <hr class="bt_hr">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="oth1" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm othr_info_modal">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">AL ANSARI EXCHANGE</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+
+                        <div class="img_modal_cont"> <center><img src="/img/59.png" class="img-responsive"></center></div>
+                        <div class="info_modal_cont">
+                            <p>Al Ansari Exchange is the UAE‘s largest network exchange house that provides worldwide remittance and foreign exchange services.</p>
+                            <ul class="info_links">
+                                <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999"><path d="M498.827 377.633l-63.649-63.649c-17.548-17.547-46.102-17.547-63.649 0l-28.931 28.931c-13.294 13.294-34.926 13.29-48.215.005l-125.4-125.507c-13.325-13.325-13.327-34.892 0-48.219l28.931-28.931c17.471-17.47 17.715-45.935-.017-63.665l-63.632-63.432C116.717-4.381 88.164-4.381 70.663 13.12L47.471 36.111c-63.28 63.279-63.28 166.242-.003 229.519L246.16 464.426c63.428 63.429 166.088 63.434 229.521 0l23.146-23.145c17.548-17.548 17.548-46.1 0-63.648zM91.833 34.382c5.849-5.849 15.365-5.85 21.233.016l63.632 63.432c5.863 5.863 5.863 15.352 0 21.216l-10.609 10.608-84.81-84.81 10.554-10.462zM267.38 443.213L68.687 244.415c-48.958-48.958-51.649-125.833-8.276-178.006l84.564 84.564c-22.22 25.189-21.294 63.572 2.787 87.653l125.396 125.501.004.004c24.055 24.056 62.436 25.042 87.656 2.792l84.566 84.566c-52.007 43.298-128.709 41.019-178.004-8.276zm210.232-23.148l-10.609 10.609-84.865-84.866 10.607-10.608c5.85-5.849 15.367-5.85 21.217 0l63.649 63.649c5.85 5.85 5.85 15.368.001 21.216z" fill="#b4252d" /></svg> <a href="tel:072277332">07 227 7332</a></li>
+                                <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M491.624 157.382C451.874 64.229 359.504 0 255 0 112.87 0 0 117.257 0 257c0 140.94 114.049 255 255 255 139.896 0 257-113.029 257-255 0-34.416-6.855-67.932-20.376-99.618zm-22.865 23.222c-26.273-20.795-60.224-35.303-92.732-44.537-9.227-32.541-23.706-66.497-44.674-92.842 63.831 22.869 114.526 73.554 137.406 137.379zm-91.58 61.405c8.188.098 14.821 6.78 14.821 14.991s-6.633 14.893-14.821 14.991c-.058-.004-.114-.016-.172-.019-.251-.016-.497-.006-.745-.009-7.924-.389-14.256-6.936-14.261-14.953V257v-.01c.005-7.914 6.174-14.397 13.954-14.937.036 0 .071.005.106.005.313 0 .629-.01.946-.03.058-.004.114-.015.172-.019zM270 32.49c28.747 9.494 55.002 45.537 72.028 95.552-23.004-4.397-47.219-7.041-72.028-7.803V32.49zm0 117.762c28.407.923 55.873 4.462 81.323 10.389 4.036 17.239 7.032 35.586 8.794 54.658-11.874 4.825-21.235 14.572-25.537 26.701H270v-91.748zM270 272h64.58c4.302 12.13 13.665 21.879 25.54 26.703-1.68 18.302-4.493 36.029-8.347 52.827-17.469 3.972-35.956 6.872-55.067 8.599-4.823-11.879-14.573-21.246-26.706-25.549V272zM178.573 43.492c-10.084 12.907-19.249 28.492-27.223 46.542-.45-.013-.897-.034-1.35-.034-28.597 0-50.241 26.571-43.901 54.847-24.719 9.351-45.829 21.115-62.553 34.553 22.789-63.011 72.505-113.058 135.027-135.908zM165 135c0 8.271-6.729 15-15 15s-15-6.729-15-15 6.729-15 15-15 15 6.729 15 15zm-42.319 35.725a45.357 45.357 0 0 0 4.193 2.861c-3.667 21.449-5.949 44.995-6.642 68.414h-87.79c8.983-27.823 42.228-54.375 90.239-71.275zM120.227 272c.729 24.854 3.262 48.647 7.361 70.943C77.42 326.424 41.807 300.7 32.449 272h87.778zm-76.912 61.262c26.13 20.509 59.645 34.413 91.942 43.318 10.254 37.259 25.219 68.848 43.512 92.116-62.831-22.695-112.75-72.607-135.454-135.434zM240 479.461c-35.619-11.951-59.264-59.618-71.024-95.155 13.905 2.577 28.285 4.531 42.983 5.823 4.169 13.642 14.659 24.545 28.041 29.291v60.041zm0-144.881c-12.132 4.303-21.882 13.668-26.705 25.546-18.638-1.694-36.492-4.507-53.246-8.273-5.588-24.931-8.924-51.888-9.805-79.853H240v62.58zm0-92.58h-89.756c.67-21.42 2.746-42.876 6.048-62.449 15.107-2.124 27.833-11.768 34.245-25.022 16.087-2.319 32.649-3.734 49.463-4.269V242zm0-121.752c-15.711.47-31.227 1.672-46.398 3.608-2.314-9.049-7.385-17-14.252-22.924 16.427-36.601 38.054-60.846 60.65-68.399v87.715zM255 392c-8.211 0-14.893-6.633-14.991-14.82.004-.058.016-.114.019-.173.015-.248.005-.491.009-.736C240.421 368.339 246.975 362 255 362c8.025 0 14.579 6.339 14.963 14.271.003.246-.007.489.009.736.004.059.015.115.019.173-.098 8.187-6.78 14.82-14.991 14.82zm15 87.549V419.42c13.382-4.746 23.871-15.648 28.041-29.29 15.245-1.337 30.16-3.385 44.578-6.093-12.129 35.834-36.699 83.848-72.619 95.512zm61.947-10.867c21.08-26.419 35.365-60.183 44.448-92.449 32.193-8.935 66.083-22.962 92.378-43.551-22.802 63.086-73.26 113.229-136.826 136zm52.331-126.171c2.595-13.758 4.554-27.965 5.844-42.468 13.646-4.168 24.551-14.859 29.298-28.243h60.027c-11.873 35.044-59.816 58.957-95.169 70.711zM419.42 242c-4.747-13.384-15.652-23.875-29.297-28.043-1.333-15.029-3.386-29.753-6.11-44.007 35.808 12.235 83.482 36.556 95.435 72.05H419.42z" fill="#b4252d" /></svg> <a href="http://www.alansariexchange.com" target="_blank">www.alansariexchange.com</a></li>
+                                <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0C156.748 0 76 80.748 76 180c0 33.534 9.289 66.26 26.869 94.652l142.885 230.257A15 15 0 0 0 258.499 512h.119a14.997 14.997 0 0 0 12.75-7.292L410.611 272.22C427.221 244.428 436 212.539 436 180 436 80.748 355.252 0 256 0zm128.866 256.818L258.272 468.186l-129.905-209.34C113.734 235.214 105.8 207.95 105.8 180c0-82.71 67.49-150.2 150.2-150.2S406.1 97.29 406.1 180c0 27.121-7.411 53.688-21.234 76.818z" fill="#b4252d" /><path d="M256 90c-49.626 0-90 40.374-90 90 0 49.309 39.717 90 90 90 50.903 0 90-41.233 90-90 0-49.626-40.374-90-90-90zm0 150.2c-33.257 0-60.2-27.033-60.2-60.2 0-33.084 27.116-60.2 60.2-60.2s60.1 27.116 60.1 60.2c0 32.683-26.316 60.2-60.1 60.2z" fill="#b4252d" /></svg> Locate on Map</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

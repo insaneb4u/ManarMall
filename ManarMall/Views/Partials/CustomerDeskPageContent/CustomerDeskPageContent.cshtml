@@ -1,0 +1,496 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@using System.Text.RegularExpressions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8703;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    var page1 = UmbracoContext.Current.PageId;
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandimage1");
+    ImagePickerList customerservices = content.GetImagePickerList("addCustomerServices");
+    ImagePickerList manarmallpolicies = content.GetImagePickerList("addManarmallPolicies");
+    var services = content.GetPropertyValue<JArray>("Services");
+
+    var fromSchudule = content.GetPropertyValue<JArray>("fromBusSchudule");
+    var toSchudule = content.GetPropertyValue<JArray>("toBusSchudule");
+}
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid abt_banner slider-main " style="background-image: url(@brandimage1.Image.Url);">
+        <div class="row">
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text ">LET<br>
+                YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+
+<section class="container-fluid about_tabs_info" style="padding-top: 50px;">
+    <div class="container ">
+        <div class="  ab_sr_heading_holder">
+            <h2>Services</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="bg_ab_sr">
+        <div class="col-sm-6 eqheight slider_bg_sr" style="background: url(/img/ab_bg_sr.png)no-repeat; background-size: cover;  position: absolute; left: 0;">
+        </div>
+        <div class="container ">
+            <div class="ab_servs_sl_cont">
+
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 eqheight ab_sr_slider1">
+                    <div class="row">
+                        <div class="block-media  slider_cont">
+                            <button class="nt_btn">Next <img src="~/img/right-arrow.png" alt="next"></button>
+                            <div class=" slick1 slider-for">
+                                @{ var data = content.GetPropertyValue<JArray>("textSlider"); }
+                                @if (data != null)
+                                {
+                                    foreach (var item in data.Children())
+                                    {
+                                        var description1 = item["textslidertitle1"];
+                                        var description2 = item["textsliderdescription1"];
+
+
+
+                                        <div>
+                                            <h3>@Html.Raw(description1)</h3>
+                                            <hr>
+                                            <p>@Html.Raw(description2)</p>
+                                          
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div><!-- /.block-media -->
+                        <div class='slider-nav'>
+                            @if (data != null)
+                            {
+                                string icon = "";
+                                foreach (var item in data.Children())
+                                {
+
+                                    var itemProperties = item.Children<JProperty>();
+                                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                    var myElement = itemProperties.FirstOrDefault(x => x.Name == "supportlogo");
+                                    var myElementValue = myElement.Value; ////This is a JValue type
+
+
+                                    var itemProperties2 = myElementValue.Children<JProperty>();
+                                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                                    var myElement2 = itemProperties2.FirstOrDefault(x => x.Name == "items");
+                                    var myElementValue2 = myElement2.Value; ////This is a JValue type
+                                    var temp = myElement2.Value.ToString();
+                                    JArray jsonArray2 = JArray.Parse(temp);
+                                    dynamic data2 = JObject.Parse(jsonArray2[0].ToString());
+                                    icon = data2.description;
+
+
+                                    //  var description1 = (string)myElementValue2["description"];
+
+                                    foreach (JObject data3 in myElementValue2)
+                                    {
+
+
+                                        var url = data3.GetValue("imageUrl").ToString();
+
+                                        var substring = url.Replace("?width=250&height=156.25&mode=crop", "");
+
+                                        <div>
+                                            <ul class="nav_icon">
+                                                <li class="nav_img"><img src="@substring"></li>
+                                                <li class="nav_text"><span>@icon</span></li>
+                                            </ul>
+                                        </div>
+                                    }
+
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 eqheight ab_sr_slider2">
+                    <div class="row">
+                        <div class="block-text  ">
+
+                            <div class="carousel-text slider-for">
+                                @if (data != null)
+                                {
+                                    foreach (var item in data.Children())
+                                    {
+                                        var description1 = item["textslidertitle2"];
+                                        var description2 = item["textsliderdescription2"];
+
+                                        <div>
+                                            <h3>@Html.Raw(description1)</h3>
+                                            <hr>
+                                            <p>@Html.Raw(description2)</p>
+                                          
+                                            <hr class="bt_hr">
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div><!-- /.block-text -->
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+<section class="container-fluid ab_section_info">
+    <div class="container ">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <div class="row">
+                    <div class="ab_section_info_main_cntr">
+                        <div class="ab_section_info_child_cntr ">
+                            <div class="col-sm-12 eqheight map_contr_park">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-xs eqheight" id="myDiv">
+                                    <div class="row  ">
+                                        <button class="zoom_btn"><img src="/img/scale.png"></button>
+                                        <div class="tab-content">
+                                            <div id="cr_pk" class="tab-pane fade in active">
+
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                            <div id="bk_pk" class="tab-pane fade in ">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                            <div id="sp_pk" class="tab-pane fade in ">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 eqheight parking_info">
+                                    <div class="row">
+                                        <div class="park_icon">
+                                            <hr><span class="park_icon_chr">P</span>
+                                        </div>
+                                        <h2>parking space</h2>
+                                        <p>@content.GetPropertyValue("parkingDescription")</p>
+                                        <hr>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-lg hidden-md hidden-sm visible-xs tb_cont_main">
+                                            <div class="row  ">
+                                                <button class="zoom_btn"><img src="/img/scale.png"></button>
+                                                <div class="tab-content">
+                                                    <div id="cr_pk" class="tab-pane fade in active">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                    <div id="bk_pk" class="tab-pane fade in ">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                    <div id="sp_pk" class="tab-pane fade in ">
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="100%" class="g_map" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="parking_area nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#cr_pk">Car Parking</a></li>
+                                            <li><a data-toggle="tab" href="#bk_pk">Bike Parking</a></li>
+                                            <li><a data-toggle="tab" href="#sp_pk">Special Parking</a></li>
+                                        </ul>
+                                        <div class="park_note">*Checkout Payment & Charges Sheet</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- start scrollUp  -->
+<div id="toTop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 284.929 284.929"><path d="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665.953-6.567 2.856L2.856 195.285C.95 197.191 0 199.378 0 201.853c0 2.474.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854s4.664-.951 6.567-2.854l112.204-112.202 112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848 2.478 0 4.668-.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566.001-2.476-.944-4.666-2.846-6.569z" fill="#FFF" /></svg>
+</div>
+</div>
+<!-- right side menu-->
+<!-- Modal  -->
+<div id="customer_service" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">Customer Service</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+
+
+                        @foreach (ImagePickerItem item in customerservices.Items)
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                                <a href="@item.Link.Url" class="about_cust_service eqheight "><img src="@item.Image.Url" alt="custome care"><span class="tooltiptext cs_info">@item.Description</span></a>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="manar_policies" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">Manar Policies</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+
+                        @foreach (ImagePickerItem item in manarmallpolicies.Items)
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                                <a href="@item.Link.Url" class="about_cust_service eqheight "><img src="@item.Image.Url" alt="custome care"><span class="tooltiptext cs_info">@item.Description</span></a>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <hr class="bt_hr">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="shuttle_bus" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                </button>
+                <h4 class="modal-title">shuttle bus schedule</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 cust_info_addr">
+                    <div class="row">
+                        <table class="bus_sch_tbl" cellspacing="5">
+                            <tr><th><span>TIME</span></th><th><span>PLACE</span></th></tr>
+
+                            <tr><td colspan="2" class="mid_captn"><span>FROM MANAR MALL TO AHM</span></td> </tr>
+                            @if (fromSchudule != null)
+                            {
+
+                                foreach (var item in fromSchudule.Children())
+                                {
+                                    var time = item["time"];
+                                    var place = item["place"];
+
+                                    <tr><td class="bs_time"><span>@time</span></td><td class="bs_root"><span>@place<span></td></tr>
+
+
+                                }
+                            }
+
+
+                            @if (toSchudule != null)
+                            {
+                                <tr><td colspan="2" class="mid_captn"><span>FROM MANAR MALL TO AHM</span></td> </tr>
+                                foreach (var item in toSchudule.Children())
+                                {
+                                    var time = item["time"];
+                                    var place = item["place"];
+
+                                    <tr><td class="bs_time"><span>@time</span></td><td class="bs_root"><span>@place<span></td></tr>
+
+
+                                }
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+                <hr class="bt_hr">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Modal content-->
+
+@if (services != null)
+{
+    string url = "";
+    int count = 0;
+    foreach (var item in services.Children())
+    {
+
+        var itemProperties = item.Children<JProperty>();
+        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+        var myElement = itemProperties.FirstOrDefault(x => x.Name == "servicesImage");
+        var myElementValue = myElement.Value; ////This is a JValue type
+
+        var itemProperties2 = myElementValue.Children<JProperty>();
+        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+        var myElement2 = itemProperties2.FirstOrDefault(x => x.Name == "items");
+        var myElementValue2 = myElement2.Value; ////This is a JValue type{[servicesLinks,
+
+        var itemProperties3 = item.Children<JProperty>();
+        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+        var myElement3 = itemProperties3.FirstOrDefault(x => x.Name == "servicesLinks");
+        var myElementValue3 = myElement3.Value.ToString(); ////This is a JValue type{[servicesLinks,
+
+        JArray jsonArray6 = JArray.Parse(myElementValue3);
+
+
+        dynamic data6 = JObject.Parse(jsonArray6[0].ToString());
+        string caption = data6.caption;
+        string link = data6.link;
+
+
+
+        var itemProperties4 = item.Children<JProperty>();
+        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+        var myElement4 = itemProperties4.FirstOrDefault(x => x.Name == "servicesLink2");
+        var myElementValue4 = myElement4.Value.ToString(); ////This is a JValue type{[servicesLinks,
+
+        JArray jsonArray7 = JArray.Parse(myElementValue4);
+
+
+        dynamic data7 = JObject.Parse(jsonArray7[0].ToString());
+        string caption2 = data7.caption;
+        string link2 = data7.link;
+
+
+
+        var itemProperties5 = item.Children<JProperty>();
+        //you could do a foreach or a linq here depending on what you need to do exactly with the value
+        var myElement5 = itemProperties5.FirstOrDefault(x => x.Name == "servicesLink3");
+        var myElementValue5 = myElement5.Value.ToString(); ////This is a JValue type{[servicesLinks,
+
+        JArray jsonArray8 = JArray.Parse(myElementValue5);
+
+
+        dynamic data8 = JObject.Parse(jsonArray8[0].ToString());
+        string caption3 = data8.caption;
+        string link3 = data8.link;
+
+
+
+        foreach (JObject data3 in myElementValue2)
+        {
+
+            url = data3.GetValue("imageUrl").ToString();
+
+            var substring = url.Replace("?width=250&height=156.25&mode=crop", "");
+            var servicesname = (string)item["servicesName"];
+            var servicesdescription = (string)item["servicesDescription"];
+
+
+            count++;
+
+            string c = "oth";
+            <div id="@c@count" class="modal fade in" role="dialog">
+                <div class="modal-dialog modal-sm othr_info_modal">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858" /></svg>
+                            </button>
+                            <h4 class="modal-title">@servicesname</h4>
+                            <hr>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-12 cust_info_addr">
+                                <div class="row">
+
+                                    <div class="img_modal_cont"> <center><img src="@substring" class="img-responsive"></center></div>
+                                    <div class="info_modal_cont">
+                                        <p>@servicesdescription</p>
+                                        <ul class="info_links">
+                                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999"><path d="M498.827 377.633l-63.649-63.649c-17.548-17.547-46.102-17.547-63.649 0l-28.931 28.931c-13.294 13.294-34.926 13.29-48.215.005l-125.4-125.507c-13.325-13.325-13.327-34.892 0-48.219l28.931-28.931c17.471-17.47 17.715-45.935-.017-63.665l-63.632-63.432C116.717-4.381 88.164-4.381 70.663 13.12L47.471 36.111c-63.28 63.279-63.28 166.242-.003 229.519L246.16 464.426c63.428 63.429 166.088 63.434 229.521 0l23.146-23.145c17.548-17.548 17.548-46.1 0-63.648zM91.833 34.382c5.849-5.849 15.365-5.85 21.233.016l63.632 63.432c5.863 5.863 5.863 15.352 0 21.216l-10.609 10.608-84.81-84.81 10.554-10.462zM267.38 443.213L68.687 244.415c-48.958-48.958-51.649-125.833-8.276-178.006l84.564 84.564c-22.22 25.189-21.294 63.572 2.787 87.653l125.396 125.501.004.004c24.055 24.056 62.436 25.042 87.656 2.792l84.566 84.566c-52.007 43.298-128.709 41.019-178.004-8.276zm210.232-23.148l-10.609 10.609-84.865-84.866 10.607-10.608c5.85-5.849 15.367-5.85 21.217 0l63.649 63.649c5.85 5.85 5.85 15.368.001 21.216z" fill="#b4252d" /></svg> <a href="@link">@caption</a></li>
+                                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999"><path d="M498.827 377.633l-63.649-63.649c-17.548-17.547-46.102-17.547-63.649 0l-28.931 28.931c-13.294 13.294-34.926 13.29-48.215.005l-125.4-125.507c-13.325-13.325-13.327-34.892 0-48.219l28.931-28.931c17.471-17.47 17.715-45.935-.017-63.665l-63.632-63.432C116.717-4.381 88.164-4.381 70.663 13.12L47.471 36.111c-63.28 63.279-63.28 166.242-.003 229.519L246.16 464.426c63.428 63.429 166.088 63.434 229.521 0l23.146-23.145c17.548-17.548 17.548-46.1 0-63.648zM91.833 34.382c5.849-5.849 15.365-5.85 21.233.016l63.632 63.432c5.863 5.863 5.863 15.352 0 21.216l-10.609 10.608-84.81-84.81 10.554-10.462zM267.38 443.213L68.687 244.415c-48.958-48.958-51.649-125.833-8.276-178.006l84.564 84.564c-22.22 25.189-21.294 63.572 2.787 87.653l125.396 125.501.004.004c24.055 24.056 62.436 25.042 87.656 2.792l84.566 84.566c-52.007 43.298-128.709 41.019-178.004-8.276zm210.232-23.148l-10.609 10.609-84.865-84.866 10.607-10.608c5.85-5.849 15.367-5.85 21.217 0l63.649 63.649c5.85 5.85 5.85 15.368.001 21.216z" fill="#b4252d" /></svg> <a href="@link2">@caption2</a></li>
+                                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999"><path d="M498.827 377.633l-63.649-63.649c-17.548-17.547-46.102-17.547-63.649 0l-28.931 28.931c-13.294 13.294-34.926 13.29-48.215.005l-125.4-125.507c-13.325-13.325-13.327-34.892 0-48.219l28.931-28.931c17.471-17.47 17.715-45.935-.017-63.665l-63.632-63.432C116.717-4.381 88.164-4.381 70.663 13.12L47.471 36.111c-63.28 63.279-63.28 166.242-.003 229.519L246.16 464.426c63.428 63.429 166.088 63.434 229.521 0l23.146-23.145c17.548-17.548 17.548-46.1 0-63.648zM91.833 34.382c5.849-5.849 15.365-5.85 21.233.016l63.632 63.432c5.863 5.863 5.863 15.352 0 21.216l-10.609 10.608-84.81-84.81 10.554-10.462zM267.38 443.213L68.687 244.415c-48.958-48.958-51.649-125.833-8.276-178.006l84.564 84.564c-22.22 25.189-21.294 63.572 2.787 87.653l125.396 125.501.004.004c24.055 24.056 62.436 25.042 87.656 2.792l84.566 84.566c-52.007 43.298-128.709 41.019-178.004-8.276zm210.232-23.148l-10.609 10.609-84.865-84.866 10.607-10.608c5.85-5.849 15.367-5.85 21.217 0l63.649 63.649c5.85 5.85 5.85 15.368.001 21.216z" fill="#b4252d" /></svg> <a href="@link3">@caption3</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    }
+}
+
+

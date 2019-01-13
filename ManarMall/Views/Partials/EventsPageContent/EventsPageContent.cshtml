@@ -1,0 +1,417 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@using System.Globalization;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8707;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    var node2 = content.GetPropertyValue<RelatedLinks>("brandImage2Links");
+    var node3 = content.GetPropertyValue<RelatedLinks>("brandImage3Links");
+    var node4 = content.GetPropertyValue<RelatedLinks>("brandImage4Links");
+    var node5 = content.GetPropertyValue<RelatedLinks>("brandImage5Links");
+    var node6 = content.GetPropertyValue<RelatedLinks>("brandImage6Links");
+    var node7 = content.GetPropertyValue<RelatedLinks>("brandImage7Links");
+    var node8 = content.GetPropertyValue<RelatedLinks>("brandImage8Links");
+    var node9 = content.GetPropertyValue<RelatedLinks>("brandImage9Links");
+    var node10 = content.GetPropertyValue<RelatedLinks>("brandImage10Links");
+    var node11 = content.GetPropertyValue<RelatedLinks>("brandImage11Links");
+    var node12 = content.GetPropertyValue<RelatedLinks>("brandImage12Links");
+    var node13 = content.GetPropertyValue<RelatedLinks>("brandImage13Links");
+
+    ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerItem BrandImage2 = content.GetImagePickerItem("brandImage2");
+    ImagePickerItem BrandImage3 = content.GetImagePickerItem("brandImage3");
+    ImagePickerItem BrandImage4 = content.GetImagePickerItem("brandImage4");
+    ImagePickerItem BrandImage5 = content.GetImagePickerItem("brandImage5");
+    ImagePickerItem BrandImage6 = content.GetImagePickerItem("brandImage6");
+    ImagePickerItem BrandImage7 = content.GetImagePickerItem("brandImage7");
+    ImagePickerItem BrandImage8 = content.GetImagePickerItem("brandImage8");
+    ImagePickerItem BrandImage9 = content.GetImagePickerItem("brandImage9");
+    ImagePickerItem BrandImage10 = content.GetImagePickerItem("brandImage10");
+    ImagePickerItem BrandImage11 = content.GetImagePickerItem("brandImage11");
+    ImagePickerItem BrandImage12 = content.GetImagePickerItem("brandImage12");
+    ImagePickerItem BrandImage13 = content.GetImagePickerItem("brandImage13");
+
+
+    var data = content.GetPropertyValue<JArray>("addEvents");
+    var data2 = content.GetPropertyValue<JArray>("secondTileEventDetails");
+
+
+
+    var umbracoPageId2 = 8978;
+    IPublishedContent content2 = umbracoHelper.TypedContent(umbracoPageId2);
+    ImagePickerItem eventimage = content2.GetImagePickerItem("brandImage1");
+
+
+
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<style>
+    .events_cont a.img_contr {
+        width: 100%;
+    }
+</style>
+
+
+<style type="text/css">
+
+
+    @@media (max-width:560px) {
+        #timeline[data-columns]::before {
+            content: '1.column.size-1of1';
+        }
+    }
+
+
+    @@media screen and (min-width: 560px) and (max-width: 767px) {
+        #timeline[data-columns]::before {
+            content: '2.column.size-1of2';
+        }
+    }
+
+
+
+    @@media (min-width: 768px) {
+        #timeline[data-columns]::before {
+            content: '3 .column.size-1of3';
+        }
+    }
+</style>
+
+<script>
+
+
+
+    $(function () {
+
+        $(".event_search_filter").keyup(function () {
+
+            // Retrieve the input field text and reset the count to zero
+            var filter = $(this).val(),
+                count = 0;
+
+            // Loop through the comment list
+            $('#timeline').find('.eventname').each(function () {
+
+
+                // If the list item does not contain the text phrase fade it out
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    //$(this).hide();
+                    $(this).closest('.evt_grid').fadeOut();
+
+                    // Show the list item if the phrase matches and increase the count by 1
+                } else {
+                    //$(this).show();
+                    $(this).closest('.evt_grid').fadeIn();
+                    count++;
+                }
+
+            });
+
+        });
+        $(".ddlevent").change(function () {
+            //alert($('option:selected', this).text());
+            var val = $(this).val();
+           // alert(val);
+            if (val == 'all') {
+                $('#timeline').find('.box').fadeIn(450);
+            } else {
+                var $el = $('.' + val).fadeIn(450);
+                $('#timeline').find('.box').not($el).hide();
+            }
+           // $btns.removeClass('active');
+          //  $(this).addClass('active');
+            @*$.ajax({
+
+
+
+                    url: "@Url.Action("Filterdata", "EntertainPageContent")",
+                    type: "POST",
+                    //data: { "send": "" + data + "" },
+                    dataType: "json",
+                    success: function (data) {
+
+
+
+
+
+                    },
+
+
+
+                });*@
+
+
+        });
+    });
+</script>
+
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main events_slider" style="background-image: url(@BrandImage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text">LET<br>
+                  YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+<section class="container-fluid  events_grid">
+    <div class="container">
+        <div class="row events_heading_top">
+            <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs eqheight">
+                <select class="category_select selectpicker events ddlevent">
+
+
+                    <option data-display="All" value="all">All</option>
+                    <option data-display="Current" value="current">Current</option>
+                    <option data-display="Upcoming" value="upcoming">Upcoming</option>
+                    <option data-display="News" value="ct3">News</option>
+
+                </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center eqheight">
+                <h1 class="events_heading">
+                    Events &amp; news
+                </h1>
+                <hr class="events_hr">
+            </div>
+            <div class="col-sm-4 hidden-xs eqheight">
+                <div class="event_search">
+
+                    <div class="container_search">
+                        <form>
+                            <input id="" class="tile_search_input event_search_filter" type="text" placeholder='Search something interesting...' id="box">
+                            <button class="srch_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#626262" /></svg></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="row hidden-lg hidden-md hidden-sm visible-xs  text-center">
+            <div class=" col-sm-5 col-xs-12 text-center " style="margin-bottom:15px; ">
+                <select class="category_select selectpicker ddlevent">
+
+
+                    <option data-display="All" value="all">All</option>
+                    <option data-display="Current" value="current">Current</option>
+                    <option data-display="Upcoming" value="upcoming">Upcoming</option>
+                    <option data-display="News" value="ct3">News</option>
+
+                </select>
+            </div>
+
+            <div class="col-sm-7 col-xs-12   ">
+                <div class="event_search">
+
+                    <div class="container_search">
+                        <form>
+                            <input id="" class="tile_search_input event_search_filter" type="text" placeholder='Search something interesting...'>
+                            <button class="srch_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#626262" /></svg></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="row  evt_offr_holder">
+            <div id="timeline" data-columns>
+
+                @if (data != null)
+                {
+                    foreach (var item in data.Children())
+                    {
+                        var itemProperties = item.Children<JProperty>();
+                        var myElement = itemProperties.FirstOrDefault(x => x.Name == "eventimages");
+                        var myElementValue = myElement.Value;
+                        var data1 = myElementValue.Children<JProperty>();
+                        var Elementdata = data1.FirstOrDefault(x => x.Name == "items");
+                        var element1 = Elementdata.Value;
+                        string ev = Elementdata.Value.ToString();
+
+
+
+                        var itemProperties2 = item.Children<JProperty>();
+                        var myElement2 = itemProperties.FirstOrDefault(x => x.Name == "addurl");
+                        var myElementValue2 = myElement2.Value;
+
+
+                        JArray jsonArray6 = JArray.Parse(ev);
+
+
+                        dynamic data6 = JObject.Parse(jsonArray6[0].ToString());
+                        string ecaption = "";
+                        string elink = "";
+                        if (ecaption != null && ecaption != null)
+                        {
+                            ecaption = data6.caption;
+                            elink = data6.link.url;
+
+                        }
+
+
+
+                        var eventStartDate = itemProperties.FirstOrDefault(x => x.Name == "eventStartDate");
+                        var eventStartDatevalue = eventStartDate.Value;
+                        var eventEndDate = itemProperties.FirstOrDefault(x => x.Name == "eventEndDate");
+                        var eventEndDatevalue = eventEndDate.Value;
+                        var todaysDate = DateTime.Today;
+                        var eventfiltervalue = "";
+                        if (eventStartDatevalue.ToString() != "")
+                        {
+                            var startdate = library.FormatDateTime(eventStartDatevalue.ToString(), "dd/MM/yyyy");
+                            var startdateval = DateTime.ParseExact(startdate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                            var enddate = library.FormatDateTime(eventEndDatevalue.ToString(), "dd/MM/yyyy");
+                            var enddateval = DateTime.ParseExact(enddate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                            if (todaysDate < startdateval)
+                            {
+                                eventfiltervalue = "upcoming";
+                            }
+                            if (todaysDate >= startdateval && todaysDate <= enddateval)
+                            {
+                                eventfiltervalue = "current";
+                            }
+                        }
+
+
+                        foreach (JObject first in element1)
+                        {
+                            var image = first.GetValue("imageUrl").ToString();
+                            var substring = image.Replace("?width=250&height=156.25&mode=crop", "");
+                            var title = first.GetValue("title").ToString();
+                            var description = first.GetValue("description").ToString();
+
+
+                            <div class="evt_grid mix1 ct1 box @eventfiltervalue" id="box">
+
+
+                                <a href="@elink" class="img_contr">
+                                    <div class="events_cont cap-bot">
+                                        <img src="@substring" alt="">
+                                        <figcaption>
+                                            <ul>
+                                                <li><h2 class="eventname">@title</h2></li>
+                                                <li class="time">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="16"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg>  <span>September 29 - October 31, 2018</span>
+                                                </li>
+                                                <li>
+                                                    @foreach (JObject element in myElementValue2)
+                        {
+                            var caption = element.GetValue("caption").ToString();
+                            var link = element.GetValue("link").ToString();
+
+                                                        <a href="@link" class="btn_call">@caption</a>
+
+
+                    }
+
+                                                </li>
+
+                                            </ul>
+                                        </figcaption>
+                                    </div>
+                                </a>
+                            </div>
+
+
+
+
+
+                        }
+
+
+                    }
+                }
+
+
+
+                @*<div class="evt_grid mix1 ct1">
+
+
+                        <a href="event_details.html">
+                            <div class="events_cont cap-bot">
+                                <img src="@eventimage.Image.Url" alt="">
+                                <figcaption>
+                                    <ul>
+                                        <li><h2>    @content2.GetPropertyValue("eventTitle"); </h2></li>
+                                        <li class="time">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="16"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg>  <span>September 29 - October 31, 2018</span>
+                                        </li>
+                                        <li>
+                                            @foreach (JObject element in myElementValue2)
+                                            {
+                                                var caption = element.GetValue("caption").ToString();
+                                                var link = element.GetValue("link").ToString();
+
+                                                <a href="@link" class="btn_call">@caption</a>
+
+
+                                            }
+
+                                        </li>
+
+                                    </ul>
+                                </figcaption>
+                            </div>
+                        </a>
+                    </div>*@
+
+
+                <script>
+                    document.getElementById("box").oninput = function () {
+                        var matcher = new RegExp(document.getElementById("box").value, "gi");
+                        for (var i = 0; i < document.getElementsByClassName("connect-cat").length; i++) {
+                            if (matcher.test(document.getElementsByClassName("name")[i].innerHTML) || matcher.test(document.getElementsByClassName("category")[i].innerHTML)) {
+                                document.getElementsByClassName("connect-cat")[i].style.display = "inline-block";
+                            } else {
+                                document.getElementsByClassName("connect-cat")[i].style.display = "none";
+                            }
+
+                        }
+                    }
+
+
+
+
+                </script>
+
+
+                <span class="giv_value"></span>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

@@ -1,0 +1,487 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@using System.Globalization;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+                /**/
+
+                /**/
+
+                /**/
+
+                var langs = Umbraco.TypedContentAtRoot();
+                var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+                var umbracoPageId = 8223;
+                IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+                IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+                Session["data"] = umbracoPageId;
+                Session["data2"] = content.UrlName;
+                var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+                ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+                ImagePickerItem BrandImage2 = content.GetImagePickerItem("brandImage2");
+                ImagePickerItem BrandImage3 = content.GetImagePickerItem("brandImage3");
+                ImagePickerItem BrandImage4 = content.GetImagePickerItem("brandImage4");
+                ImagePickerItem BrandImage5 = content.GetImagePickerItem("brandImage5");
+                ImagePickerItem BrandImage6 = content.GetImagePickerItem("brandImage6");
+                ImagePickerItem BrandImage7 = content.GetImagePickerItem("brandImage7");
+                ImagePickerItem BrandImage8 = content.GetImagePickerItem("brandImage8");
+                ImagePickerItem BrandImage9 = content.GetImagePickerItem("brandImage9");
+                ImagePickerItem BrandImage10 = content.GetImagePickerItem("brandImage10");
+                ImagePickerItem BrandImage11 = content.GetImagePickerItem("brandImage11");
+
+                var Link = content.GetPropertyValue<RelatedLinks>("links");
+
+                var category = content.GetPropertyValue<string[]>("category");
+
+
+                var data = content.GetPropertyValue<JArray>("insertOffers");
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <style type="text/css">
+
+
+                    @@media (max-width:560px) {
+                        #timeline[data-columns]::before {
+                            content: '1.column.size-1of1';
+                        }
+                    }
+
+
+                    @@media screen and (min-width: 560px) and (max-width: 767px) {
+                        #timeline[data-columns]::before {
+                            content: '2.column.size-1of2';
+                        }
+                    }
+
+
+
+                    @@media (min-width: 768px) {
+                        #timeline[data-columns]::before {
+                            content: '3 .column.size-1of3';
+                        }
+                    }
+                </style>
+                <script>
+
+
+
+    $(function () {
+
+        $(".ddlevent").change(function () {
+            //alert($('option:selected', this).text());
+            var val = $(this).val();
+
+           // alert(val);
+            if (val == 'all') {
+                $('#timeline').find('.box').fadeIn(450);
+            } else {
+                var $el = $('.' + val).fadeIn(450);
+                $('#timeline').find('.box').not($el).hide();
+            }
+           // $btns.removeClass('active');
+          //  $(this).addClass('active');
+            @*$.ajax({
+
+
+
+                    url: "@Url.Action("Filterdata", "EntertainPageContent")",
+                    type: "POST",
+                    //data: { "send": "" + data + "" },
+                    dataType: "json",
+                    success: function (data) {
+
+
+
+
+
+                    },
+
+
+
+                });*@
+
+
+        });
+    });
+                </script>
+
+                ImagePickerList addoffers = content.GetImagePickerList("addOffers");
+
+}
+
+<link rel="stylesheet" href="css/nice-select.css">
+<style type="text/css">
+</style>
+<!-- header end -->
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main events_slider" style="background-image: url(@BrandImage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text">LET<br>
+                  YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<section class="container-fluid  events_grid">
+    <div class="container">
+        <div class="row events_heading_top">
+            <div class="col-lg-3 col-md-3 col-sm-3 hidden-sm hidden-xs eqheight">
+                <select class="category_select selectpicker events ddlevent">
+
+
+                    <option data-display="All" value="all">All</option>
+                    <option data-display="Current" value="current">Current</option>
+                    <option data-display="Upcoming" value="upcoming">Upcoming</option>
+                    <option data-display="News" value="ct3">News</option>
+
+                </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center eqheight">
+                <h1 class="events_heading offer_pr_head">
+                    Offers &amp; Promotions
+                </h1>
+                <hr class="events_hr">
+            </div>
+            <div class="col-lg-3 col-md-3   hidden-sm hidden-xs offer_mr_btn_cont eqheight">
+
+                @if (Link != null)
+                {
+                    foreach (var item in Link)
+                    {
+                        <a href="@item.Link" target="_blank" class="offer_mr_btn">@item.Caption <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" height="12"  ><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z"  /></svg> --></a>
+
+                    }
+
+                }
+
+            </div>
+        </div>
+        @*<div class="row events_heading_top">
+                <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs eqheight">
+                    <select class="category_select selectpicker " id="category">
+
+
+                        @if (category.Length > 0)
+                        {
+
+
+                            for (int i = 0; i < category.Count(); i++)
+                            {
+
+                                <option data-display="Category" value="@i">@category[i]</option>
+                            }
+
+
+
+                        }
+
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center eqheight">
+                    <h2 class="events_heading">
+
+                        @content.GetPropertyValue("brandTitle")
+                    </h2>
+                    <hr class="events_hr">
+                </div>
+                <div class="col-sm-4 hidden-xs eqheight">
+                    <div class="event_search">
+
+                        <div class="container_search">
+                            <form>
+                                <input class="tile_search_input" type="text" placeholder='Search something interesting...'>
+                                <button class="srch_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#626262" /></svg></button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>*@
+
+
+
+        <div class="row hidden-lg hidden-md  visible-sm  visible-xs  text-center">
+            <div class=" col-sm-4 col-xs-4 text-center cat_mobl" style="margin-bottom:15px; ">
+                @*<select class="category_select selectpicker ">
+            @if (category.Length > 0)
+            {
+                foreach (var item in category)
+                {
+                    <option data-display="Category">@item</option>
+                }
+
+            }
+
+
+        </select>*@
+
+
+                <select class="category_select selectpicker events ddlevent">
+
+
+                    <option data-display="All" value="all">All</option>
+                    <option data-display="Current" value="current">Current</option>
+                    <option data-display="Upcoming" value="upcoming">Upcoming</option>
+                    <option data-display="News" value="ct3">News</option>
+
+                </select>
+            </div>
+
+            <div class="col-sm-4 col-xs-4  text-center btn_mobile mb_gift">
+
+                <a href="gifts.html" class="offer_mr_btn">Gift Card <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" height="12"  ><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z"  /></svg> --></a>
+
+            </div>
+            <div class="col-sm-4 col-xs-4  text-center btn_mobile mb_prom">
+
+                <a href="promotions.html" class="offer_mr_btn">Loyalty Program <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" height="12" ><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z"  /></svg> --></a>
+
+            </div>
+
+        </div>
+
+        <div class="row  evt_offr_holder">
+            <div id="timeline" data-columns>
+                @*@if (addoffers.Count > 0)
+                    {
+
+                        //var startdate = library.FormatDateTime(eventStartDatevalue.ToString(), "dd/MM/yyyy");
+                        //var startdateval = DateTime.ParseExact(startdate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                        //var enddate = library.FormatDateTime(eventEndDatevalue.ToString(), "dd/MM/yyyy");
+                        //var enddateval = DateTime.ParseExact(enddate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                        //if (todaysDate < startdateval)
+                        //{
+                        //    eventfiltervalue = "upcoming";
+                        //}
+                        //if (todaysDate >= startdateval && todaysDate <= enddateval)
+                        //{
+                        //    eventfiltervalue = "current";
+                        //}
+
+
+
+
+                        //foreach (ImagePickerItem item in addoffers.Items)
+                        //{
+                        @*<div class="evt_grid mix1" id="1">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@item.Image.Url" alt="">
+
+                            </div>
+
+
+
+                        </div>
+                    }
+                    }*@
+
+
+
+
+
+                @*@if (BrandImage3.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="2">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage3.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage4.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="3">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage4.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage5.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="4">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage5.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage6.HasImage)
+                    {
+                        <div class="evt_grid mix1" id="5">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage6.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage7.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="6">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage7.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage8.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="7">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage8.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage9.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="8">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage9.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+
+                    @if (BrandImage10.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="9">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage10.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (BrandImage11.HasImage)
+                    {
+                        <div class=" evt_grid mix1" id="10">
+
+                            <div class="events_cont cap-bot">
+                                <img src="@BrandImage11.Image.Url" alt="">
+
+                            </div>
+
+                        </div>
+                    }*@
+
+
+                @if (data != null)
+                {
+                    foreach (var item in data.Children())
+                    {
+                        string datav1 = "";
+                        var itemProperties = item.Children<JProperty>();
+                        var myElement = itemProperties.FirstOrDefault(x => x.Name == "insertoffers");
+                        var myElementValue = myElement.Value;
+
+
+                        var myElementValue2 = myElementValue.Children<JProperty>();
+                        var myElement2 = myElementValue2.FirstOrDefault(x => x.Name == "items");
+                        var myElementValue3 = myElement2.Value;
+
+
+
+
+                        var eventStartDate = itemProperties.FirstOrDefault(x => x.Name == "eventStartDate");
+                        var eventStartDatevalue = eventStartDate.Value;
+                        var eventEndDate = itemProperties.FirstOrDefault(x => x.Name == "eventEndDate");
+                        var eventEndDatevalue = eventEndDate.Value;
+                        var todaysDate = DateTime.Today;
+                        var eventfiltervalue = "";
+                        if (eventStartDatevalue.ToString() != "")
+                        {
+                            var startdate = library.FormatDateTime(eventStartDatevalue.ToString(), "dd/MM/yyyy");
+                            var startdateval = DateTime.ParseExact(startdate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                            var enddate = library.FormatDateTime(eventEndDatevalue.ToString(), "dd/MM/yyyy");
+                            var enddateval = DateTime.ParseExact(enddate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                            if (todaysDate < startdateval)
+                            {
+                                eventfiltervalue = "upcoming";
+                            }
+                            if (todaysDate >= startdateval && todaysDate <= enddateval)
+                            {
+                                eventfiltervalue = "current";
+                            }
+                        }
+
+
+
+
+
+                        foreach (JObject item2 in myElementValue3)
+                        {
+                            var Message = item2["imageUrl"].ToString();
+
+                            var substring = Message.Replace("?width=250&height=156.25&mode=crop", "");
+                            <div class="evt_grid mix1 ct1 box @eventfiltervalue">
+
+                                <div class="events_cont cap-bot">
+                                    <img src="@substring" alt="">
+
+                                </div>
+
+
+
+                            </div>
+                        }
+
+
+
+
+                    }
+                }
+
+
+
+
+
+                <span class="giv_value"></span>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

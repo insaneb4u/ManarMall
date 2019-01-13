@@ -1,0 +1,378 @@
+﻿@using Skybrud.ImagePicker.Extensions;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8221;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerItem BrandImage2 = content.GetImagePickerItem("brandImage2");
+    ImagePickerItem BrandImage3 = content.GetImagePickerItem("brandImage3");
+    ImagePickerItem BrandImage4 = content.GetImagePickerItem("brandImage4");
+    ImagePickerItem BrandImage5 = content.GetImagePickerItem("brandImage5");
+    ImagePickerItem BrandImage6 = content.GetImagePickerItem("brandImage6");
+    ImagePickerItem BrandImage7 = content.GetImagePickerItem("brandImage7");
+    ImagePickerItem BrandImage8 = content.GetImagePickerItem("brandImage8");
+    ImagePickerItem BrandImage9 = content.GetImagePickerItem("brandImage9");
+    ImagePickerItem BrandImage10 = content.GetImagePickerItem("brandImage10");
+    ImagePickerItem BrandImage11 = content.GetImagePickerItem("brandImage11");
+    ImagePickerItem BrandImage12 = content.GetImagePickerItem("brandImage12");
+    ImagePickerItem BrandImage13 = content.GetImagePickerItem("brandImage13");
+    ImagePickerItem BrandImage14 = content.GetImagePickerItem("brandImage14");
+}
+
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main shopping_bn" style="background-image: url(@BrandImage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+                <!--- <h1 class="white-text">LET<br>
+                   YOURSELF<br>GO!</h1>-->
+            </div>
+        </div>
+    </section>
+}
+
+
+
+
+    <section class="container-fluid shopping_information">
+
+        <div class="container  ">
+            <div class="row">
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 sop_cat_cont eqheight">
+                    <div class="row ">
+                        <div class="shopping_category_info pad_7">
+                            <h1>
+                                Shopping at Manar
+                            </h1>
+                            <p>
+                                @Umbraco.Field("brandImage2Text", recursive: true)
+                            </p>
+                            <hr>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4  img_shop  eqheight  ">
+                    @if (BrandImage2.HasImage)
+                    {
+                        <div class="row pad_7   eqheight">
+
+                            <div class="shopping_sec_1  " style="background-image: url(@BrandImage2.Image.Url);">
+
+                                <div class="sh_caption">
+                                    <a href="@BrandImage2.Link.Url" class="title_link" onmouseover="call12()"></a> <h2 class="appr_acces" id="typewriter12">
+    @BrandImage2.Description
+</h2>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row ">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            @if (BrandImage3.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage3.Link.Url" onmouseover="call12()">
+                                        <div class="shopping_sec_3" style="background-image: url(@BrandImage3.Image.Url);">
+
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter12">
+                                                    @BrandImage3.Description
+                                                </h2>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                            @if (BrandImage4.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage4.Link.Url" onmouseover="call11()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage4.Image.Url);">
+
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter11">
+                                                    @BrandImage4.Description
+                                                </h2>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6  ">
+                            @if (BrandImage5.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage5.Link.Url" onmouseover="call10()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage5.Image.Url);">
+
+                                            <div class="sh_caption"><h2 class="appr_acces" id="typewriter10">@BrandImage5.Description</h2></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="row ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs ">
+                            @if (BrandImage6.HasImage)
+                            {
+
+                                <div class="row pad_7">
+                                    <a href="@BrandImage6.Link.Url" onmouseover="call9()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage6.Image.Url);">
+
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter9">
+                                                    @BrandImage6.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 ">
+
+                            @if (BrandImage7.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage7.Link.Url" onmouseover="call8()">
+                                        <div class="shopping_sec_3" style="background-image: url(@BrandImage7.Image.Url);">
+
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter8">
+                                                    @BrandImage7.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 hidden-lg hidden-md hidden-sm visible-xs">
+                            @if (BrandImage8.HasImage)
+                            {
+
+                                <div class="row pad_7">
+                                    <a href="@BrandImage8.Link.Url" onmouseover="call13()">
+                                        <div class="shopping_sec_3" style="background-image: url(@BrandImage8.Image.Url);">
+
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces " id="typewriter13">
+                                                    @BrandImage8.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="row ">
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-xs">
+                            @if (BrandImage9.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage9.Link.Url" onmouseover="call7()">
+                                        <div class="shopping_sec_3" style="background-image: url(@BrandImage9.Image.Url);">
+
+                                            <div class="sh_caption"><h2 class="appr_acces" id="typewriter7">@BrandImage9.Description</h2></div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            }
+                            </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 hidden-lg hidden-md hidden-sm visible-xs ">
+                            @if (BrandImage9.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage9.Link.Url" onmouseover="call6()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage9.Image.Url);">
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter6">
+                                                    @BrandImage9.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xs-6 ">
+
+
+                            @if (BrandImage8.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage8.Link.Url" onmouseover="call5()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage8.Image.Url);">
+
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter5">
+                                                    @BrandImage8.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row ">
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 hidden-xs">
+
+
+                            <div class="row pad_7">
+                                <div class="shopping_sec_2" style="">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                            @if (BrandImage14.HasImage)
+                            {
+
+                                <div class="row pad_7" onmouseover="call4()">
+                                    <a href="@BrandImage14.Link.Url">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage14.Image.Url);">
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter4">
+                                                    @BrandImage14.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6  ">
+
+                            @if (BrandImage11.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage11.Link.Url" onmouseover="call3()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage11.Image.Url);">
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter3">
+                                                    @BrandImage11.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row ">
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+
+                            @if (BrandImage12.HasImage)
+                            {
+                                <div class="row pad_7">
+                                    <a href="@BrandImage12.Link.Url" onmouseover="call2()">
+                                        <div class="shopping_sec_4" style="background-image: url(@BrandImage12.Image.Url);">
+                                            <div class="sh_caption">
+                                                <h2 class="appr_acces" id="typewriter2">
+                                                    @BrandImage12.Description
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <div class="row ">
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            @if (BrandImage13.HasImage)
+                            {
+
+                                <div class="row pad_7_last">
+                                    <a href="@BrandImage13.Link.Url" onmouseover="call()">
+                                        <div class="shopping_sec_2" style="background-image: url(@BrandImage13.Image.Url);">
+                                            <div class="sh_caption"><h2 class="appr_acces" id="typewriter">@BrandImage13.Description</h2></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>

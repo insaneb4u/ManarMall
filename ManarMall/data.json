@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Event: Opening Ceremony\nWhen: 29th July 2018, 11 AM\nWhere: 2nd Floor, Manar Mall",
+    "bio": "Event: Opening Ceremony\nWhen: 29th July 2018, 11 AM\nWhere: 2nd Floor, Manar Mall",
+    "reknown": "",
+    "shortname": "",
+    "pagename": "en"
+  },
+  {
+    "name": "To load the json from a text file",
+    "bio": "To load the json from a text file",
+    "reknown": "",
+    "shortname": "",
+    "pagename": "en"
+  },
+  {
+    "name": "TAKE A BREAK ! GRAB SOME POPCORN!",
+    "bio": "TAKE A BREAK ! GRAB SOME POPCORN!",
+    "reknown": "",
+    "shortname": "",
+    "pagename": "en"
+  },
+  {
+    "name": "What do you wish to watch today? Drama? Action? Romantic Comedy? Thriller? Horror? Animation? You name it, we got it.",
+    "bio": "What do you wish to watch today? Drama? Action? Romantic Comedy? Thriller? Horror? Animation? You name it, we got it.",
+    "reknown": "",
+    "shortname": "",
+    "pagename": "en"
+  },
+  {
+    "name": "Manar is the place for all you amazing maholics. Shop till you drop or eat till your belly can’t take it anym. There’s a huge play area filled with joy and mment for you kids!\n\nSpeaking of mment, have you booked tickets for the latest movie?\n\nLike someplace quieter? Situated at serene gulf beach, Manar also m you the peace of mind, go on take a stroll.",
+    "bio": "Manar is the place for all you amazing maholics. Shop till you drop or eat till your belly can’t take it anym. There’s a huge play area filled with joy and mment for you kids!\n\nSpeaking of mment, have you booked tickets for the latest movie?\n\nLike someplace quieter? Situated at serene gulf beach, Manar also m you the peace of mind, go on take a stroll.",
+    "reknown": "",
+    "shortname": "",
+    "pagename": "en"
+  },
+  {
+    "name": "RESTAURANTS\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "bio": "RESTAURANTS\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "bio": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "Shoppers can indulge in a refreshing dining experience in Manar Mall’s charming ambience.\n\nExplore, take a break and enjoy a unique experience in Shopping Mall dining. Whether it’s a quick snack on the run, a healthy salad to re-charge or a fun casual dining experience the restaurant outlets at Manar Mall will offer all.",
+    "bio": "Shoppers can indulge in a refreshing dining experience in Manar Mall’s charming ambience.\n\nExplore, take a break and enjoy a unique experience in Shopping Mall dining. Whether it’s a quick snack on the run, a healthy salad to re-charge or a fun casual dining experience the restaurant outlets at Manar Mall will offer all.",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "bio": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "bio": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "RESTAURANTS",
+    "bio": "RESTAURANTS",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "CAFES",
+    "bio": "CAFES",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT",
+    "bio": "LOREM IPSUM IS SIMPLY DUMMY TEXT",
+    "reknown": "en/dine",
+    "shortname": "en/dine",
+    "pagename": "dine"
+  },
+  {
+    "name": "IT’S SHOWTIME! BOOK YOUR TICKETS & SAVE YOUR SEATS.",
+    "bio": "IT’S SHOWTIME! BOOK YOUR TICKETS & SAVE YOUR SEATS.",
+    "reknown": "en/entertain",
+    "shortname": "en/entertain",
+    "pagename": "entertain"
+  },
+  {
+    "name": "Take a break from those errands you’ve been running & grab some popcorn. Whether you like thrillers, romantic comedy or horror, Novo cinemas is sure to have something for you. Novo m the best cinematic experience and creates a lasting memory. So sit back and enjoy!",
+    "bio": "Take a break from those errands you’ve been running & grab some popcorn. Whether you like thrillers, romantic comedy or horror, Novo cinemas is sure to have something for you. Novo m the best cinematic experience and creates a lasting memory. So sit back and enjoy!",
+    "reknown": "en/entertain",
+    "shortname": "en/entertain",
+    "pagename": "entertain"
+  },
+  {
+    "name": "<ul class=\"cont_info\">\n<li class=\"cont-address\">P.O.Box 10500, RAK, U.A.E.</li>\n<li class=\"cont-tel\">Tel:<span> </span><a href=\"tel:971 7 227 0000\">+ 971 7 227 0000</a></li>\n<li class=\"cont-fax\">Fax: + 971 7 228 9888</li>\n<li class=\"cont-mail\">E-mail:<span> </span><a href=\"mailto:info@manarmall.com\">info@manarmall.com</a></li>\n</ul>",
+    "bio": "<ul class=\"cont_info\">\n<li class=\"cont-address\">P.O.Box 10500, RAK, U.A.E.</li>\n<li class=\"cont-tel\">Tel:<span> </span><a href=\"tel:971 7 227 0000\">+ 971 7 227 0000</a></li>\n<li class=\"cont-fax\">Fax: + 971 7 228 9888</li>\n<li class=\"cont-mail\">E-mail:<span> </span><a href=\"mailto:info@manarmall.com\">info@manarmall.com</a></li>\n</ul>",
+    "reknown": "en/contactus",
+    "shortname": "en/contactus",
+    "pagename": "contactus"
+  },
+  {
+    "name": "CONTACT US",
+    "bio": "CONTACT US",
+    "reknown": "en/contactus",
+    "shortname": "en/contactus",
+    "pagename": "contactus"
+  },
+  {
+    "name": "<p>Opened in the September of 2000, Manar Mall caters to be the most popular m and leisure center in RAK.</p>\n<p>Built on the spectacular landscape-facing sea corniche on one side and convenient parking on the other, it m variety of time spending to everyone.</p>\n<p>Customers are offered cafes and restaurants with outdoor siting area, facing the sea, playgrounds for children, 120 retail outlets and several anchor stores.</p>",
+    "bio": "<p>Opened in the September of 2000, Manar Mall caters to be the most popular m and leisure center in RAK.</p>\n<p>Built on the spectacular landscape-facing sea corniche on one side and convenient parking on the other, it m variety of time spending to everyone.</p>\n<p>Customers are offered cafes and restaurants with outdoor siting area, facing the sea, playgrounds for children, 120 retail outlets and several anchor stores.</p>",
+    "reknown": "en/aboutus",
+    "shortname": "en/aboutus",
+    "pagename": "aboutus"
+  },
+  {
+    "name": "<p>Spread over a span of 45000 sqmt, Al Hamra m two storeys of m experience. With 1500 car parking spaces capacity set amidst the beautiful Al Hamra infrastructure.</p>\n<p>It m the perfect blend between m, mment, dining and recreation. With over 120 outlets to choose from, visitors can buy anything from clothing to electronics to souvenirs.</p>",
+    "bio": "<p>Spread over a span of 45000 sqmt, Al Hamra m two storeys of m experience. With 1500 car parking spaces capacity set amidst the beautiful Al Hamra infrastructure.</p>\n<p>It m the perfect blend between m, mment, dining and recreation. With over 120 outlets to choose from, visitors can buy anything from clothing to electronics to souvenirs.</p>",
+    "reknown": "en/aboutus",
+    "shortname": "en/aboutus",
+    "pagename": "aboutus"
+  },
+  {
+    "name": "<p><span>Elegance, confidence, chicness should be your aura, presenting wide range of sophistication stitched perfectly for you, m nothing but perfection. Embedded delicateness of exceptional, luminescent accessories pearled up, buy it, wear it,flaunt it. Experience a divine blend of exotic fragrances from aromatic musk to “oh so 80’s” pungent, spicy to fruity! Buy your fragrance. You’re to head out looking nothing but magnificent.</span></p>",
+    "bio": "<p><span>Elegance, confidence, chicness should be your aura, presenting wide range of sophistication stitched perfectly for you, m nothing but perfection. Embedded delicateness of exceptional, luminescent accessories pearled up, buy it, wear it,flaunt it. Experience a divine blend of exotic fragrances from aromatic musk to “oh so 80’s” pungent, spicy to fruity! Buy your fragrance. You’re to head out looking nothing but magnificent.</span></p>",
+    "reknown": "en/shop",
+    "shortname": "en/shop",
+    "pagename": "shop"
+  },
+  {
+    "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "reknown": "en/blog",
+    "shortname": "en/blog",
+    "pagename": "blog"
+  },
+  {
+    "name": "BLOGS",
+    "bio": "BLOGS",
+    "reknown": "en/blog",
+    "shortname": "en/blog",
+    "pagename": "blog"
+  },
+  {
+    "name": "",
+    "bio": "",
+    "reknown": "en/leasing",
+    "shortname": "en/leasing",
+    "pagename": "leasing"
+  }
+]

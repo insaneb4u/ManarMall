@@ -1,0 +1,595 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Skybrud.LinkPicker;
+@using Skybrud.Umbraco;
+@using System.Threading;
+@using Examine.LuceneEngine.SearchCriteria;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@*@inherits Umbraco.Web.Mvc.UmbracoViewPage<List<NavigationList>>*@
+
+@{
+    string tem = "";
+    var langs = Umbraco.TypedContentAtRoot();
+
+
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 1090;
+    var page1 = UmbracoContext.Current.PageId;
+    //IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    //Session["data"] = page1;
+    //Session["data2"] = CurrentPage.UrlName;
+    if (page1 != null)
+    {
+        IPublishedContent content1 = umbracoHelper.TypedContent(page1);
+
+    }
+    else
+    {
+        IPublishedContent content1 = umbracoHelper.TypedContent(page1);
+        var SearchResultsPage = content1.AncestorOrSelf(1).Children().Where(x => x.DocumentTypeAlias == "searchResults").First();
+    }
+
+    var uiCurrentCulture = Thread.CurrentThread.CurrentUICulture;
+
+
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    var node = content.GetPropertyValue<RelatedLinks>("moreMenuLink");
+    var node2 = content.GetPropertyValue<RelatedLinks>("menuSubLink");
+    var MainNavigation = content.GetPropertyValue<RelatedLinks>("mainNavigation");
+    LinkPickerList linkPickerList1 = content.GetPropertyValue("linksPicker") as LinkPickerList;
+
+
+
+
+
+}
+
+
+
+@*<script>
+
+
+        @{ string temp = ""; }
+
+
+
+
+
+
+
+
+        $(function () {
+
+            var timeout = null
+
+            $("#txtsearch").keyup(function (e) {
+                var text = this.value
+                clearTimeout(timeout)
+                timeout = setTimeout(function () {
+                    e.preventDefault();
+                    var data = $('#txtsearch').val();
+                    var myExp = new RegExp(data, "i");
+                    // $('form').submit();
+                    $.ajax({
+
+
+
+                        url: "@Url.Action("GetClient", "NewsSettlerSurface")",
+                        type: "POST",
+                        data: { "send": "" + data + "" },
+                        dataType: "json",
+                        success: function (data) {
+
+
+
+                            //$("#list").empty().append(data);
+
+                            var output = '<ul class="searchresults2">';
+                            $.each(data, function (key, val) {
+                                if (val.name.search(myExp) != -1) {
+                                    output += '<li>';
+                                    output += '<a href="' + val.reknown + '"><span>' + val.bio + '</span>';
+                                    output += ' <i> -(' + val.shortname + ')</i>';
+                                    output += '</a></li>';
+                                }
+                            });
+                            output += '</ul>';
+                            if (searchField != '') {
+
+                                $('#result2').html(output);
+                                $('.searchresults2').show();
+                            }
+                            else { $('#result2').html(); $('.searchresults2').hide(); }
+
+
+
+                        },
+
+
+
+                    });
+                    console.log(text)
+                }, 1000)
+            })
+
+        });
+
+
+
+    </script>*@
+
+
+
+@{
+    //string searchQuery = "";
+
+    //if (Session["results"] != null)
+    //{
+    //    searchQuery = Session["results"].ToString();
+    //}
+
+
+
+    //if (String.IsNullOrWhiteSpace(searchQuery))
+    //{
+    //    searchQuery = "";
+    //}
+
+
+    //var searcher = ExamineManager.Instance;
+    //var searchCriteria = searcher.CreateSearchCriteria();
+
+    //var query = searchCriteria.GroupedOr(new[] { "description1", "description2", "description3", "description4", "description5", "brandImage1Text", "brandImage2Text", "eventDescription1", "eventDescription2", "brandImage2Description", "brandImage3Description", "brandImage4Description", "brandImage5Description", "brandImage6Description", "brandImage7Description" }, searchQuery).Compile();
+
+
+
+    //var searchResults = searcher.Search(query).Where(r => r["__IndexType"] == "content").ToList();
+
+}
+
+<!-- div overlay search -->
+<div id="myNav" class="overlay-search  ">
+    <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
+    <div class="overlay-content-search">
+        <div class="search_form">
+            <form action="" method="GET">
+                <div class="search_form_cont clearfix">
+                    <input type="text" id="txtsearch" class="search_input" name="" autofocus placeholder="Search...">
+                    <button type="submit" id="btnsearch" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="search_button"><svg class="search_zoom" xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 451 451" class="search_zoom"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#fff" /></svg></button>
+                </div>
+            </form>
+
+
+
+
+            <div class="col-sm-12 disp_result" id="list">
+
+                <h3>Search result</h3>
+                @*@if (searchResults.Any())
+                    {*@
+                <ul id="result2"></ul>
+                @*<ul>
+                        @foreach (var results in searchResults)
+                        {
+                            var node1 = Umbraco.TypedContent(results.Id);
+                            var pathIds = results["__Path"].Split(',');
+
+                            var path = Umbraco.TypedContent(pathIds).Where(p => p != null).Select(p => new { p.Name }).ToList();
+
+                            if (node1 != null)
+                            {
+
+                                if (node1.Url != null && node1.GetPropertyValue("description1") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("description1")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("description2") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("description2")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("description3") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("description3")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("description4") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("description4")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("description5") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("description5")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("eventDescription1") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("eventDescription1")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("eventDescription2") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("eventDescription2")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("brandImage2Description") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("brandImage2Description")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("brandImage3Description") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("brandImage3Description")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("brandImage4Description") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("brandImage4Description")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("brandImage5Description") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("brandImage5Description")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("brandImage6Description") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("brandImage6Description")</a></li>
+                                }
+                                if (node1.Url != null && node1.GetPropertyValue("brandImage7Description") != null)
+                                {
+                                    <li><a href="@node1.Url" title="">@node1.GetPropertyValue("brandImage7Description")</a></li>
+                                }
+
+
+
+
+
+                            }
+
+                        }
+
+                    </ul>*@
+
+
+
+
+
+                @*}
+                    else
+                    {
+
+                        <p>
+
+
+                            @if (!String.IsNullOrWhiteSpace(searchQuery))
+                            {
+                                <text>'No results found for:@searchQuery'</text>
+                            }
+
+                        </p>
+
+
+                    }*@
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- search-->
+<!-- header start -->
+<div class="all-content-area">
+    <input type="text" id="selector">
+    <aside class="menu slide-menu-right">
+        <div class="close_btn_hold">
+            <a href="JavaScript:void(0);" class="close-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 414.298 414.299"><path d="M3.663 410.637a12.465 12.465 0 0 0 8.839 3.661c3.199 0 6.398-1.221 8.839-3.661l185.809-185.81 185.81 185.811a12.465 12.465 0 0 0 8.84 3.661c3.198 0 6.397-1.221 8.839-3.661 4.881-4.881 4.881-12.796 0-17.679l-185.811-185.81 185.811-185.81c4.881-4.882 4.881-12.796 0-17.678-4.882-4.882-12.796-4.882-17.679 0l-185.81 185.81L21.34 3.663c-4.882-4.882-12.796-4.882-17.678 0-4.882 4.881-4.882 12.796 0 17.678l185.81 185.809L3.663 392.959c-4.882 4.882-4.882 12.797 0 17.678z" fill="#FFF" /></svg>
+            </a>
+        </div>
+        <ul>
+            <ul class="menu">
+
+
+                @if (uiCurrentCulture.ToString() == "en-US")
+                {
+                    foreach (var item in MainNavigation)
+                    {
+                        var link = item.Link.Replace("ar/", "en/");
+                        <li><a href="@link">@item.Caption</a><hr></li>
+                    }
+                }
+                @if (uiCurrentCulture.ToString() == "ar-AE")
+                {
+                    foreach (var item in MainNavigation)
+                    {
+                        var link = item.Link.Replace("en/", "ar/");
+                        <li><a href="@link">@item.Caption</a><hr></li>
+                    }
+                }
+                @foreach (var page in content.DescendantOrSelf(1).Children.Where(x => x.IsVisible()))
+                {
+                    <li style="display:none;"><a href="@page.Url">@page.Name</a> <hr></li>
+
+
+
+
+                    if (page.Children.Any(x => x.IsVisible()))
+                    {
+                    <li>
+                        <a href="#demo" data-toggle="collapse">More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="12" height="12"><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#555" /></svg></a><hr>
+                        <div id="demo" class="collapse menu_collapse">
+                            <ul>
+                                @foreach (var subMenu in page.Children.Where(x => x.IsVisible()))
+                                {
+
+                                    <li>
+                                        <a href="@subMenu.Name.ToLower()"> @subMenu.Name </a>
+
+                                        <ul>
+                                            @foreach (var subMenu2 in subMenu.Children.Where(x => x.IsVisible()))
+                                            {
+
+                                                <li>
+                                                    <a href="@subMenu2.Name.ToLower()">
+                                                        @subMenu2.Name
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+
+
+
+
+                                    </li>
+
+                                }
+
+
+
+                            </ul>
+                            </div>
+                    </li>
+                    }
+
+                }
+            </ul>
+        </ul>
+        <div class="col-sm-12">
+            <div class="row">
+                <ul class="aside_social">
+                    <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-110 1 511 512" width="20"><path d="M180 512H98.008c-13.695 0-24.836-11.14-24.836-24.836V302.227H25.336C11.64 302.227.5 291.082.5 277.39v-79.246c0-13.696 11.14-24.836 24.836-24.836h47.836v-39.684c0-39.348 12.355-72.824 35.726-96.805C132.375 12.73 165.184 0 203.778 0l62.53.102c13.672.023 24.794 11.164 24.794 24.835v73.579c0 13.695-11.137 24.836-24.829 24.836l-42.101.015c-12.84 0-16.11 2.574-16.809 3.363-1.152 1.31-2.523 5.008-2.523 15.223v31.352h58.27c4.386 0 8.636 1.082 12.288 3.12 7.88 4.403 12.778 12.727 12.778 21.723l-.031 79.247c0 13.687-11.141 24.828-24.836 24.828h-58.47v184.941C204.84 500.86 193.696 512 180 512zm-76.813-30.016h71.633V288.79c0-9.144 7.442-16.582 16.582-16.582h66.727l.027-68.883h-66.758c-9.14 0-16.578-7.437-16.578-16.582v-44.789c0-11.726 1.192-25.062 10.043-35.086 10.696-12.117 27.551-13.515 39.301-13.515l36.922-.016V30.109l-57.332-.093c-62.024 0-100.566 39.703-100.566 103.609v53.117c0 9.14-7.438 16.582-16.579 16.582H30.516v68.883h56.093c9.141 0 16.579 7.438 16.579 16.582zM266.25 30.117h.004zm0 0" /></svg></a></li>
+                    <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -47 512 512" width="20"><path d="M512 55.965c-32.207 1.484-31.504 1.363-35.145 1.668L495.93 3.16s-59.54 21.902-74.633 25.82c-39.64-35.628-98.563-37.203-140.688-11.312-34.496 21.207-53.011 57.625-46.836 100.191C166.637 108.543 110.07 76.72 65.41 23.07L51.285 6.105 40.73 25.488C27.39 49.98 22.96 77.984 28.254 104.34A113.287 113.287 0 0 0 39.23 135.12l-12.117-4.695-1.437 20.246c-1.457 20.566 5.39 44.574 18.32 64.215a114.185 114.185 0 0 0 14.27 17.597l-6.262-.96 7.64 23.199c10.043 30.48 30.903 54.062 57.973 67.172-27.035 11.472-48.875 18.793-84.773 30.601L0 363.293l30.336 16.586c11.566 6.324 52.437 27.445 92.82 33.781 89.766 14.078 190.832 2.613 258.871-58.664 57.309-51.613 76.114-125.031 72.207-201.433-.59-11.567 2.579-22.606 8.922-31.079 12.707-16.964 48.766-66.406 48.844-66.52zm-72.832 48.55c-10.535 14.067-15.813 32.032-14.867 50.579 3.941 77.066-17.028 136.832-62.328 177.629-52.918 47.66-138.274 66.367-234.172 51.324-17.367-2.723-35.317-8.82-50.172-14.91 30.098-10.356 53.34-19.586 90.875-37.352l52.398-24.8-57.851-3.704c-27.711-1.773-50.785-15.203-64.969-37.008a103.763 103.763 0 0 0 22.023-3.671l55.176-15.368-55.636-13.625c-27.036-6.62-42.446-22.797-50.614-35.203-5.363-8.152-8.867-16.504-10.969-24.203 5.579 1.496 12.083 2.563 22.57 3.602l51.497 5.093-40.8-31.828c-29.4-22.93-41.18-57.379-32.544-90.496 91.75 95.164 199.477 88.012 210.32 90.528-2.386-23.184-2.449-23.239-3.074-25.446-13.886-49.09 16.547-74.015 30.274-82.453 28.672-17.621 74.183-20.277 105.707 8.754 6.808 6.266 16.015 8.73 24.633 6.59 7.734-1.922 14.082-3.957 20.296-6.172L434.004 89.32l16.516.012a8240.32 8240.32 0 0 1-11.352 15.184zm0 0" /></svg></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <ul class="aside_abt_contact">
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/contactus">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="subscribe_form">
+                <h3>Subscribe here</h3>
+                <form class="adide_sub_form">
+                    <input type="text" placeholder="example@gmail.com"><button class="sub_btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 535.5 535.5"><path fill="#FFF" d="M0 497.25l535.5-229.5L0 38.25v178.5l382.5 51-382.5 51z" /></svg></button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 aside_footer_dt">Privacy Policy | Copyright<span id="curr_year"></span> Manar mall. All rights reserved </div>
+    </aside>
+
+    <header>
+
+        <div class="header-area header-sticky  ">
+            <div class="top-bar " style="width:100%; background:#000; line-height:40px; ">
+                <div class="container">
+                    <div class="col-sm-6 hidden-xs">
+                        <ul class="top_br_links">
+                            <li>
+                                <a href="@Umbraco.Field("socialMediaTwitterLink", recursive: true) " target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="12" height="12"><path d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z" fill="#646464" /></svg>
+                                </a>
+                            </li>
+                            <li><a href="@Umbraco.Field("socialMediaLinkdinLink", recursive: true)" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 438.536 438.536"><path d="M414.41 24.123C398.333 8.042 378.963 0 356.315 0H82.228C59.58 0 40.21 8.042 24.126 24.123 8.045 40.207.003 59.576.003 82.225v274.084c0 22.647 8.042 42.018 24.123 58.102 16.084 16.084 35.454 24.126 58.102 24.126h274.084c22.648 0 42.018-8.042 58.095-24.126 16.084-16.084 24.126-35.454 24.126-58.102V82.225c-.001-22.649-8.043-42.021-24.123-58.102zM133.618 367.157H67.666V169.016h65.952v198.141zm-5.992-234.825c-6.851 6.567-15.893 9.851-27.124 9.851h-.288c-10.848 0-19.648-3.284-26.407-9.851-6.76-6.567-10.138-14.703-10.138-24.41 0-9.897 3.476-18.083 10.421-24.556 6.95-6.471 15.942-9.708 26.98-9.708 11.039 0 19.89 3.237 26.553 9.708 6.661 6.473 10.088 14.659 10.277 24.556-.001 9.703-3.423 17.839-10.274 24.41zm243.247 234.825h-65.952v-105.92c0-29.879-11.036-44.823-33.116-44.823-8.374 0-15.42 2.331-21.128 6.995-5.715 4.661-9.996 10.324-12.847 16.991-1.335 3.422-1.999 8.75-1.999 15.981v110.775h-65.952c.571-119.529.571-185.579 0-198.142h65.952v27.974c13.867-21.681 33.558-32.544 59.101-32.544 22.84 0 41.21 7.52 55.104 22.554 13.895 15.037 20.841 37.214 20.841 66.519v113.64h-.004z" fill="#646464" /></svg></a></li>
+                            <li>
+                                <a href="@Umbraco.Field("socialMediaFacebookLink", recursive: true)" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 90 90"><path d="M90 15.001C90 7.119 82.884 0 75 0H15C7.116 0 0 7.119 0 15.001v59.998C0 82.881 7.116 90 15.001 90H45V56H34V41h11v-5.844C45 25.077 52.568 16 61.875 16H74v15H61.875C60.548 31 59 32.611 59 35.024V41h15v15H59v34h16c7.884 0 15-7.119 15-15.001V15.001z" fill="#646464" /></svg></a>
+                            </li>
+                            <li><a href="@Umbraco.Field("socialMediaInstagramLink", recursive: true)" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 512 512"><path d="M352 0H160C71.648 0 0 71.648 0 160v192c0 88.352 71.648 160 160 160h192c88.352 0 160-71.648 160-160V160C512 71.648 440.352 0 352 0zm112 352c0 61.76-50.24 112-112 112H160c-61.76 0-112-50.24-112-112V160C48 98.24 98.24 48 160 48h192c61.76 0 112 50.24 112 112v192z" fill="#646464" /><path d="M256 128c-70.688 0-128 57.312-128 128s57.312 128 128 128 128-57.312 128-128-57.312-128-128-128zm0 208c-44.096 0-80-35.904-80-80 0-44.128 35.904-80 80-80s80 35.872 80 80c0 44.096-35.904 80-80 80z" fill="#646464" /><circle cx="393.6" cy="118.4" r="17.056" fill="#646464" /></svg></a></li>
+                            <li><p class="link_saperater">spread the word</p></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <ul class="top_br_linksright">
+                            <li>
+
+                                <a href="JavaScript:Void(0);" onclick="openNav()" id="search_btn2" data-backdrop="static" data-keyboard="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18" height="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#646464" /></svg></a>
+                            </li>
+                            <li>
+                                <a href="tel:+97172432594" class="tooltip1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M492.557 400.56L392.234 300.238c-11.976-11.975-31.458-11.975-43.435 0l-26.088 26.088c-8.174 8.174-10.758 19.845-7.773 30.241l-9.843 9.843-.008.008c-6.99 6.998-50.523-3.741-103.145-56.363-52.614-52.613-63.356-96.139-56.366-103.142 0-.002.002-.002.002-.002l9.852-9.851a30.876 30.876 0 0 0 8.523 1.207c7.865 0 15.729-2.993 21.718-8.98l26.088-26.088c11.975-11.975 11.975-31.458 0-43.434L111.436 19.441c-5.8-5.8-13.513-8.994-21.716-8.994-8.205 0-15.915 3.196-21.716 8.994l-26.09 26.09c-8.174 8.174-10.758 19.846-7.773 30.241 0 0-8.344 8.424-8.759 8.956-27.753 30.849-32.96 79.418-14.561 137.487 18.017 56.857 56.857 117.088 109.367 169.595 52.508 52.508 112.739 91.348 169.596 109.367 22.84 7.237 44.207 10.823 63.61 10.823 31.813 0 58.337-9.648 77.35-28.66l5.474-5.474a30.83 30.83 0 0 0 8.532 1.213c8.205 0 15.917-3.196 21.716-8.994l26.09-26.09c11.975-11.975 11.975-31.459.001-43.435zM89.72 41.157l100.324 100.325-26.074 26.102-.014-.014-.375-.375-49.787-49.787-50.163-50.161 26.089-26.09zm319.309 420.466l-.005.005c-22.094 22.091-61.146 25.74-109.961 10.27-52.252-16.558-108.065-52.714-157.156-101.806C92.814 321 56.658 265.189 40.101 212.936c-15.47-48.817-11.821-87.87 10.275-109.967l.002-.002 2.77-2.77 77.857 77.856-7.141 7.141-.015.017c-29.585 29.622 5.963 96.147 56.378 146.562 37.734 37.734 84.493 67.14 118.051 67.14 11.284 0 21.076-3.325 28.528-10.778l.008-.008 7.133-7.133 77.857 77.856-2.775 2.773zm35.723-13.255L344.428 348.044l26.088-26.088L470.84 422.278s-26.079 26.099-26.088 26.09zM388.818 123.184c-29.209-29.209-68.042-45.294-109.344-45.293-8.481 0-15.356 6.875-15.356 15.356s6.876 15.356 15.356 15.356c33.1-.002 64.219 12.89 87.628 36.297 23.406 23.406 36.295 54.525 36.294 87.624 0 8.481 6.875 15.358 15.356 15.358 8.48 0 15.356-6.875 15.356-15.354.001-41.304-16.085-80.135-45.29-109.344z" fill="#646464" /><path d="M443.895 68.107C399.972 24.186 341.578-.002 279.468 0c-8.481 0-15.356 6.876-15.356 15.356 0 8.481 6.876 15.356 15.356 15.356 53.907-.002 104.588 20.992 142.709 59.111 38.118 38.118 59.111 88.799 59.11 142.706 0 8.481 6.875 15.356 15.356 15.356 8.48 0 15.356-6.875 15.356-15.354.002-62.112-24.186-120.504-68.104-164.424zM333.737 178.26c-14.706-14.706-33.465-22.477-54.256-22.477h-.006c-8.481.002-15.356 6.876-15.354 15.358.002 8.481 6.878 15.356 15.358 15.354h.005c12.644 0 23.593 4.536 32.539 13.481 8.819 8.82 13.481 20.075 13.479 32.544-.002 8.481 6.875 15.356 15.354 15.358h.002c8.481 0 15.354-6.875 15.356-15.354.001-20.792-7.77-39.556-22.477-54.264z" fill="#646464" /></svg>
+                                    <span class="tooltiptext">+ 971 7 243 2594 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="JavaScript:Void(0);" class="mall_timing_btn tooltip1" id="click">
+                                    Mall Timing
+                                    <span class="tooltiptext mall_time" style="margin-top: 5px">We are open 7 days a week!</span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <select class="selectpicker" onchange="location = this.value;">
+
+
+
+                                    @*flagstart*@
+                                    @foreach (var lang in langs)
+                                    {
+
+                                        if (lang.HasProperty("chooseFlag"))
+                                        {
+
+
+                                            var x = lang.Url.Replace("/", "");
+
+                                            var flag = lang.GetPropertyValue("chooseFlag");
+
+                                            ViewData["flag"] = flag;
+
+                                            if (flag.ToString() == "English")
+                                            {
+                                                <a href="/En">
+                                                    <option data-display="En">
+
+
+                                                        En
+
+                                                    </option>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Ar">
+                                                    <option data-display="Ar">
+                                                        Ar
+
+                                                    </option>
+                                                </a>
+                                            }
+
+
+
+
+                                        }
+                                    }
+                                </select>
+                            </li>
+
+
+
+                            @*flagend*@
+
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="search_bar">
+                <div class="col-sm-12 clearfix">
+                    <form action="/search-results" method="GET">
+                        <div class="search_form_cont clearfix">
+                            <input type="text" autofocus class="search_input" name="" autofocus placeholder="Search...">
+                            <button type="submit" class="search_button"><img src="/img/zoom.png"></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="container header-container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-8 col-xs-8 col-xs-12">
+                        <div class="logo">
+                            <h1> <a href="/En" title="Manar Mall"><!-- Manar Mall --><img src="~/img/logo.png" alt="Manar Mall"></a></h1>
+                        </div>
+                    </div>
+                    <div class="col-md-8  hidden-xs hidden-sm">
+                        <div class="main-menu text-center hidden-xs hidden-sm">
+                            <nav>
+
+
+
+                                <ul class="menu">
+
+
+                                    @if (uiCurrentCulture.ToString() == "en-US")
+                                    {
+                                        foreach (var item in MainNavigation)
+                                        {
+                                            var link = item.Link.Replace("ar/", "en/");
+                                            <li><a href="@link">@item.Caption</a></li>
+                                        }
+                                    }
+                                    @if (uiCurrentCulture.ToString() == "ar-AE")
+                                    {
+                                        foreach (var item in MainNavigation)
+                                        {
+                                            var link = item.Link.Replace("en/", "ar/");
+                                            <li><a href="@link">@item.Caption</a></li>
+                                        }
+                                    }
+                                    @foreach (var page in content.DescendantOrSelf(1).Children.Where(x => x.IsVisible()))
+                                    {
+                                        <li style="display:none;"><a href="@page.Url">@page.Name</a> </li>
+
+
+
+
+                                        if (page.Children.Any(x => x.IsVisible()))
+                                        {
+                                            <li>
+                                                <a href="JavaScript:void(0);" class="dr_menu">More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="12" height="12"><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#555" /></svg></a>
+                                                <ul>
+                                                    @foreach (var subMenu in page.Children.Where(x => x.IsVisible()))
+                                                    {
+
+                                                        <li>
+                                                            <a href="@subMenu.Name.ToLower()"> @subMenu.Name </a>
+
+                                                            <ul>
+                                                                @foreach (var subMenu2 in subMenu.Children.Where(x => x.IsVisible()))
+                                                                {
+
+                                                                    <li>
+                                                                        <a href="@subMenu2.Name.ToLower()">
+                                                                            @subMenu2.Name
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+
+
+
+
+                                                        </li>
+
+                                                    }
+
+
+
+                                                </ul>
+                                            </li>
+                                        }
+
+                                    }
+                                </ul>
+
+
+
+                            </nav>
+                        </div>
+                    </div>
+                    <div class=" col-sm-4 col-xs-4 text-right  hidden-md hidden-lg visible-sm visible-xs">
+                        <div class="mobile_menu"><a href="JavaScript:void(0);" class="toggle-slide-right"><img src="/img/menu.png"></a></div>
+                    </div>
+                    <div class="col-md-2 hidden-xs">
+                        <div class="logo logo_sen">
+                            <a href="javascript:void(0)" class="hidden" id="btnload"></a>
+                            <a href="/en" ><img src="~/img/logo_2.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- header end -->
+   

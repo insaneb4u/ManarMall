@@ -1,0 +1,135 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = umbracoHelper.AssignedContentItem.Id;
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+
+    ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerList ShopLogo = content.GetImagePickerList("shopTiles");
+    var data = content.GetPropertyValue<JArray>("shopTiles");
+}
+
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main shops_slider" style="background-image: url(@BrandImage1.Image.Url); ">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+
+            </div>
+        </div>
+    </section>
+}
+
+
+
+
+
+
+<section class="container-fluid brand_list">
+
+    <div class="container  ">
+        <div class="row">
+
+            <div class="food_shops_heading">
+                <h1>
+
+                    Brands
+
+                </h1>
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="row logos_brd_list">
+
+            @{ string url = "";}
+            @if (data != null)
+            {
+
+                foreach (var item in data.Children())
+                {
+
+                    var itemProperties = item.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var myElement = itemProperties.FirstOrDefault(x => x.Name == "shopLogoLinks");
+                    var myElementValue = myElement.Value; ////This is a JValue type
+
+
+                    var itemProperties2 = myElementValue.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var myElement2 = itemProperties2.FirstOrDefault(x => x.Name == "items");
+                    var myElementValue2 = myElement2.Value; ////This is a JValue type
+
+
+                    foreach (JObject data3 in myElementValue2)
+                    {
+                        var img = data3.GetValue("imageUrl").ToString();
+                        var Link = data3.GetValue("link").ToString();
+                        string l = "";
+                        if (Link != "")
+                        {
+
+                            dynamic stuff = JObject.Parse(Link);
+
+                             l = stuff.url;
+                        }
+
+
+                        var substring = img.Replace("?width=250&height=156.25&mode=crop", "");
+                        var shopname = (string)item["shopname"];
+                        var description1 = (string)item["description1"];
+                        var description2 = (string)item["description2"];
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                            <div class="logo_container">
+                                <a href="@l">
+                                    <div class="card">
+                                        <div class="card_info_holder">
+                                            <div class="card_img"><img src="@substring"></div>
+                                            <ul class="shop_time_info">
+                                                <li class="card_heading">@shopname</li>
+                                                <li class="card_time">@description1</li>
+                                                <li class="card_location">@description2</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <span></span>
+                        </div>
+
+                    }
+
+                }
+
+            }
+
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<!--Search javascript -->

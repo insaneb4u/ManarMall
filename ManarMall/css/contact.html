@@ -1,0 +1,810 @@
+<!doctype html>
+<html class="no-js"  >
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Manar Mall</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.css"> 
+  <link rel="stylesheet" href="css/style.css"> 
+  <link rel="stylesheet" href="css/responsive.css"> 
+  <link rel="stylesheet" type="text/css" href="css/settings.css" media="screen" />
+
+ 
+   <link rel="stylesheet" href="css/nice-select.css">
+    
+</head>
+
+<body>
+<!-- div overlay search -->
+    <div id="myNav" class="overlay-search  ">
+      <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
+      <div class="overlay-content-search">
+        <div class="search_form"  >
+          <form>
+            <div class="search_form_cont clearfix">
+              <input type="text" class="search_input" id="search" autofocus placeholder="Search..."  autocomplete="off" >
+              <button type="button" class="search_button"  ><svg class="search_zoom"  xmlns=" http://www.w3.org/2000/svg" viewBox="0 0 451 451" class="search_zoom"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#fff"/></svg></button>
+            </div>
+          </form>
+          <div class="col-sm-12 disp_result">
+            <h3>Search result</h3>
+            <ul id="result2">
+              <!-- <li><a href=""> Your search result is here <span>- (Shopping)</span></a></li>
+              <li><a href=""> Your search result is here <span>- (Restaurant)</span></a></li>
+              <li><a href=""> Your search result is here <span>- (Brand)</span></a></li>
+              <li><a href=""> Your search result is here <span>- (About Us)</span></a></li>
+              <li><a href=""> Your search result is here <span>- (Entertainment)</span></a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- search-->
+  <!-- header start -->
+  <div class="all-content-area">
+    <aside class="menu slide-menu-right">
+        <div class="close_btn_hold">
+          <a href="JavaScript:void(0);" class="close-menu" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 414.298 414.299"><path d="M3.663 410.637a12.465 12.465 0 0 0 8.839 3.661c3.199 0 6.398-1.221 8.839-3.661l185.809-185.81 185.81 185.811a12.465 12.465 0 0 0 8.84 3.661c3.198 0 6.397-1.221 8.839-3.661 4.881-4.881 4.881-12.796 0-17.679l-185.811-185.81 185.811-185.81c4.881-4.882 4.881-12.796 0-17.678-4.882-4.882-12.796-4.882-17.679 0l-185.81 185.81L21.34 3.663c-4.882-4.882-12.796-4.882-17.678 0-4.882 4.881-4.882 12.796 0 17.678l185.81 185.809L3.663 392.959c-4.882 4.882-4.882 12.797 0 17.678z" fill="#FFF"/></svg>
+          </a>
+        </div>
+        <ul>
+          <ul class="menu">
+            
+            <li><a href="shopping.html">Shop</a> <hr></li>
+                    
+                    <li><a href="food.html">Dine</a><hr></li>
+                    <li><a href="entertainment.html">Entertain</a><hr></li>
+                    <li><a href="events.html">Events</a><hr></li> 
+                    <li><a href="offers.html">Offers</a><hr></li> 
+            <li><a href="#demo" data-toggle="collapse">More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="12" height="12"><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#555"/></svg></a><hr>
+            <div  id="demo" class="collapse menu_collapse">
+              <ul >
+               <!--  
+                <li><a href="#demo2" class="dr_sub" data-toggle="collapse"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"><path d="M23 10h-8.5c-.3 0-.5-.2-.5-.5V1c0-.6-.4-1-1-1h-2c-.6 0-1 .4-1 1v8.5c0 .3-.2.5-.5.5H1c-.6 0-1 .4-1 1v2c0 .6.4 1 1 1h8.5c.3 0 .5.2.5.5V23c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-8.5c0-.3.2-.5.5-.5H23c.6 0 1-.4 1-1v-2c0-.6-.4-1-1-1z"  /></svg> Shopping  </a>
+                <div  id="demo2" class="collapse menu_collapse">
+                  <ul class="dr_sub_sub">
+                    <li><a href="shops.html">Brands</a></li>
+                    <li><a href="shopping.html">Shopping</a></li>
+                    <li><a href="shop_details.html">Shop Details</a></li>
+                  </ul></div>
+                </li> --> 
+                <li><a href="about.html" class="dr_sub">About Us </a></li>
+                  <li><a href="customer_desk.html" class="dr_sub">Customer Desk </a></li>
+                  
+          <li><a href="blog_list.html" class="dr_sub">Blogs</a></li> 
+				  <li><a href="storelocator.html" class="dr_sub">Store Locator</a></li> 
+
+                  <li><a href="contact.html" class="dr_sub">Contact Us </a></li>
+				
+              </ul></div>
+            </li>
+          </ul>
+          
+          <div class="col-sm-12">
+            <div class="row">
+              <ul class="aside_social">
+                <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-110 1 511 512" width="20"  ><path d="M180 512H98.008c-13.695 0-24.836-11.14-24.836-24.836V302.227H25.336C11.64 302.227.5 291.082.5 277.39v-79.246c0-13.696 11.14-24.836 24.836-24.836h47.836v-39.684c0-39.348 12.355-72.824 35.726-96.805C132.375 12.73 165.184 0 203.778 0l62.53.102c13.672.023 24.794 11.164 24.794 24.835v73.579c0 13.695-11.137 24.836-24.829 24.836l-42.101.015c-12.84 0-16.11 2.574-16.809 3.363-1.152 1.31-2.523 5.008-2.523 15.223v31.352h58.27c4.386 0 8.636 1.082 12.288 3.12 7.88 4.403 12.778 12.727 12.778 21.723l-.031 79.247c0 13.687-11.141 24.828-24.836 24.828h-58.47v184.941C204.84 500.86 193.696 512 180 512zm-76.813-30.016h71.633V288.79c0-9.144 7.442-16.582 16.582-16.582h66.727l.027-68.883h-66.758c-9.14 0-16.578-7.437-16.578-16.582v-44.789c0-11.726 1.192-25.062 10.043-35.086 10.696-12.117 27.551-13.515 39.301-13.515l36.922-.016V30.109l-57.332-.093c-62.024 0-100.566 39.703-100.566 103.609v53.117c0 9.14-7.438 16.582-16.579 16.582H30.516v68.883h56.093c9.141 0 16.579 7.438 16.579 16.582zM266.25 30.117h.004zm0 0"  /></svg></a></li>
+                <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -47 512 512" width="20"><path d="M512 55.965c-32.207 1.484-31.504 1.363-35.145 1.668L495.93 3.16s-59.54 21.902-74.633 25.82c-39.64-35.628-98.563-37.203-140.688-11.312-34.496 21.207-53.011 57.625-46.836 100.191C166.637 108.543 110.07 76.72 65.41 23.07L51.285 6.105 40.73 25.488C27.39 49.98 22.96 77.984 28.254 104.34A113.287 113.287 0 0 0 39.23 135.12l-12.117-4.695-1.437 20.246c-1.457 20.566 5.39 44.574 18.32 64.215a114.185 114.185 0 0 0 14.27 17.597l-6.262-.96 7.64 23.199c10.043 30.48 30.903 54.062 57.973 67.172-27.035 11.472-48.875 18.793-84.773 30.601L0 363.293l30.336 16.586c11.566 6.324 52.437 27.445 92.82 33.781 89.766 14.078 190.832 2.613 258.871-58.664 57.309-51.613 76.114-125.031 72.207-201.433-.59-11.567 2.579-22.606 8.922-31.079 12.707-16.964 48.766-66.406 48.844-66.52zm-72.832 48.55c-10.535 14.067-15.813 32.032-14.867 50.579 3.941 77.066-17.028 136.832-62.328 177.629-52.918 47.66-138.274 66.367-234.172 51.324-17.367-2.723-35.317-8.82-50.172-14.91 30.098-10.356 53.34-19.586 90.875-37.352l52.398-24.8-57.851-3.704c-27.711-1.773-50.785-15.203-64.969-37.008a103.763 103.763 0 0 0 22.023-3.671l55.176-15.368-55.636-13.625c-27.036-6.62-42.446-22.797-50.614-35.203-5.363-8.152-8.867-16.504-10.969-24.203 5.579 1.496 12.083 2.563 22.57 3.602l51.497 5.093-40.8-31.828c-29.4-22.93-41.18-57.379-32.544-90.496 91.75 95.164 199.477 88.012 210.32 90.528-2.386-23.184-2.449-23.239-3.074-25.446-13.886-49.09 16.547-74.015 30.274-82.453 28.672-17.621 74.183-20.277 105.707 8.754 6.808 6.266 16.015 8.73 24.633 6.59 7.734-1.922 14.082-3.957 20.296-6.172L434.004 89.32l16.516.012a8240.32 8240.32 0 0 1-11.352 15.184zm0 0"  /></svg></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="row">
+              <ul class="aside_abt_contact">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="subscribe_form">
+              <h3>Subscribe here</h3>
+              <form class="adide_sub_form">
+                <input type="text" placeholder="example@gmail.com"><button class="sub_btn"><svg xmlns="http://www.w3.org/2000/svg" width="20"   viewBox="0 0 535.5 535.5"><path fill="#FFF" d="M0 497.25l535.5-229.5L0 38.25v178.5l382.5 51-382.5 51z"/></svg></button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+          <div class="col-sm-12 aside_footer_dt">Privacy Policy | Copyright @ <span id="curr_year"></span> Manar mall. All rights reserved </div>
+        </aside>
+
+      
+       <header  >
+          
+          <div class="header-area header-sticky  " >
+            <div class="top-bar " style="width:100%; background:#000; line-height:40px; ">
+              <div class="container">
+                <div class="col-sm-6 hidden-xs">
+                  <ul class="top_br_links">
+                    <li><a href="" title="twitter" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="12" height="12"><path d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z" fill="#646464"/></svg>
+                  </a></li>
+                  <li><a href="" title="linkedin" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 438.536 438.536"><path d="M414.41 24.123C398.333 8.042 378.963 0 356.315 0H82.228C59.58 0 40.21 8.042 24.126 24.123 8.045 40.207.003 59.576.003 82.225v274.084c0 22.647 8.042 42.018 24.123 58.102 16.084 16.084 35.454 24.126 58.102 24.126h274.084c22.648 0 42.018-8.042 58.095-24.126 16.084-16.084 24.126-35.454 24.126-58.102V82.225c-.001-22.649-8.043-42.021-24.123-58.102zM133.618 367.157H67.666V169.016h65.952v198.141zm-5.992-234.825c-6.851 6.567-15.893 9.851-27.124 9.851h-.288c-10.848 0-19.648-3.284-26.407-9.851-6.76-6.567-10.138-14.703-10.138-24.41 0-9.897 3.476-18.083 10.421-24.556 6.95-6.471 15.942-9.708 26.98-9.708 11.039 0 19.89 3.237 26.553 9.708 6.661 6.473 10.088 14.659 10.277 24.556-.001 9.703-3.423 17.839-10.274 24.41zm243.247 234.825h-65.952v-105.92c0-29.879-11.036-44.823-33.116-44.823-8.374 0-15.42 2.331-21.128 6.995-5.715 4.661-9.996 10.324-12.847 16.991-1.335 3.422-1.999 8.75-1.999 15.981v110.775h-65.952c.571-119.529.571-185.579 0-198.142h65.952v27.974c13.867-21.681 33.558-32.544 59.101-32.544 22.84 0 41.21 7.52 55.104 22.554 13.895 15.037 20.841 37.214 20.841 66.519v113.64h-.004z" fill="#646464"/></svg></a></li>
+                  <li>
+                    <a href="" title="facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 90 90"><path d="M90 15.001C90 7.119 82.884 0 75 0H15C7.116 0 0 7.119 0 15.001v59.998C0 82.881 7.116 90 15.001 90H45V56H34V41h11v-5.844C45 25.077 52.568 16 61.875 16H74v15H61.875C60.548 31 59 32.611 59 35.024V41h15v15H59v34h16c7.884 0 15-7.119 15-15.001V15.001z" fill="#646464"/></svg></a>
+                  </li>
+                  <li><a href="" title="instagram" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 512 512"><path d="M352 0H160C71.648 0 0 71.648 0 160v192c0 88.352 71.648 160 160 160h192c88.352 0 160-71.648 160-160V160C512 71.648 440.352 0 352 0zm112 352c0 61.76-50.24 112-112 112H160c-61.76 0-112-50.24-112-112V160C48 98.24 98.24 48 160 48h192c61.76 0 112 50.24 112 112v192z" fill="#646464"/><path d="M256 128c-70.688 0-128 57.312-128 128s57.312 128 128 128 128-57.312 128-128-57.312-128-128-128zm0 208c-44.096 0-80-35.904-80-80 0-44.128 35.904-80 80-80s80 35.872 80 80c0 44.096-35.904 80-80 80z" fill="#646464"/><circle cx="393.6" cy="118.4" r="17.056" fill="#646464"/></svg></a></li>
+                  <li><span class="link_saperater">spread the word</span></li>
+                  
+                </ul>
+              </div>
+              <div class="col-sm-6 text-right">
+                <ul class="top_br_linksright">
+                  <li>
+                    
+                    <a href="JavaScript:Void(0);" onclick="openNav()"  id="search_btn2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18" height="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#646464"/></svg></a>
+                  </li>
+                  <li><a href="tel:+97172432594" class="tooltip1"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M492.557 400.56L392.234 300.238c-11.976-11.975-31.458-11.975-43.435 0l-26.088 26.088c-8.174 8.174-10.758 19.845-7.773 30.241l-9.843 9.843-.008.008c-6.99 6.998-50.523-3.741-103.145-56.363-52.614-52.613-63.356-96.139-56.366-103.142 0-.002.002-.002.002-.002l9.852-9.851a30.876 30.876 0 0 0 8.523 1.207c7.865 0 15.729-2.993 21.718-8.98l26.088-26.088c11.975-11.975 11.975-31.458 0-43.434L111.436 19.441c-5.8-5.8-13.513-8.994-21.716-8.994-8.205 0-15.915 3.196-21.716 8.994l-26.09 26.09c-8.174 8.174-10.758 19.846-7.773 30.241 0 0-8.344 8.424-8.759 8.956-27.753 30.849-32.96 79.418-14.561 137.487 18.017 56.857 56.857 117.088 109.367 169.595 52.508 52.508 112.739 91.348 169.596 109.367 22.84 7.237 44.207 10.823 63.61 10.823 31.813 0 58.337-9.648 77.35-28.66l5.474-5.474a30.83 30.83 0 0 0 8.532 1.213c8.205 0 15.917-3.196 21.716-8.994l26.09-26.09c11.975-11.975 11.975-31.459.001-43.435zM89.72 41.157l100.324 100.325-26.074 26.102-.014-.014-.375-.375-49.787-49.787-50.163-50.161 26.089-26.09zm319.309 420.466l-.005.005c-22.094 22.091-61.146 25.74-109.961 10.27-52.252-16.558-108.065-52.714-157.156-101.806C92.814 321 56.658 265.189 40.101 212.936c-15.47-48.817-11.821-87.87 10.275-109.967l.002-.002 2.77-2.77 77.857 77.856-7.141 7.141-.015.017c-29.585 29.622 5.963 96.147 56.378 146.562 37.734 37.734 84.493 67.14 118.051 67.14 11.284 0 21.076-3.325 28.528-10.778l.008-.008 7.133-7.133 77.857 77.856-2.775 2.773zm35.723-13.255L344.428 348.044l26.088-26.088L470.84 422.278s-26.079 26.099-26.088 26.09zM388.818 123.184c-29.209-29.209-68.042-45.294-109.344-45.293-8.481 0-15.356 6.875-15.356 15.356s6.876 15.356 15.356 15.356c33.1-.002 64.219 12.89 87.628 36.297 23.406 23.406 36.295 54.525 36.294 87.624 0 8.481 6.875 15.358 15.356 15.358 8.48 0 15.356-6.875 15.356-15.354.001-41.304-16.085-80.135-45.29-109.344z" fill="#646464"/><path d="M443.895 68.107C399.972 24.186 341.578-.002 279.468 0c-8.481 0-15.356 6.876-15.356 15.356 0 8.481 6.876 15.356 15.356 15.356 53.907-.002 104.588 20.992 142.709 59.111 38.118 38.118 59.111 88.799 59.11 142.706 0 8.481 6.875 15.356 15.356 15.356 8.48 0 15.356-6.875 15.356-15.354.002-62.112-24.186-120.504-68.104-164.424zM333.737 178.26c-14.706-14.706-33.465-22.477-54.256-22.477h-.006c-8.481.002-15.356 6.876-15.354 15.358.002 8.481 6.878 15.356 15.358 15.354h.005c12.644 0 23.593 4.536 32.539 13.481 8.819 8.82 13.481 20.075 13.479 32.544-.002 8.481 6.875 15.356 15.354 15.358h.002c8.481 0 15.354-6.875 15.356-15.354.001-20.792-7.77-39.556-22.477-54.264z" fill="#646464"/></svg>
+                  <span class="tooltiptext">+ 971 7 243 2594 </span>
+                </a></li>
+                <li ><a href="JavaScript:Void(0);" class="mall_timing_btn tooltip1" id="click">Mall Timing
+                  <span class="tooltiptext mall_time" style="margin-top: 5px">We are open 7 days a week!</span></a>
+                  
+                </li>
+                
+                <li  >
+                  <select  class="selectpicker"  >
+                    
+                    <option data-display="En"  >English</option>
+                    
+                    <option data-display="Ar">Arabic</option>
+                  </select>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="search_bar">
+          <div class="col-sm-12 clearfix">
+            <form>
+              <div class="search_form_cont clearfix">
+                <input type="text" autofocus class="search_input" autofocus placeholder="Search..."  autocomplete="off" >
+                <button type="button" class="search_button"  ><img src="img/zoom.png"></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="container header-container">
+          <div class="row">
+            <div class="col-md-2 col-sm-8 col-xs-8 col-xs-12">
+              <div class="logo">
+               <h1> <a href="index.html" title="Manar Mall"><!-- Manar Mall --><img src="img/logo.png" alt="Manar Mall"></a></h1>
+              </div>
+            </div>
+            <div class="col-md-8  hidden-xs hidden-sm">
+              <div class="main-menu text-center hidden-xs hidden-sm">
+                <nav>
+                  <ul class="menu">
+                    <li><a href="shopping.html">Shop</a> </li>
+                    
+                    <li><a href="food.html">Dine</a></li>
+                    <li><a href="entertainment.html">Entertain</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="JavaScript:void(0);" class="dr_menu">More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="12" height="12"><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#555"/></svg></a>
+                     <ul>
+                       <li><a href="about.html">About Us </a></li>
+                  <li><a href="customer_desk.html">Customer Desk </a></li>
+                  
+          <li><a href="blog_list.html">Blogs</a></li> 
+				  <li><a href="storelocator.html">Store Locator</a></li> 
+
+                  <li><a href="contact.html">Contact Us </a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class=" col-sm-4 col-xs-4 text-right  hidden-md hidden-lg visible-sm visible-xs">
+        <div class="mobile_menu"><a href="JavaScript:void(0);" class="toggle-slide-right"><img src="img/menu.png"></a></div>
+      </div>
+      <div class="col-md-2 hidden-xs">
+        <div class="logo logo_sen" >
+          <a href="index.html" style=" "><img src="img/logo_2.png"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+      
+      <!-- header end -->
+      <section class="container-fluid contact_banner slider-main " style="background: url(img/cont_banner.jpg) no-repeat center; background-size: cover;  " >
+<div class="row">
+<div class="slider-main-text text-center">
+  
+</div>
+</div>
+</section>
+
+
+       <section class="container-fluid contact_n_map">
+<div class="cont_top_bg"></div>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="row">
+  <div class="cont_info_holder" style="background: url('img/top_img_1.png') no-repeat top left; background-size: cover; margin-right: 25px; ">
+    <div class="cont_info_overlay">
+      <h1>Contact Us</h1>
+      <hr >
+      
+      <ul class="cont_info"  >
+        <li class="cont-address">P.O.Box 10500, RAK, U.A.E.</li>
+        <li class="cont-tel">Tel: <a href="tel:971 7 227 0000">+ 971 7 227 0000</a></li>
+        <li class="cont-fax">Fax: + 971 7 228 9888 </li>
+        <li class="cont-mail">E-mail: <a href="mailto:info@manarmall.com">info@manarmall.com</a></li>
+        <li class="click-to-enqr">  <a href="enquiry.html"  >Click For Shop Enquiries</a></li>
+      </ul>
+      
+      <div class="cont_social">
+        
+        <ul class="social_links"><li><a href="" title="facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15"   viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z"/></svg></a></li><li><a title="twitter" href="" target="_blank">
+        <svg viewBox="0 -47 512.002 512" width="15"    xmlns="http://www.w3.org/2000/svg"><path d="M191.012 419.043c-22.14 0-44.93-1.793-67.856-5.387-40.379-6.336-81.254-27.457-92.82-33.781L0 363.289l32.844-10.8c35.902-11.805 57.742-19.13 84.777-30.598-27.07-13.11-47.933-36.692-57.976-67.176l-7.641-23.195 6.266.957A113.939 113.939 0 0 1 44 214.883c-12.934-19.645-19.781-43.649-18.324-64.219l1.437-20.246 12.121 4.695a113.316 113.316 0 0 1-10.98-30.777c-5.293-26.36-.863-54.363 12.476-78.852L51.29 6.102l14.12 16.96c44.66 53.649 101.227 85.473 168.363 94.79-2.742-18.903-.687-37.145 6.114-53.497 7.918-19.039 22.004-35.183 40.722-46.69 20.79-12.778 46-18.97 70.989-17.435 26.511 1.63 50.582 11.563 69.699 28.747 9.336-2.426 16.215-5.016 25.512-8.516 5.593-2.106 11.937-4.496 19.875-7.23l29.25-10.079-19.075 54.477a96.355 96.355 0 0 1 3.91-.254l31.235-1.414-18.461 25.23c-1.059 1.446-1.328 1.856-1.703 2.422-1.488 2.242-3.34 5.032-28.68 38.867-6.344 8.473-9.512 19.508-8.922 31.079 2.246 43.968-3.148 83.75-16.043 118.234-12.195 32.625-31.093 60.617-56.164 83.2-31.023 27.937-70.582 47.066-117.582 56.847-23.054 4.797-47.812 7.203-73.437 7.203zm0 0"/></svg></a>
+      </li></ul>
+    </div>
+  </div>
+</div>
+<div class="cont_feedback_form_holder">
+  <div class="cnt_map_head_contr hidden-xs">
+    <div class="cnt_map_head">
+      find us on map <hr class="cnt_map_hr">
+    </div>
+  </div>
+  <div class='cont_feedback_form'>
+    <h3>LEAVE YOUR FEEDBACK</h3>
+    <p>
+      Want to give us a feed back? Let me know
+      by filling below form.
+    </p>
+ 
+    <form  class="cont_form">
+      <div class="col-sm-6 field">
+         <input type="text" class="required" name="fullname" id="fullname"  required>
+        <label for="fullname"  class="floating-label">Name</label>
+      </div>
+      <div class="col-sm-6 field">
+        
+       <input type="text"  class="required"  name="nationality" id="nationality"  required>
+      <label for="nationality"  class="floating-label">Nationality</label>
+    </div>
+    <div class="col-sm-6 field">
+      <input type="text"  class="required"  name="email" id="email"   required>
+      <label for="email"  class="floating-label">Email</label>
+    </div>
+    <div class="col-sm-6 field">
+      <input type="text"  class="required"  name="contact" id="contact"  required>
+      <label for="contact"  class="floating-label">Contact</label>
+    </div>
+    <div class="col-sm-9 field">
+      <input type="text"  class="required"  name="text" id="address"  required>
+      <label for="address"  class="floating-label">Address</label>
+
+    </div>
+    <div class="col-sm-3 field">
+     <button class="next_btn" type="button" id="nxt_btn">next</button>
+
+    </div>
+
+  </form>
+
+  <div class="clearfix"></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+       <div class="row">
+        <div class="cont_map_contr hidden-xs">
+         
+    <iframe   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+   
+
+        </div>
+ 
+<div class="cont_rate">
+  <p>
+    How would you</br>
+<span>rate us</span> in below catagories?
+  </p>
+<hr>
+</div>
+
+       </div>
+     </div>
+</div>
+</section>
+<section class="container-fluid cont_feedback_gt" id="feed_form">
+  <div class="container">
+
+
+    <div class="cont_wizard_holder  clearfix">
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+ <form id="regForm" action="">
+ 
+ 
+<div class="tab">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+ <h3>Please Tick the Appropriate Box & Select Answer Below</h3>
+</div>
+   <div class="row input_row">
+
+     <div class="col-sm-4 question_tl">Customer Service</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="cs1" name="cs"   /><label for="cs1"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="cs2" name="cs" /><label for="cs2"><span></span>Good</label></li> 
+         <li><input type="radio" id="cs3" name="cs" /><label for="cs3"><span></span>Fair</label></li> 
+         <li><input type="radio" id="cs4" name="cs" /><label for="cs4"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+   <div class="row input_row">
+     <div class="col-sm-4 question_tl">Friendliness of Security Staff</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="fsf1" name="fs"   /><label for="fsf1"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="fsf2" name="fs" /><label for="fsf2"><span></span>Good</label></li> 
+         <li><input type="radio" id="fsf3" name="fs" /><label for="fsf3"><span></span>Fair</label></li> 
+         <li><input type="radio" id="fsf4" name="fs" /><label for="fsf4"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+   <div class="row input_row">
+     <div class="col-sm-4 question_tl">Directional signs</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="ds1" name="ds"   /><label for="ds1"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="ds2" name="ds" /><label for="ds2"><span></span>Good</label></li> 
+         <li><input type="radio" id="ds3" name="ds" /><label for="ds3"><span></span>Fair</label></li> 
+         <li><input type="radio" id="ds4" name="ds" /><label for="ds4"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+   <div class="row input_row">
+     <div class="col-sm-4 question_tl">Cleanliness of mall</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="cm1" name="cm"   /><label for="cm1"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="cm2" name="cm" /><label for="cm2"><span></span>Good</label></li> 
+         <li><input type="radio" id="cm3" name="cm" /><label for="cm3"><span></span>Fair</label></li> 
+         <li><input type="radio" id="cm4" name="cm" /><label for="cm4"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+</div>
+
+<div class="tab"> 
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+ <h3>Please Tick the Appropriate Box & Select Answer Below</h3>
+</div>
+   <div class="row input_row">
+
+     <div class="col-sm-4 question_tl">Customer Service</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="cs12" name="cs2"   /><label for="cs12"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="cs22" name="cs2" /><label for="cs22"><span></span>Good</label></li> 
+         <li><input type="radio" id="cs32" name="cs2" /><label for="cs32"><span></span>Fair</label></li> 
+         <li><input type="radio" id="cs42" name="cs2" /><label for="cs42"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+   <div class="row input_row">
+     <div class="col-sm-4 question_tl">Friendliness of Security Staff</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="fsf12" name="fs2"   /><label for="fsf12"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="fsf22" name="fs2" /><label for="fsf22"><span></span>Good</label></li> 
+         <li><input type="radio" id="fsf32" name="fs2" /><label for="fsf32"><span></span>Fair</label></li> 
+         <li><input type="radio" id="fsf42" name="fs2" /><label for="fsf42"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+   <div class="row input_row">
+     <div class="col-sm-4 question_tl">Directional signs</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="ds12" name="ds2"   /><label for="ds12"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="ds22" name="ds2" /><label for="ds22"><span></span>Good</label></li> 
+         <li><input type="radio" id="ds32" name="ds2" /><label for="ds32"><span></span>Fair</label></li> 
+         <li><input type="radio" id="ds42" name="ds2" /><label for="ds42"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+   <div class="row input_row">
+     <div class="col-sm-4 question_tl">Cleanliness of mall</div>
+     <div class="col-sm-8">
+       <ul class="input_holder">
+         <li><input type="radio" id="cm12" name="cm2"   /><label for="cm12"><span></span>Excelent</label></li> 
+         <li><input type="radio" id="cm22" name="cm2" /><label for="cm22"><span></span>Good</label></li> 
+         <li><input type="radio" id="cm32" name="cm2" /><label for="cm32"><span></span>Fair</label></li> 
+         <li><input type="radio" id="cm42" name="cm2" /><label for="cm42"><span></span>Poor</label></li> 
+         
+       </ul>
+     </div>
+   </div>
+</div>
+
+ 
+
+<div class="tab"> 
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="row">
+ <h3 class="tk_feedback_area">Are there any <strong>brands/store/restaurant</strong> in particular that you would like to see in the mall?</h3>
+</div>
+</div>
+   <div class="row input_row">
+    <textarea class="tk_feedback"></textarea>
+<button class="sub_btn">Submit</button>
+   </div>
+   
+</div>
+
+<div class="next_pre_tb" style="overflow:auto;">
+  <div class="btn_cntr_tb">
+    <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="25"><path d="M88.6 121.3c.8.8 1.8 1.2 2.9 1.2s2.1-.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8 0l-54 53.9c-1.6 1.6-1.6 4.2 0 5.8l54 53.9z" fill="#464646"/></svg>
+    </button><span id="curr_tb">1 </span> / 3
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="25"><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z" fill="#464646"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;  visibility: hidden;">
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+</div> 
+</form>
+ 
+</div>
+</div> 
+</div> 
+
+
+
+
+
+</section>
+
+<section class="container-fluid hidden-lg hidden-md hidden-sm visible-xs ">
+  <div class="row ">
+        <div class="cont_map_contr ">
+         
+    <iframe   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.5589654508685!2d55.96344761543964!3d25.78512718362621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef676cf7976e941%3A0x56fc51b4dfe1241!2sManar+Mall!5e0!3m2!1sen!2sin!4v1543306950976" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+   
+
+        </div>
+        </div>
+
+</section>
+
+<footer class="footer-bg bg-opacity footer-border pt-70 pb-20  " style="background:#b7b7b7">
+<div class="footer-area-2">
+<div class="container">
+<div class="row pb-40">
+<div class='col-sm-3' id="mall_time">
+<h4>Mall Timings</h4>
+<p>
+<strong>Mall</strong><br>
+We are open 7 days a week!
+</p>
+<p>
+<strong>All Retail Shops & Kiosk</strong><br>
+Sunday to Wednesday - 10am to 10pm<br>
+Thursday -Saturday - 10am to 11pm
+</p>
+<p>
+<strong>Foodcourt, Cafe, Restaurant & Hypermarket</strong><br>
+All Days - 9am to 12am
+</p>
+<p>
+<strong>Cinema</strong><br>
+Sunday to Wednesday - 12pm to 3am<br>
+Thursday-Saturday - 9am to 3am
+</p>
+<p>
+<strong>Fun City</strong><br>
+Saturday to Wednesday - 10am to 11pm<br>
+Thursday & Friday -10am-12am
+</p>
+</div>
+<div class='col-sm-3'>
+<h4>Service</h4>
+<p>
+<ul class="footer_menu_linnk">
+<li><a href="shopping.html">Shopping</a></li>
+<li><a href="food.html">Food</a></li>
+<li><a href="entertainment.html">Entertainment</a></li>
+<li><a href="offers.html">Offers & Promotions</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="about.html">About us</a></li>
+<li><a href="tourist_desk.html">Tourist Desk</a></li>
+<li><a href="">Store Locator / Mall Map</a></li>
+<ul>
+</p>
+</div>
+<div class='col-sm-3'>
+<h4>CONTACT US</h4>
+<p>
+<strong>Manar Mall</strong><br>
+P.O.Box 10500, RAK, U.A.E.<br>
+Tel: <a href="tel:02265142582">+ 971 7 227 0000</a> <br>
+Fax: + 971 7 228 9888 <br>
+E-mail: <a href="mailto:info@manarmall.com">info@manarmall.com</a>
+</p>
+<p>
+<strong>Al Hamra Group</strong><br>
+P.O.Box 12222, RAK, U.A.E.<br>
+Tel: <a href="tel:02265142582">+ 971 7 243 2594</a> <br>
+Fax: + 971 7 243 3065 <br>
+E-mail: <a href="mailto:info@alhamragroup.ae">info@alhamragroup.ae</a><br>
+Website : <a href="www.alhamragroup.ae" target="_blank">www.alhamragroup.ae</a>
+</p>
+</div>
+<div class='col-sm-3'>
+<h4>Social</h4>
+<div class="clearfix">
+<p>
+<strong>Subscribe Newsletter</strong><br>
+<div class='search-box'>
+<form class="form_footer">
+<input type="text" class="footer_news_input" placeholder="example@gmail.com">
+<button class="footer_news footer_news_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="19" ><g fill="#FFF"><path d="M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm0 50C12.767 50 2 39.233 2 26S12.767 2 26 2s24 10.767 24 24-10.767 24-24 24z"/><path d="M38.252 15.336l-15.369 17.29-9.259-7.407a1 1 0 0 0-1.249 1.562l10 8a.999.999 0 0 0 1.373-.117l16-18a1 1 0 1 0-1.496-1.328z"/></g></svg></button>
+</form>
+</div>
+</p>
+</div> <br>
+<p>
+<strong>Follow us on:</strong><br>
+<ul class="social_links"><li><a href="" title="facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="19"   viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z"/></svg></a></li><li><a href="" target="_blank" title="twitter">
+<svg viewBox="0 -47 512.002 512" width="19"  xmlns="http://www.w3.org/2000/svg"><path d="M191.012 419.043c-22.14 0-44.93-1.793-67.856-5.387-40.379-6.336-81.254-27.457-92.82-33.781L0 363.289l32.844-10.8c35.902-11.805 57.742-19.13 84.777-30.598-27.07-13.11-47.933-36.692-57.976-67.176l-7.641-23.195 6.266.957A113.939 113.939 0 0 1 44 214.883c-12.934-19.645-19.781-43.649-18.324-64.219l1.437-20.246 12.121 4.695a113.316 113.316 0 0 1-10.98-30.777c-5.293-26.36-.863-54.363 12.476-78.852L51.29 6.102l14.12 16.96c44.66 53.649 101.227 85.473 168.363 94.79-2.742-18.903-.687-37.145 6.114-53.497 7.918-19.039 22.004-35.183 40.722-46.69 20.79-12.778 46-18.97 70.989-17.435 26.511 1.63 50.582 11.563 69.699 28.747 9.336-2.426 16.215-5.016 25.512-8.516 5.593-2.106 11.937-4.496 19.875-7.23l29.25-10.079-19.075 54.477a96.355 96.355 0 0 1 3.91-.254l31.235-1.414-18.461 25.23c-1.059 1.446-1.328 1.856-1.703 2.422-1.488 2.242-3.34 5.032-28.68 38.867-6.344 8.473-9.512 19.508-8.922 31.079 2.246 43.968-3.148 83.75-16.043 118.234-12.195 32.625-31.093 60.617-56.164 83.2-31.023 27.937-70.582 47.066-117.582 56.847-23.054 4.797-47.812 7.203-73.437 7.203zm0 0"/></svg></a>
+</li></ul>
+</p>
+</div>
+</div>
+<hr style=" border-top: 1px solid #a5a5a5;">
+<div class="col-md-12 col-sm-12 col-xs-12 ptb-30">
+<div class="footer-2-logo">
+<p style="color:#a5a5a5"> Privacy Policy | Copyright © <span id="curr_year"></span> Manar Mall All rights reserved. </p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+  <!-- footer end -->
+  <!-- start scrollUp  -->
+  <div id="toTop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 284.929 284.929"><path d="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665.953-6.567 2.856L2.856 195.285C.95 197.191 0 199.378 0 201.853c0 2.474.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854s4.664-.951 6.567-2.854l112.204-112.202 112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848 2.478 0 4.668-.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566.001-2.476-.944-4.666-2.846-6.569z" fill="#FFF"/></svg>
+  </div>
+</div>
+<!-- right side menu-->
+<!--right side menu -->
+<!--Modal -->
+<div id="customer_service" class="modal fade" role="dialog">
+  <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    <div class="modal-content enquiry_contact">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.971 47.971"  ><path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z" fill="#585858"/></svg>
+        </button>
+        <h4 class="modal-title">Make Enquiry</h4>
+        <hr>
+      </div>
+      <div class="modal-body">
+         
+            <form class="cont_form ">
+      <div class="col-sm-12 field">
+         <input type="text" class="required1"  required="" placeholder="Name">
+       
+      </div>   
+      <div class="col-sm-6 field ">
+         <input type="text" class="required1"  required="" placeholder="Mobile No">
+        
+      </div>   
+      <div class="col-sm-6 field oddchild">
+         <input type="text" class="required1"  placeholder="Email">
+     
+      </div> 
+      <div class="col-sm-12 field">
+         <input type="text" class="required1"  placeholder="Company Name">
+        
+      </div> 
+     
+        
+     
+   
+     <button class="next_btn pull-right" type="button" >Submit</button>
+
+ 
+
+  </form>
+            <div class="clearfix"></div>
+          </div>
+      </div>
+     
+    </div>
+
+  </div>
+<!--Modal -->
+<!-- all js here -->
+<script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.meanmenu.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/classie.js"></script>
+  <script src="js/jquery.matchHeight-min.js"></script>
+  <script src="js/jquery.nice-select.js"></script>
+  <!--Slider -->
+  <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+  <script type="text/javascript" src="js/jquery.themepunch.plugins.min.js"></script>
+  <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
+  <script type="text/javascript" src="js/custome_js.js"></script>
+
+<script src="js/salvattore.min.js"></script>
+ <script >
+  
+  $('#search').keyup(function() {
+    var searchField = $('#search').val();
+	
+    var myExp = new RegExp(searchField, "i");
+
+    $.getJSON('data.json', function(data) {
+        var output = '<ul class="searchresults">';
+        $.each(data, function(key, val) {
+            if (val.name.search(myExp) != -1) {
+              output += '<li>';
+                output += '<a href="'+ val.reknown +'"><span>'+ val.bio+'</span>';
+                output += ' <i> -('+ val.shortname +')</i>';
+                output += '</a></li>';
+            }
+        });
+        output += '</ul>';
+		if(searchField!='')
+		{$('#result2').html(output);}
+		else
+	{ $('#result2').html('<span style="color:#fbfbfb; margin-top:50px;">No result found</span>');}
+        
+    }); //get JSON
+});
+</script>
+<script type="text/javascript">
+  
+ 
+
+$('#nxt_btn').hide();
+$('.required').keyup(function() {
+
+    var empty_flds = 0;
+    $(".required").each(function() {
+        if(!$.trim($(this).val())) {
+            empty_flds++;
+        }    
+    });
+if (empty_flds) { $('#nxt_btn').hide();  $("#feed_form").hide();}
+else{$('#nxt_btn').show();}
+
+ 
+});
+
+
+$("#nxt_btn").click(function(){
+   
+    $("#feed_form").show();
+   $('html, body').animate({
+              scrollTop: $("#feed_form").offset().top
+        },400);
+});
+
+</script>
+
+<script type="text/javascript">
+  var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="25" ><path d="M88.6 121.3c.8.8 1.8 1.2 2.9 1.2s2.1-.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8 0l-54 53.9c-1.6 1.6-1.6 4.2 0 5.8l54 53.9z" fill="#464646"/></svg>';
+
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    //document.getElementById("nextBtn").innerHTML = "Submit";
+ 
+  } else {
+    document.getElementById("nextBtn").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="25"><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z" fill="#464646"/></svg>';
+  }
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n)
+};
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if(currentTab<x.length)
+    {var mtb=currentTab+1;}
+
+   document.getElementById("curr_tb").innerHTML = mtb;
+  
+ 
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+};
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false:
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+};
+  
+/*hide and show*/
+ 
+
+/*hide and show*/
+</script>
+
+</body>
+</html>

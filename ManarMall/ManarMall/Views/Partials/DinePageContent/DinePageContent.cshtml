@@ -1,0 +1,401 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 1114;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    ImagePickerList ShopLogo = currentPage.GetImagePickerList("shopLogo");
+    ImagePickerList BrandIcons = currentPage.GetImagePickerList("brandLogoIcons");
+
+    ImagePickerItem brandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerItem brandImage2 = content.GetImagePickerItem("brandImage2");
+    ImagePickerItem brandImage3 = content.GetImagePickerItem("brandImage3");
+    ImagePickerItem brandImage4 = content.GetImagePickerItem("brandImage4");
+    ImagePickerItem brandImage5 = content.GetImagePickerItem("brandImage5");
+
+}
+
+
+<!-- header end -->
+@if (brandImage1.HasImage)
+{
+<section class="container-fluid slider-main " style="background-image: url(@brandImage1.Image.Url);">
+    <div class="row">
+
+        <div class="slider-main-text text-center">
+            <h1>
+                @Umbraco.Field("brandImage1Text")
+            </h1>
+        </div>
+    </div>
+</section>
+}
+
+
+
+<section class="container-fluid  restrn_cafe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <div class="row ">
+                    <div class="restaurants_info">
+                        <h2>
+                            @Umbraco.Field("descriptionTitle1")
+                        </h2>
+                        <p>
+                            @Umbraco.Field("description1")
+                        </p>
+                        <hr>
+
+                    </div>
+                    @if (brandImage2.HasImage)
+                    {
+                        <div class="restaurants_img" style="background: url(@brandImage2.Image.Url)   center no-repeat; background-size: cover;"></div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="row cafe_info">
+
+                    <div class="cafe_info_heading">
+                        <hr class="heading_hr" align="center">
+                        <h2>
+
+                            @Umbraco.Field("descriptionTitle2")
+
+                        </h2>
+                        <hr class="heading_hr" align="center">
+                        <span class="downarrow"><svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#2b2b2b" /></svg></span>
+
+                    </div>
+
+
+
+
+                    @if (brandImage3.HasImage)
+                    {
+                        <div class="cafe_img" style="background: url(@brandImage3.Image.Url)   center no-repeat; background-size: cover;"></div>
+                    }
+
+
+
+                    <div class="cafe_desc">
+                        <p>
+
+                            @Umbraco.Field("description2")
+
+                        </p>
+                        <hr class="footer_lines">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</section>
+<section class="container-fluid dine">
+    <div class="container">
+        <div class="row">
+            <div class="dine_info">
+                <h2 class="dine_heading">
+                    @Umbraco.Field("descriptionTitle3")
+                </h2>
+                <p>
+                    @Umbraco.Field("description3")
+                </p>
+            </div>
+        </div>
+    </div>
+    @{
+        var brandlogourl = content.GetPropertyValue<IEnumerable<IPublishedContent>>("brandLogoUrl");
+        var brandlogo = content.GetPropertyValue<string[]>("brandLogo");
+
+        //  var zip = brandlogourl.Zip(brandlogo, (n, p) => new { brandlogourl = n, brandlogo = p });
+    }
+    <div class="container dine_section_links">
+        <div class="row text-center">
+            <ul>
+                @if (BrandIcons.Count > 0)
+                {
+                    foreach (ImagePickerItem item in BrandIcons.Items)
+                    {
+                        <li><a href="@item.Link.Url"><img src="@item.Image.Url"></a> </li>
+                    }
+                }
+
+                @*<li><a href=""><img src="/img/coffee-cup.png"></a> </li>
+        <li><a href=""><img src="/img/ice-cream.png"></a> </li>
+        <li><a href=""><img src="/img/donut.png"></a> </li>
+        <li><a href=""><img src="/img/noodles.png"></a> </li>
+        <li><a href=""><img src="/img/beer.png"></a></li>
+        <li> <a href=""><img src="/img/burger.png"></a> </li>*@
+
+            </ul>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="container-fluid court_speciality">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <div class="row ">
+
+                    @if (brandImage4.HasImage)
+                    {
+                        <div class="seciality_img" style="background: url(@brandImage4.Image.Url)   center no-repeat; background-size: cover;"></div>
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="row ">
+                    <div class="speciality_info">
+                        <h2>@Umbraco.Field("descriptionTitle4")</h2>
+                        <hr>
+                        <p>
+                            @Umbraco.Field("description4")
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@{ string brandimages5 = ""; }
+@if (brandImage5.HasImage)
+{
+   brandimages5 =  brandImage5.Image.Url;
+}
+<section class="container-fluid food_seciality eqheight" style="background-image: url(&quot;@brandimages5&quot;); height: 618px; background-repeat:no-repeat;">
+
+
+
+    <div class="container clearfix">
+        <div class="row">
+            <div class="overlay_cont"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 eqheight" style="height: 618px;">
+                <div class="row eqheight" style="height: 618px;">
+                    <div class="food_spec_info">
+                        <h2> @Umbraco.Field("descriptionTitle5")</h2>
+
+                        <p>
+                            @Umbraco.Field("description5")
+                        </p>
+                        <hr>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container-fluid food_shops">
+
+    <div class="container food_shops">
+        <div class="row">
+
+            <div class="food_shops_heading">
+                <hr class="heading_hr" align="center">
+                <h2>
+
+                    @Umbraco.Field("DescriptionTitle6", recursive: true)
+
+                </h2>
+                <hr class="heading_hr" align="center">
+                <span class="downarrow"><svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#2b2b2b" /></svg></span>
+
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            @{
+
+                var shoplogo = content.GetPropertyValue<IEnumerable<IPublishedContent>>("shopLogo");
+                var shopname = content.GetPropertyValue<string[]>("shopName");
+                var shoptiming = content.GetPropertyValue<string[]>("shopTiming");
+                var shoplocation = content.GetPropertyValue<string[]>("shopLocation");
+
+                //var content1 = shoplogo.Zip(shopname, (n, p) => new { logo = n, name = p });
+                //var content2 = shoptiming.Zip(shoplocation, (a, b) => new { time = a, location = b });
+                //var maincontent = content1.Zip(content2, (x, y) => new { con1 = x, con2 = y });
+
+
+
+            }
+
+
+            @if (ShopLogo.Count > 0)
+            {
+                foreach (ImagePickerItem item in ShopLogo.Items)
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_img"><img src="@item.Image.Url"></div>
+                                    <ul class="shop_time_info">
+                                        <li class="card_heading">@item.Title</li>
+                                        <li class="card_time">@item.Description</li>
+                                        <li class="card_location">@item.Link.Name</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                }
+
+            }
+
+
+
+
+            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/2.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/3.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/4.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/5.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/6.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/7.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 shop_main_logo">
+            <div class="logo_container">
+                <a href="">
+                    <div class="card">
+                        <div class="card_img"><img src="/img/clients/8.png"></div>
+                        <ul class="shop_time_info">
+                            <li class="card_heading">Shop Name</li>
+                            <li class="card_time">Daily: 9am - 10pm</li>
+                            <li class="card_location">second floor - shop no. 21</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <span></span>
+        </div>*@
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+

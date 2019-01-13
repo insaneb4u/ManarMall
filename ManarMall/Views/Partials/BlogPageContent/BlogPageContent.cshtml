@@ -1,0 +1,179 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@using System;
+@using Skybrud.Social.Facebook;
+@using Skybrud.Social.OAuth;
+@using Skybrud.Social.Facebook.OAuth;
+
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8697;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    var page1 = UmbracoContext.Current.PageId;
+    IPublishedContent content1 = umbracoHelper.TypedContent(page1);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandImage1");
+
+    var data = content.GetPropertyValue<JArray>("blogList");
+
+
+
+}
+
+
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid slider-main events_slider" style="background-image: url(@brandimage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text">LET<br>
+                  YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+<style type="text/css">
+
+
+ @@media (max-width:560px) {
+    #timeline[data-columns]::before {
+        content: '1.column.size-1of1';
+    }
+}
+
+
+@@media screen and (min-width: 560px) and (max-width: 767px) {
+    #timeline[data-columns]::before {
+        content: '2.column.size-1of2';
+    }
+}
+
+
+
+@@media  (min-width: 768px) {
+    #timeline[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+}
+
+  
+
+</style>
+
+
+<section class="container-fluid  events_grid blog_grid">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="dine_info">
+                <h1 class="dine_heading">
+                    @content.GetPropertyValue("descriptiontitle1")
+                </h1>
+
+
+                <p>@content.GetPropertyValue("description1")</p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="row  evt_offr_holder">
+            <div id="timeline" data-columns>
+
+                @if (data != null)
+                {
+                    foreach (var item in data.Children())
+                    {
+
+                        var itemProperties = item.Children<JProperty>();
+                        var myElement = itemProperties.FirstOrDefault(x => x.Name == "blogImage");
+                        var myElementValue = myElement.Value;
+                        var data1 = myElementValue.Children<JProperty>();
+                        var Elementdata = data1.FirstOrDefault(x => x.Name == "items");
+                        var element1 = Elementdata.Value;
+
+                        var data2 = myElementValue.Children<JProperty>();
+                        var Elementdata2 = data2.FirstOrDefault(x => x.Name == "items");
+                        var element2 = Elementdata2.Value;
+
+                        foreach (JObject first in element1)
+                        {
+                            var image = first.GetValue("imageUrl").ToString();
+
+                            var substring = image.Replace("?width=250&height=156.25&mode=crop", "");
+
+                            var Author = (string)item["blogAuthor"];
+
+                            var description = (string)item["blogDescription"];
+
+                            string l = "";
+                            var Link = first.GetValue("link").ToString();
+                            if (Link != "")
+                            {
+
+                                dynamic stuff = JObject.Parse(Link);
+
+                                l = stuff.url;
+                            }
+
+                            <div class="evt_grid mix1 ct1">
+                                <a href="@l">
+                                    <div class="events_cont cap-bot">
+                                        <img src="@substring" alt="">
+
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="blog_heading_short">
+                                        <h2>@description</h2>
+
+                                        <div class="blog_post_time_details">
+                                            <ul class="write_dt_time">
+                                                <li>@Author</li>
+                                            </ul>
+                                            <ul class="like_link">
+                                                <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.701 471.701" width="16"><path d="M433.601 67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3l-12.9 12.9-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2-24.7 24.7-38.3 57.5-38.2 92.4 0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-3.9l188.2-187.5c24.7-24.7 38.3-57.5 38.3-92.4.1-34.9-13.4-67.7-38.1-92.4zm-19.2 165.7l-178.7 178-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3s10.7-53.7 30.3-73.2c19.5-19.5 45.5-30.3 73.1-30.3 27.7 0 53.8 10.8 73.4 30.4l22.6 22.6c5.3 5.3 13.8 5.3 19.1 0l22.4-22.4c19.6-19.6 45.7-30.4 73.3-30.4 27.6 0 53.6 10.8 73.2 30.3 19.6 19.6 30.3 45.6 30.3 73.3.1 27.7-10.7 53.7-30.3 73.3z" /></svg></a></li>
+                                                <li><a href="" class="selected"><svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 511.997 511.997"><path d="M467.938 87.164L387.063 5.652c-7.438-7.495-19.531-7.54-27.02-.108s-7.54 19.525-.108 27.014l67.471 68.006-67.42 67.42c-7.464 7.457-7.464 19.557 0 27.014 3.732 3.732 8.616 5.598 13.507 5.598s9.781-1.866 13.513-5.591l80.876-80.876c7.443-7.44 7.463-19.495.056-26.965z" /><path d="M455.005 81.509H56.995c-10.552 0-19.104 8.552-19.104 19.104v147.741c0 10.552 8.552 19.104 19.104 19.104s19.104-8.552 19.104-19.104V119.718h378.905c10.552 0 19.104-8.552 19.104-19.104.001-10.552-8.551-19.105-19.103-19.105zM83.964 411.431l67.42-67.413c7.457-7.457 7.464-19.55 0-27.014-7.463-7.464-19.563-7.464-27.02 0l-80.876 80.869c-7.444 7.438-7.47 19.493-.057 26.963l80.876 81.512a19.064 19.064 0 0 0 13.564 5.649c4.865 0 9.731-1.847 13.456-5.54 7.489-7.432 7.54-19.525.108-27.02l-67.471-68.006z" /><path d="M454.368 238.166c-10.552 0-19.104 8.552-19.104 19.104v135.005H56.995c-10.552 0-19.104 8.552-19.104 19.104s8.552 19.104 19.104 19.104h397.38c10.552 0 19.104-8.552 19.098-19.104V257.271c-.001-10.552-8.553-19.105-19.105-19.105z" /></svg></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                    }
+                }
+
+
+
+
+
+
+
+
+                <span class="giv_value"></span>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>

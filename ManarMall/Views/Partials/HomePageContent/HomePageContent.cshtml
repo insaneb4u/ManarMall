@@ -1,0 +1,1413 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@using System;
+@using Skybrud.Social.Facebook;
+@using Skybrud.Social.OAuth;
+@using Skybrud.Social.Facebook.OAuth;
+
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 1090;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    var page1 = UmbracoContext.Current.PageId;
+    IPublishedContent content1 = umbracoHelper.TypedContent(page1);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    ImagePickerList MovieSlider1 = currentPage.GetImagePickerList("movieSlider");
+    ImagePickerList MovieSlider2 = currentPage.GetImagePickerList("movieSliderInner");
+    var data = content.GetPropertyValue<JArray>("slider");
+
+    var SearchResultsPage = content1.AncestorOrSelf(1).Children().Where(x => x.DocumentTypeAlias == "searchResults").First();
+
+}
+@using TweetSharp
+@functions
+{
+
+    private TwitterService GetAuthenticatedService()
+    {
+        var _consumerKey = "bE89YG5VsT60gyVQMFOEhZ6BL";
+        var _consumerSecret = "2Pelh1w8RG5fZISUHIG069UfiQdh1lziZpXQ6ShLEamuDGKC1M";
+        var _accessToken = "1573355424-Pus99brHzQpTVaJQjFeMAFHfSAUAfKj3p8RnH5G";
+        var _accessTokenSecret = "3JCeJLAcEKF86312q6lpQU81teNMnoQknxYy87bJkhhon";
+
+        var service = new TwitterService(_consumerKey, _consumerSecret);
+        service.TraceEnabled = true;
+        service.AuthenticateWith(_accessToken, _accessTokenSecret);
+        return service;
+    }
+
+}
+
+@{
+    var account = "imransayyed528";
+    var tweets = new List<TwitterStatus>();
+    const int take = 3;
+    try
+    {
+        var service = GetAuthenticatedService();
+        tweets = service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions() { Count = take, ScreenName = "ManarMall" }).ToList();
+    }
+    catch (Exception e)
+    {
+    }
+}
+
+
+@{
+
+
+
+    //string url = "https://graph.facebook.com/v3.2/me?fields=id%2Cname%2Cfeed.limit(3)&access_token=EAAcRImT8qw4BABxM6XT0Ec9A4jSDHLa4KtDZANEF6TE7V7UGXbUHQL6znyyDIxWpTNnBE4kbSLUOzB9yHlYkJxTFrSVgzF1GQGrY08plWlsq5mdrf1u4Kb21mQBd6ly5ESvAQNKYwRjrta6p5lsE5I8bfJAAZD";
+
+    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+    //request.ContentType = "application/json";
+    //var stream = new StreamReader(request.GetResponse().GetResponseStream());
+    //string response = stream.ReadToEnd();
+
+
+    //dynamic stuff = JObject.Parse(response);
+
+    //string Id = stuff.id;
+    //string Name = stuff.name;
+
+    //JArray feed = stuff.feed.data;
+    //String Message = "";
+    //String datetime = "";
+
+
+}
+
+<style>
+
+
+    #wrapper {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 100px auto;
+        width: 420px;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .checkbox:checked + .label {
+        background: #7B7484;
+        color: #231733;
+    }
+
+    .checkbox:checked ~ .social {
+        opacity: 1;
+        transform: scale(1) translateY(-90px);
+    }
+
+    .label {
+        background: #231733;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0;
+        padding: 5px 10px;
+        border-radius: 10%;
+        color: #7B7484;
+    }
+
+    .social {
+        transform-origin: 50% 0%;
+        transform: scale(0) translateY(-190px);
+        opacity: 0;
+        transition: .5s;
+    }
+
+    #sharelist {
+        position: relative;
+        left: 0;
+        right: 0;
+        margin: -5px auto 0;
+        color: #fff;
+        height: 46px;
+        width: 200px;
+        background: #3B5998;
+        padding: 0;
+        list-style: none;
+    }
+
+        #sharelist li {
+            position: relative;
+            left: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            width: 60px;
+            margin: 0;
+            padding: 12px 0;
+            text-align: center;
+            float: left;
+            display: block;
+            height: 22px;
+        }
+
+            #sharelist li:hover {
+                color: rgba(0,0,0,.5);
+            }
+
+        #sharelist:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 46px auto;
+            height: 0;
+            width: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid rgba(0,0,0,0);
+        }
+
+        #sharelist > li[class*="twitter"] {
+            background: #6CDFEA;
+            padding: 12px 0;
+        }
+
+        #sharelist > li[class*="gplus"] {
+            background: #E34429;
+            padding: 12px 0;
+        }
+
+        #sharelist > li[class*="dropbox"] {
+            background: #8DC5F2;
+            padding: 12px 0;
+        }
+
+        #sharelist > li[class*="github"] {
+            background: #9C7A5B;
+            padding: 12px 0;
+        }
+
+        #sharelist > li[class*="instagram"] {
+            background: #0E68CE;
+            padding: 12px 0;
+        }
+
+        #sharelist > li[class*="youtube"] {
+            background: #CC181E;
+            padding: 12px 0;
+        }
+
+    .credits a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    #btnshare {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 12px;
+        font-family: bold_helvetica;
+        color: #fff;
+        background: rgb(225, 1, 38);
+        border-radius: 3px;
+        padding: 3px 10px;
+        font-weight: 700
+    }
+</style>
+
+
+
+<link href="~/search.css" rel="stylesheet" />
+
+
+<script src="~/jquery-3.0.0.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#search').keyup(function () {
+
+            // Search text
+            var text = $(this).val();
+
+            // Hide all content class element
+            $('.content').hide();
+
+            // Search and show
+            $('.content:contains("' + text + '")').show();
+
+        });
+    });
+</script>
+
+@{
+    string searchQuery = Request["query"];
+
+
+
+
+    if (String.IsNullOrWhiteSpace(searchQuery))
+    {
+        searchQuery = "";
+    }
+
+
+    var searcher = ExamineManager.Instance;
+    var searchCriteria = searcher.CreateSearchCriteria();
+
+    var query = searchCriteria.GroupedOr(new[] { "description1", "description2", "description3", "description4", "description5", "brandImage1Text", "brandImage2Text", "eventDescription1", "eventDescription2", "brandImage2Description", "brandImage3Description", "brandImage4Description", "brandImage5Description", "brandImage6Description", "brandImage7Description" }, searchQuery).Compile();
+
+
+
+    var searchResults = searcher.Search(query).Where(r => r["__IndexType"] == "content").ToList();
+
+}
+
+
+@{
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandimage1");
+    ImagePickerItem brandImage1Text = content.GetImagePickerItem("brandImage1Text");
+
+}
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid slider-main " style="background-image: url(@brandimage1.Image.Url);">
+        <div class="slider-main-text text-center">
+            <div class="heading_slider_hld">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"><filter filterUnits="objectBoundingBox" x="0" y="0" width="100" height="100" id="a"><feFlood flood-color="#2D1947" result="coFloodOut1" /><feComposite in="coFloodOut1" in2="SourceAlpha" operator="in" result="coOverlay1" /><feBlend in="coOverlay1" in2="SourceGraphic" result="colorOverlay1" /></filter><image width="100%" height="100%" filter="url(#a)" xlink:href="data:image/png;base64,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" /></svg>
+
+            </div>0
+
+        </div>
+    </section>
+}
+
+<!-- portfolio start -->
+<!-- service-area start -->
+@{ ImagePickerItem brandimage2 = content.GetImagePickerItem("brandimage2"); }
+<section class=" container-fluid welcom_info  bg_welcome_img  " style="background-image: none;">
+    <style type="text/css">
+
+        #myVideo {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            width: auto;
+            max-height: 100%;
+        }
+    </style>
+    @if (brandimage2.HasImage)
+    {
+        <video muted preload="auto" style="back" poster="@brandimage2.Image.Url" id="myVideo" style="background-position: right">
+            <source src="welcome.mp4" type="video/mp4">
+        </video>
+    }
+
+    <div class="container  ">
+        <div class="row  ">
+            <div class="overlay_cont">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12  ">
+
+                <div class=" row info_div align-bottom">
+                    <p>  @Umbraco.Field("brandImage2Text", recursive: true)<p>
+                        Like someplace quieter? Situated at serene gulf beach, Manar also offers you the peace of mind, go on take a stroll.
+                    </p>
+                    <a href="@Umbraco.Field("brandImage2Link", recursive: true)" title="about manar mall" class="c--anim-btn">EXPLORE MORE <span class="  c-anim-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 451.846 451.847"><path d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z" fill="#c80325" /></svg></span></a>
+                </div>
+            </div>
+        </div>
+
+
+</section>
+
+<!-- service-area end -->
+ 
+    <section class="container-fluid pt-75 tile_container">
+        <div class="container">
+            <div class="row text-center mb-70 top_link_service">
+                <a href="@Umbraco.Field("brandImage3Link1", recursive: true)"><img src="/img/shop.png" alt="Shop Section"></a>
+                <a href="@Umbraco.Field("brandImage3Link2", recursive: true)"><img src="/img/eat.png" alt="Eat Section"></a>
+                <a href="@Umbraco.Field("brandImage3Link3", recursive: true)"><img src="/img/play.png" alt="Play Section"></a>
+                <a href="@Umbraco.Field("brandImage3Link4", recursive: true)"><img src="/img/repeat.png" alt="Repeat"></a>
+            </div>
+            <style type="text/css">
+            </style>
+            <div class="col-lg-12 col-md-12 col-sm-12 clearfix ">
+                <div class="row">
+                    <!--<div class="col-sm-12 hidden-lg  hidden-md hidden-sm search_min visible-xs">
+                        <div class="row pad_6">
+                            <div class="search_contr">
+                                <div class="container_search">
+
+                                    <form action="/search-results/" method="post">
+                                        <input class="tile_search_input" name="query" type="text" placeholder='Search something interesting...'>
+                                        <button class="srch_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#626262" /></svg></button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    @*1st tile*@
+
+
+
+
+                    <div class="col-lg-three5ths col-md-three5ths col-m-three5ths  col-sm-7  col-xs-12">
+
+                        <div class="row  ">
+                            @{
+
+                                ImagePickerItem firstimage = content.GetImagePickerItem("brandTile1");
+
+                                var image = currentPage.brandTile1;
+
+                                if (firstimage.HasImage || firstimage.HasLink)
+                                {
+                                    <a href="@firstimage.Link.Url" class="title_link">
+                                        <div class="    first_tile   pad_6">
+
+                                            <div class="     first_tile" style="background: url(@firstimage.Image.Url)center; background-size: cover;  "> <a href="" class="share2">SHARE</a></div>
+
+                                        </div>
+
+                                    </a>
+                                }
+
+
+
+
+
+
+
+
+                            }
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    @*end*@
+                    <div class="col-lg-two5ths col-md-two5ths  col-sm-5  col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12 visible-lg visible-md visible-sm search_max hidden-xs">
+                                <div class="row pad_6">
+                                    <div class="search_contr">
+                                        <div class="container_search">
+                                            <form action="" method="post">
+
+                                                <span>
+                                                    <input type='text' autocomplete="off" id='txtsearch2' name="query" class="tile_search_input" placeholder='Search something interesting...'>
+                                                    <button class="srch_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451" width="18"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z" fill="#626262" /></svg></button>
+
+                                                </span>
+                                            </form>
+                                            <ul id="result3"></ul>
+
+                                            @*<span class='container'>
+
+                                                            <span>
+                                                                <input type='text' id='search' placeholder='Search Text'>
+                                                            </span>
+
+                                                            <span class='content'>
+                                                                <span class='title'>
+                                                                    <a href='http://makitweb.com/dynamically-add-and-remove-element-with-jquery/'>Dynamically add and remove element with jQuery</a>
+                                                                </span>
+                                                                <p>In this post, I show how you can add and remove new element within your web page with jQuery...</p>
+                                                            </span>
+
+                                                            <span class='content'>
+                                                                <span class='title'><a href='http://makitweb.com/how-to-delete-value-from-array-in-javascript/'>How to Delete a value from an Array in JavaScript</a></span>
+                                                                <p>There are many cases when we have to remove some unused values from the Array which no longer needed within the program...</p>
+                                                            </span>
+
+                                                            <span class='content'>
+                                                                <span class='title'><a href='http://makitweb.com/read-and-get-parameters-from-url-with-javascript/'>Read and Get Parameters from URL with JavaScript</a></span>
+                                                                <p>If you are familiar with PHP where for reading parameters from URL you can use either $_GET or $_REQUEST which take the name of the argument and return value of it...</p>
+                                                            </span>
+        23yj6   ehp[]
+                                                            <span class='content'>
+                                                                <span class='title'><a href='http://makitweb.com/html-how-to-show-text-above-image-on-hover/'>HTML – How to Show Text Above Image on Hover</a></span>
+                                                                <p>In this quick tutorial, I show How you can show text above Image when the user hovers the image using only HTML and CSS, no jQuery and JavaScript...</p>
+                                                            </span>
+
+                                                        </span>*@
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            @*2nd tile*@
+
+                            <div class="col-sm-6 col-xs-6 disp_min_bg">
+                                <div class="row pad_6">
+
+
+                                    <div class="   tile_blank ticker_info social_cont first_social">
+                                        <div class="right_left  owl-theme ">
+                                            @if (tweets != null)
+                                            {
+                                                //foreach (var tweet in ForEachHelper.WithIndex(tweets))
+                                                //{
+                                                for (var i = 0; i < tweets.Count; i++)
+                                                {
+                                                    var temp = tweets[i].TextDecoded;
+                                                    var substring = temp.Substring(0, Math.Min(40, temp.Length));
+
+                                                    var date = tweets[i].CreatedDate.ToString();
+                                                    var substring2 = date.Substring(0, Math.Min(10, temp.Length));
+
+                                                    // var temp2 = temp.Substring(temp.Length - 1, 4);
+                                                    <div class="item ">
+                                                        <a href="https://twitter.com/manarmall?lang=en"> <h3 class="clearfix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" width="24" height="24"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z" fill="#FFF" /></svg> </h3><br></a>
+                                                        <p>
+                                                            <strong>
+
+
+                                                                @Html.Raw(substring)...
+                                                            </strong>
+                                                        </p><p class="date_social">
+                                                            Update On:@Html.Raw(substring2)
+                                                        </p>
+                                                    </div>
+                                                }
+
+
+
+
+                                                //}
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+                            </div>
+
+                            @*end*@
+
+                            @{
+                                var youtubetile1Link = content.GetPropertyValue("youtubeVideoTile1");
+                                //var youtubetile1thumbnail = content.GetPropertyValue("youtubeTile1Thumbnail");
+                                ImagePickerItem youtubetile1thumbnail = content.GetImagePickerItem("youtubeTile1Thumbnail");
+                            }
+                            @*3rd tile*@
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="row pad_6">
+
+                                    <div class="tile_video_img tile_blank" id="video1 " style="background: URL(@youtubetile1thumbnail.Image.Url) no-repeat center; background-size: cover;">   </div>
+                                    <div class=" videoOverlayInset">
+                                        <div class="videoOverlay" id="play_vid_2"></div>
+                                    </div>
+                                    <a href="" class="share1">SHARE</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            @*end*@
+                            <div class="col-sm-6 col-xs-6 disp_min_sm">
+                                <div class="row pad_6">
+                                    <div class="bottom_top owl-theme tile_blank slider  ">
+                                        <div class="item tile_blank   " style="background: url('/img/add_3.jpg') ;   "> </div>
+                                        <div class="item  tile_blank " style="background: url('/img/add_3.jpg');   "> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 clearfix">
+                <div class="row">
+                    <div class="  col-lg-5ths col-md-5ths col-sm-2 col-xs-12 disp_min_bg  ">
+                        <div class="row">
+                            <div class="col-sm-12 hidden-xs">
+                                <div class="row" class="">
+                                    <div class="margin-5tile tile_blank">
+
+                                    </div>
+                                </div>
+                            </div>
+                            @*4th tile*@
+                            <div class="col-sm-12 col-xs-6 disp_min_bg">
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_blank slider  ">
+                                        @{
+
+
+                                            var image2 = currentPage.brandTile2;
+
+                                            if (image2.Count > 0)
+                                            {
+                                                for (int i = 0; i < image2.Count; i++)
+                                                {
+
+
+                                                    <div class="item tile_blank   " style="background: url(@image2[i].Url) ;   "> </div>
+                                                }
+                                            }
+
+
+
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            @*end*@
+                            <div class="col-sm-12 col-xs-6  hidden-lg hidden-md hidden-sm visible-xs">
+                                <div class="row">
+                                    <div class="margin-5tile tile_blank">
+                                        <img src="/img/add_2.jpg" class="img-responsive" style="width: 100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        var youtubetile2Link = content.GetPropertyValue("youtubeVideoTile2");
+                        // var youtubetile2thumbnail = content.GetPropertyValue("youtubeTile2Thumbnail");
+                        ImagePickerItem youtubetile2thumbnail = content.GetImagePickerItem("youtubeTile2Thumbnail");
+                    }
+                    @*5th tile*@
+                    <div class="col-lg-three5ths col-md-three5ths hide_bloc_mid col-sm-8 col-lg-three5ths col-xs-12  ">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row pad_6">
+
+                                    <div class="tile_video_img  tile_video" id="video " style="background: URL(@youtubetile2thumbnail.Image.Url) no-repeat center;   background-size: cover;">   </div>
+                                    <div class=" videoOverlayInset">
+                                        <div class="videoOverlay " id="play_vidbg"></div>
+                                    </div>
+                                    <a href="" class="share1">SHARE</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*end*@
+
+                    @*6th tile Facebook*@
+                    <div class="  col-lg-5ths col-md-5ths col-sm-2 col-xs-12">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-xs-6 disp_min_bg">
+                                <div class="row pad_6">
+                                    <div class="   tile_blank ticker_info social_cont sec_social">
+                                        <div class="top_bottom  owl-theme ">
+
+
+
+
+
+
+
+                                            @*@foreach (JObject item in feed)
+                                            {
+                                                if (item["message"] != null && item["created_time"] != null)
+                                                {
+                                                    Message = item["message"].ToString();
+                                                    var substring = Message.Substring(0, Math.Min(40, Message.Length));
+
+                                                    datetime = item["created_time"].ToString();
+                                                    var substring2 = datetime.Substring(0, Math.Min(10, datetime.Length));
+
+
+                                                    <div class="item">
+                                                        <a href="https://www.facebook.com/manarmallrak/"><h3 class="clearfix"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z" fill="#FFF" /></svg></h3><br></a>
+                                                        <p>
+                                                            <strong>
+                                                                @substring
+                                                            </strong>
+                                                        </p><p class="date_social">
+                                                            Update On:@substring2
+                                                        </p>
+                                                    </div>
+                                                }
+                                            }*@
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            @*end*@
+                            <div class="col-sm-12 mid_width disp_min_sm hidden-xs">
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_blank slider  ">
+                                        <div class="item tile_blank   " style="background: url('/img/add_3.jpg') ;   "> </div>
+                                        <div class="item  tile_blank " style="background: url('/img/add_3.jpg');   "> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-6 disp_min_sm">
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_blank slider  ">
+                                        <div class="item tile_blank   " style="background: url('/img/04.png') ;   "> </div>
+                                        <div class="item  tile_blank " style="background: url('/img/04.png');   "> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden-lg hidden-md hidden-sm col-xs-6 disp_min_sm">
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_blank slider  ">
+                                        <div class="item tile_blank   " style="background: url('/img/add_6.jpg') ;   "> </div>
+                                        <div class="item  tile_blank " style="background: url('/img/add_6.jpg');   "> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="  col-lg-5ths col-md-5ths col-sm-2 col-xs-12 disp_min_sm">
+                        <div class="row">
+
+                             
+                            <div class="col-sm-12  col-xs-12 ">
+                                <div class="row pad_6">
+
+                                    <div class="right_left  owl-theme tile_blank" style=" background:#98e0e9; ">
+                                        <div class="item tile_blank" style="  padding-top:60px"><center><img src="/img/event_img.png" style="width:150px"></center></div>
+                                        <div class="item tile_blank" style="  padding-top:60px"><center><img src="/img/event_img.png" style="width:150px"></center></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social sm -->
+            <div class="col-lg-12 col-md-12 col-sm-12 clearfix disp_min_sm  ">
+                <div class="row">
+
+                    <div class="col-sm-3 col-xs-6 ">
+                        <div class="row pad_6">
+
+                            <div class="   tile_blank2 ticker_info social_cont first_social">
+                                <div class="top_bottom  owl-theme ">
+                                    @if (tweets != null)
+                                    {
+                                        //foreach (var tweet in ForEachHelper.WithIndex(tweets))
+                                        //{
+                                        for (var i = 0; i < tweets.Count; i++)
+                                        {
+                                            var temp = tweets[i].TextDecoded;
+                                            var substring = temp.Substring(0, Math.Min(40, temp.Length));
+
+                                            var date = tweets[i].CreatedDate.ToString();
+                                            var substring2 = date.Substring(0, Math.Min(10, temp.Length));
+
+                                            // var temp2 = temp.Substring(temp.Length - 1, 4);
+                                            <div class="item ">
+                                                <a href="https://twitter.com/manarmall?lang=en"> <h3 class="clearfix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" width="24" height="24"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z" fill="#FFF" /></svg> </h3><br></a>
+                                                <p>
+                                                    <strong>
+
+
+                                                        @Html.Raw(substring)...
+                                                    </strong>
+                                                </p><p class="date_social">
+                                                    Update On:@Html.Raw(substring2)
+                                                </p>
+                                            </div>
+                                        }
+
+
+
+
+                                        //}
+                                    }
+
+
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-xs-6   ">
+                        <div class="row pad_6">
+                            <div class="   tile_blank2 ticker_info social_cont sec_social">
+                                <div class="right_left  owl-theme ">
+                                    @*@foreach (JObject item in feed)
+                                    {
+                                        if (item["message"] != null && item["created_time"] != null)
+                                        {
+                                            Message = item["message"].ToString();
+                                            var substring = Message.Substring(0, Math.Min(40, Message.Length));
+
+                                            datetime = item["created_time"].ToString();
+                                            var substring2 = datetime.Substring(0, Math.Min(10, datetime.Length));
+
+
+                                            <div class="item">
+                                                <a href="https://www.facebook.com/manarmallrak/"><h3 class="clearfix"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z" fill="#FFF" /></svg></h3><br></a>
+                                                <p>
+                                                    <strong>
+                                                        @substring
+                                                    </strong>
+                                                </p><p class="date_social">
+                                                    Update On:@substring2
+                                                </p>
+                                            </div>
+                                        }
+                                    }*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 hidden-xs">
+                        <div class="row pad_6">
+                            <div class="   tile_blank2 ticker_info social_cont frth_social">
+                                <div class="top_bottom  owl-theme ">
+                                    @if (tweets != null)
+                                    {
+                                        //foreach (var tweet in ForEachHelper.WithIndex(tweets))
+                                        //{
+                                        for (var i = 0; i < tweets.Count; i++)
+                                        {
+                                            var temp = tweets[i].TextDecoded;
+                                            var substring = temp.Substring(0, Math.Min(40, temp.Length));
+
+                                            var date = tweets[i].CreatedDate.ToString();
+                                            var substring2 = date.Substring(0, Math.Min(10, temp.Length));
+
+                                            // var temp2 = temp.Substring(temp.Length - 1, 4);
+                                            <div class="item ">
+                                                <a href="https://twitter.com/manarmall?lang=en"> <h3 class="clearfix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" width="24" height="24"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z" fill="#FFF" /></svg> </h3><br></a>
+                                                <p>
+                                                    <strong>
+
+
+                                                        @Html.Raw(substring)...
+                                                    </strong>
+                                                </p><p class="date_social">
+                                                    Update On:@Html.Raw(substring2)
+                                                </p>
+                                            </div>
+                                        }
+
+
+
+
+                                        //}
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="row pad_6">
+                            <div class="   tile_blank2 ticker_info social_cont thir_social">
+                                <div class="right_left  owl-theme ">
+                                    <div class="item  ">
+                                        <h3 class="clearfix event_title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="25" height="25"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg> @Umbraco.Field("eventTile1Title1", recursive: true)</h3>
+
+                                        <br />
+
+
+
+                                        @Umbraco.Field("eventDescription1", recursive: true)
+                                        <br />
+                                        <a href="" class="event_btn">Going</a>
+
+
+                                        <a href="" class="event_btn">Interested</a>
+
+
+
+
+
+                                        <p class="event_details">
+
+
+
+
+                                        </p>
+                                    </div>
+                                    <div class="item  ">
+                                        <h3 class="clearfix event_title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="25" height="25"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg> @Umbraco.Field("eventTile1Title1", recursive: true)</h3>
+
+                                        <br />
+
+                                        @Umbraco.Field("eventDescription2", recursive: true)
+
+
+                                        <a href="" class="event_btn">Going</a>
+
+
+                                        <a href="" class="event_btn">Interested</a>
+
+
+
+
+
+                                        <p class="event_details">
+
+
+
+
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+            <!-- Social sm -->
+
+            <div class="col-lg-12 col-md-12 col-sm-12 clearfix">
+                <div class="row">
+                    <div class="col-lg-three5ths col-md-three5ths col-sm-7  col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-4  col-xs-12 hide_bloc_mid ">
+                                <div class="row">
+                                    @*7th tile*@
+                                    <div class="col-sm-12 col-xs-6 disp_min_bg">
+                                        <div class="row pad_6">
+                                            <div class="right_left owl-theme tile_blank slider  ">
+                                                @{
+
+
+                                                    var image3 = currentPage.brandTile3;
+                                                    if (image3.Count > 0)
+                                                    {
+                                                        for (int i = 0; i < image3.Count; i++)
+                                                        {
+
+                                                            <div class="item tile_blank   " style="background: url(@image3[i].Url) ;   "> </div>
+
+                                                        }
+                                                    }
+
+
+                                                }
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*end*@
+                                    @*11th tile*@
+                                    <div class="col-sm-12 width_mid_30 col-xs-6 ">
+                                        <div class="row pad_6">
+                                            <div class="right_left owl-theme tile_big slider  ">
+                                                @{
+
+
+                                                    var image6 = currentPage.brandTile6;
+                                                    if (image6.Count > 0)
+                                                    {
+                                                        for (int i = 0; i < image6.Count; i++)
+                                                        {
+
+
+                                                            <div class="item tile_blank  tile_big " style="background: url(@image6[i].Url) ;   "> </div>
+                                                        }
+
+                                                    }
+
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*end*@
+
+                                </div>
+                            </div>
+                            <div class="col-sm-8 hide_bloc_mid col-xs-12 col-tile-2">
+                                <div class="row">
+                                    @*8th tile*@
+                                    <div class="col-sm-12">
+                                        <div class="row pad_6">
+                                            <div class="right_left owl-theme tile_big_footer slider  ">
+                                                @{
+
+
+                                                    var image4 = currentPage.brandTile4;
+                                                    if (image4.Count > 0)
+                                                    {
+                                                        for (int i = 0; i < image4.Count; i++)
+                                                        {
+
+
+                                                            <div class="item tile_blank  tile_big_footer " style="background: url(@image4[i].Url) ;   ">  <a href="" class="share2">SHARE</a></div>
+                                                        }
+
+                                                    }
+
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    @*end*@
+                                    <div class="col-sm-6 col-xs-6 disp_min_bg">
+                                        <div class="row pad_6">
+                                            @*12th tile*@
+                                            <div class="right_left  owl-theme tile_blank" style=" background:#98e0e9; ">
+                                                @{
+
+
+                                                    var image7 = currentPage.eventTileImage;
+                                                    if (image7.Count > 0)
+                                                    {
+                                                        for (int i = 0; i < image7.Count; i++)
+                                                        {
+
+                                                            <div class="item tile_blank" style="  padding-top:60px"><center><img src="@image7[i].Url" style="width:150px"></center></div>
+
+                                                        }
+                                                    }
+
+
+                                                }
+
+                                            </div>
+                                            @*end*@
+                                        </div>
+                                    </div>
+                                    @*13th tile twitter*@
+                                    <div class="col-sm-6 col-xs-6 disp_min_bg">
+                                        <div class="row pad_6">
+                                            <div class="   tile_blank ticker_info social_cont frth_social">
+                                                <div class="top_bottom  owl-theme ">
+                                                    @if (tweets != null)
+                                                    {
+                                                        //foreach (var tweet in ForEachHelper.WithIndex(tweets))
+                                                        //{
+                                                        for (var i = 0; i < tweets.Count; i++)
+                                                        {
+                                                            var temp = tweets[i].TextDecoded;
+                                                            var substring = temp.Substring(0, Math.Min(40, temp.Length));
+
+                                                            var date = tweets[i].CreatedDate.ToString();
+                                                            var substring2 = date.Substring(0, Math.Min(10, temp.Length));
+
+                                                            // var temp2 = temp.Substring(temp.Length - 1, 4);
+                                                            <div class="item ">
+                                                                <a href="https://twitter.com/manarmall?lang=en"> <h3 class="clearfix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" width="24" height="24"><path d="M612 116.258a250.714 250.714 0 0 1-72.088 19.772c25.929-15.527 45.777-40.155 55.184-69.411-24.322 14.379-51.169 24.82-79.775 30.48-22.907-24.437-55.49-39.658-91.63-39.658-69.334 0-125.551 56.217-125.551 125.513 0 9.828 1.109 19.427 3.251 28.606-104.326-5.24-196.835-55.223-258.75-131.174-10.823 18.51-16.98 40.078-16.98 63.101 0 43.559 22.181 81.993 55.835 104.479a125.556 125.556 0 0 1-56.867-15.756v1.568c0 60.806 43.291 111.554 100.693 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.199 117.253 87.194-42.947 33.654-97.099 53.655-155.916 53.655-10.134 0-20.116-.612-29.944-1.721 55.567 35.681 121.536 56.485 192.438 56.485 230.948 0 357.188-191.291 357.188-357.188l-.421-16.253c24.666-17.593 46.005-39.697 62.794-64.861z" fill="#FFF" /></svg> </h3><br></a>
+                                                                <p>
+                                                                    <strong>
+
+
+                                                                        @Html.Raw(substring)...
+                                                                    </strong>
+                                                                </p><p class="date_social">
+                                                                    Update On:@Html.Raw(substring2)
+                                                                </p>
+                                                            </div>
+                                                        }
+
+
+
+
+                                                        //}
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*end*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-two5ths col-md-two5ths col-sm-5  col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6 disp_min_bg">
+                                <div class="row pad_6">
+                                    <div class="   tile_blank ticker_info social_cont thir_social">
+                                        @*9th tile*@
+                                        <div class="right_left  owl-theme ">
+                                            <div class="item  ">
+                                                <h3 class="clearfix event_title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="25" height="25"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg> @Umbraco.Field("eventTile1Title1", recursive: true)</h3>
+
+                                                <br />
+
+
+
+                                                @Umbraco.Field("eventDescription1", recursive: true)
+                                                <br />
+                                                <a href="" class="event_btn">Going</a>
+
+
+                                                <a href="" class="event_btn">Interested</a>
+
+
+
+
+
+                                                <p class="event_details">
+
+
+
+
+                                                </p>
+                                            </div>
+                                            <div class="item  ">
+                                                <h3 class="clearfix event_title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="25" height="25"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg> @Umbraco.Field("eventTile1Title1", recursive: true)</h3>
+
+                                                <br />
+
+                                                @Umbraco.Field("eventDescription2", recursive: true)
+
+
+                                                <a href="" class="event_btn">Going</a>
+
+
+                                                <a href="" class="event_btn">Interested</a>
+
+
+
+
+
+                                                <p class="event_details">
+
+
+
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                        @*end*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 disp_min_bg">
+                                @*10th tile*@
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_blank slider  ">
+                                        @{
+
+
+                                            var image5 = currentPage.brandTile5;
+                                            if (image5.Count > 0)
+                                            {
+                                                for (int i = 0; i < image5.Count; i++)
+                                                {
+
+                                                    <div class="item tile_blank  tile_blank " style="background: url(@image5[i].Url) ;   "> </div>
+
+                                                }
+                                            }
+
+
+                                        }
+                                    </div>
+                                </div>
+                                @*end*@
+                            </div>
+                            <div class="col-sm-12 mid_width_50 col-xs-12 dis_mid_width">
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_big_footer slider  ">
+                                        <div class="item tile_blank  tile_big_footer " style="background: url('/img/add_4.jpg') ;   "> <a href="" class="share2">SHARE</a></div>
+                                        <div class="item  tile_blank tile_big_footer " style="background: url('/img/add_4.jpg');   "> <a href="" class="share2">SHARE</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*14th tile*@
+                            <div class="col-sm-12 mid_width_50 col-xs-12 ">
+                                <div class="row pad_6">
+                                    <div class="right_left owl-theme tile_big_footer slider  ">
+                                        @{
+
+
+                                            var image8 = currentPage.brandTile7;
+                                            if (image8.Count > 0)
+                                            {
+                                                for (int i = 0; i < image8.Count; i++)
+                                                {
+                                                    <div class="item    tile_big_footer  " style="background: url(@image8[i].Url) ;   "> </div>
+
+
+                                                }
+                                            }
+
+
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                            @*end*@
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 dis_mid_width clearfix">
+                        <div class="row">
+
+                            <div class="col-sm-4  col-xs-12  ">
+                                <div class="row">
+
+                                    <div class="col-sm-12 width_mid_30 col-xs-6 ">
+                                        <div class="row pad_6">
+                                            <div class="right_left owl-theme tile_big slider  ">
+                                                <div class="item tile_blank  tile_big " style="background: url('/img/add_5.jpg') ;   "> </div>
+                                                <div class="item  tile_blank tile_big " style="background: url('/img/add_5.jpg');   "> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 width_mid_70 col-xs-6 dis_mid_width">
+                                        <div class="row pad_6">
+
+                                            <div class="tile_video_img   tile_big" style="background: URL(https://img.youtube.com/vi/FJHuNTMguO8/maxresdefault.jpg) no-repeat center;   background-size: cover;">
+                                            </div>
+                                            <div class=" videoOverlayInset">
+                                                <div class="videoOverlay " id="play_vid3"></div>
+                                            </div>
+                                            <a href="" class="share1">SHARE</a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 clearfix">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-two5ths "></div>
+                            <div class="col-sm-7 col-md-three5ths col-xs-12 ">
+                                <div class="row pad-6-last">
+                                    @*15th tile*@
+                                    <div class="right_left owl-theme   last_tile  ">
+                                        @{
+
+
+                                            var image9 = currentPage.brandTile8;
+                                            if (image9.Count > 0)
+                                            {
+                                                for (int i = 0; i < image9.Count; i++)
+                                                {
+
+
+                                                    <div class="item last_tile    " style="background: url(@image9[i].Url) ;   "> </div>
+                                                }
+
+                                            }
+
+                                        }
+
+                                    </div>
+                                    @*end*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+<!-- portfolio start -->
+<!-- service-area start -->
+
+<section class="container-fluid service-area border-top gray-bg eqheight1" style="">
+    <div class="row">
+        <div class="movie_index_slider eqheight1" id="slick-images">
+            @if (data != null)
+            {
+                string img1 = "";
+                string img2 = "";
+                foreach (var item in data.Children())
+                {
+
+                    var d1 = item.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var d2 = d1.FirstOrDefault(x => x.Name == "addimage1");
+                    var d3 = d2.Value; ////This is a JValue type
+
+                    var v1 = d3.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var v2 = v1.FirstOrDefault(x => x.Name == "items");
+                    var v3 = v2.Value.ToString(); ////This is a JValue type
+
+
+                    var d4 = item.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var d5 = d4.FirstOrDefault(x => x.Name == "addimage2");
+                    var d6 = d5.Value; ////This is a JValue type
+
+                    var v4 = d6.Children<JProperty>();
+                    //you could do a foreach or a linq here depending on what you need to do exactly with the value
+                    var v5 = v4.FirstOrDefault(x => x.Name == "items");
+                    var v6 = v5.Value.ToString(); ////This is a JValue type
+
+                    JArray jsonArray = JArray.Parse(v3);
+                    dynamic dataq = JObject.Parse(jsonArray[0].ToString());
+                    img1 = dataq.imageUrl;
+
+                    var substring1 = img1.Replace("?width=250&height=156.25&mode=crop", "");
+
+                    JArray jsonArray2 = JArray.Parse(v6);
+                    dynamic data2 = JObject.Parse(jsonArray2[0].ToString());
+                    img2 = data2.imageUrl;
+                    var substring2 = img2.Replace("?width=250&height=156.25&mode=crop", "");
+
+
+                    <div class="img_contr_parnt eqheight1" style="background:url(@substring2) no-repeat center; background-size: cover;  ">
+
+                        <div class="img_contr" data-animation="fadeInUp" data-delay="10ms" style="  background:url(@substring2) no-repeat center; "><a href="entertainment.html" class=" "><img src="@substring1"></a></div>
+                    </div>
+
+
+
+                }
+            }
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="hed_pgcont">
+            <a href="entertainment.html">
+                <h1 class="large_bold_grey">@content.GetPropertyValue("movieDescription1")</h1>
+                <p>@content.GetPropertyValue("movieDescription2")</p>
+            </a>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</section>
+<!-- service-area end -->
+<!-- service-area start -->
+@*<section class="service-area border-top gray-bg">
+        <div class="tp-banner-container ">
+            <div class="tp-banner movie_banner">
+                <ul>
+                    @if (MovieSlider1 != null && MovieSlider2 != null)
+                    {
+
+                        foreach (var item in MovieSlider1.Items.Zip(MovieSlider2.Items, (a, b) => new { A = a, B = b }))
+                        {
+                            var a = item.A;
+                            var b = item.B;
+                            <!-- SLIDE  -->
+                            <li data-transition="slideup" data-slotamount="0" data-masterspeed="1000">
+                                <!-- MAIN IMAGE -->
+                                <img src="@a.Image.Url" alt="slidebg1" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                                <!-- LAYERS -->
+                                <!-- LAYER NR. 3 -->
+                                <div class="tp-caption large_bold_grey text_heading customin customout"
+                                     data-x="430"
+                                     data-y="360"
+                                     data-customin="x:0;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:0% 0%;"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="1200"
+                                     data-start="900"
+                                     data-easing="easeOutBack"
+                                     data-endspeed="1400"
+                                     data-captionhidden="on"
+                                     style="z-index:1">
+                                    @a.Title<br>@a.Description
+                                </div>
+                                <!-- LAYER NR. 7 -->
+                                <div class="tp-caption small_thin_grey img-mobile img_contr customin customout"
+                                     data-x="80"
+                                     data-y="280"
+                                     data-customin="x:0;y:50;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:0% 0%;"
+                                     data-customout="x:0;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:800;transformOrigin:50% 50%;"
+                                     data-speed="1500"
+                                     data-start="900"
+                                     data-endspeed="1500"
+                                     data-captionhidden="on"
+                                     style="z-index:2">
+                                    <img src="@b.Image.Url" class="shadow_slider" width="290px">
+                                </div>
+                                <!-- LAYER NR. 7 -->
+                                <div class="tp-caption small_thin_grey text_button customin customout"
+                                     data-x="430"
+                                     data-y="540"
+                                     data-customin="x:0;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:0% 0%;"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="1400"
+                                     data-start="900"
+                                     data-endspeed="1400"
+                                     data-captionhidden="on"
+                                     style="z-index: 3">
+                                    <a href="@a.Link.Url" class="btn btn-large btn-default slider_btn">@a.Link.Name</a>
+                                </div>
+                            </li>
+
+
+                            <!-- SLIDE  -->
+                            <!-- SLIDE  -->
+                        }
+                    }
+                </ul>
+                <div class="tp-bannertimer"></div>
+            </div>
+        </div>
+    </section>*@
+<!-- service-area end -->

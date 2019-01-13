@@ -1,0 +1,120 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8665;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerItem BrandImage2 = content.GetImagePickerItem("loyaltyImage");
+
+    var Link1 = content.GetPropertyValue<RelatedLinks>("partners");
+    var Link2 = content.GetPropertyValue<RelatedLinks>("category");
+}
+
+
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main event_slider" style="background-image: url(@BrandImage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<section class="container-fluid  event_details">
+    <div class="container">
+        <div class="row">
+
+            <div class="event_details_heading text-center">
+                <h2>
+
+                    @content.GetPropertyValue("title")
+
+                </h2>
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="row ">
+            <div class="event_info loyalty_progr">
+                <h1>
+
+                    @content.GetPropertyValue("description1Title")
+                </h1>
+                <p class="text-center"> @content.GetPropertyValue("description1")</p>
+                <h2 class="prom_heading">@content.GetPropertyValue("description2Title")</h2>
+                <p class="text-center">@content.GetPropertyValue("description2") </p>
+
+
+
+            </div>
+            @if (BrandImage2.HasImage)
+            {
+                <div class="evt_off_addn_info">
+                    <img src='@BrandImage2.Image.Url' class="img-responsive">
+                </div>
+            }
+
+            <div class="prom_partners">
+                <h2>  @content.GetPropertyValue("listName")</h2>
+
+                <table class="part_table">
+                    <thead>
+                        <tr>
+                            <th><span>PARTNERS</span></th>
+                            <th><span>CATEGORY</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Link1 != null)
+                        {
+                            foreach (var item in Link1.Zip(Link2, (a, b) => new { A = a, B = b }))
+                            {
+
+                                <tr>
+                                    <td><a href="@item.A.Link">@item.A.Caption</a></td>
+                                    <td><a href="@item.B.Link">@item.B.Caption</a></td>
+                                </tr>
+                            }
+                        }
+
+
+
+
+
+                    </tbody>
+
+                </table>
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

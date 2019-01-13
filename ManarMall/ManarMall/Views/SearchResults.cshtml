@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
+    var page1 = UmbracoContext.Current.PageId;
+
+    IPublishedContent content1 = umbracoHelper.TypedContent(page1);
+}
+
+<div class="container" style="padding-top:250px;">
+    <div class="row">
+        <div class="col-sm-6">
+            <ul>
+                <li>@CurrentPage.bodyText</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

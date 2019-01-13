@@ -1,0 +1,155 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+                /**/
+
+                /**/
+
+                var langs = Umbraco.TypedContentAtRoot();
+                var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+                var umbracoPageId = 4649;
+                IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+                var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+                ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+                ImagePickerItem BrandImage2 = content.GetImagePickerItem("brandImage2");
+                ImagePickerItem BrandImage3 = content.GetImagePickerItem("brandImage3");
+                ImagePickerItem BrandImage4 = content.GetImagePickerItem("brandImage4");
+}
+
+
+<!-- header end -->
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main food_banner" style="background-image: url(@BrandImage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text ">LET<br>
+                  YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<section class="container-fluid  restrn_cafe">
+    <div class="container">
+
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="row ">
+                <div class="restaurants_info">
+                    <h2>
+
+                        @content.GetPropertyValue("description1Title")
+                    </h2>
+                    <p>
+                        @content.GetPropertyValue("description1")
+                    </p>
+                    <hr>
+
+                </div>
+
+                @if (BrandImage2.HasImage)
+                {
+                    <div class="restaurants_img" style="background: url(@BrandImage2.Image.Url)   center no-repeat; background-size: cover;"></div>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="row cafe_info">
+
+                <div class="cafe_info_heading">
+                    <hr class="heading_hr" align="center">
+                    <h2>
+
+                        @content.GetPropertyValue("description2Title")
+
+                    </h2>
+                    <hr class="heading_hr" align="center">
+                    <span class="downarrow"><svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#2b2b2b" /></svg></span>
+
+                </div>
+
+
+
+
+
+
+                @if (BrandImage3.HasImage)
+                {
+                    <div class="cafe_img" style="background: url(@BrandImage3.Image.Url)   center no-repeat; background-size: cover;"></div>
+                }
+
+                <div class="cafe_desc">
+                    <p>
+                        @content.GetPropertyValue("description2")
+
+
+                    </p>
+                    <hr class="footer_lines">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+</section>
+<section class="container-fluid dine">
+    <div class="container">
+        <div class="row">
+            <div class="dine_info">
+                <h2 class="dine_heading">
+                    @content.GetPropertyValue("description3Title")
+                </h2>
+                <p>
+                    @content.GetPropertyValue("description3")
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<section class="container-fluid court_speciality">
+    <div class="container">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="row ">
+                @if (BrandImage3.HasImage)
+                {
+                    <div class="tour_event_img" style="background: url(@BrandImage4.Image.Url)   center no-repeat; background-size: cover;"></div>
+                }
+
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="row ">
+                <div class="speciality_info">
+                    <h2>  @content.GetPropertyValue("description4Title")</h2>
+                    <hr>
+                    <p>
+                        @content.GetPropertyValue("description4")
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

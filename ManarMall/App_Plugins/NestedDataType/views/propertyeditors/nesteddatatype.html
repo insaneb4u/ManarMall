@@ -1,0 +1,45 @@
+﻿<div ng-controller="Umbraco.PropertyEditors.NestedDataTypeController" class="umb-editor umb-nesteddatatype">
+    <div ui-sortable="sortableOptions" ng-model="value">
+        <div class="control-group" ng-repeat="item in value" ng-init="expand=!hasValue($index)">
+
+            <ng-form name="keyvalueForm">
+                <div class="property-list">
+                    <i class="icon icon-navigation handle"></i>
+
+                    <i class="pull-right icon icon icon-delete red" ng-show="value.length > model.config.min" ng-click="remove($index)"></i>
+
+                    <a prevent-default href="" ng-click="expand=!expand" ng-show="!expand">
+                        <span ng-repeat="property in item | filter:{showsummary: true}">
+                            <span class="property-list-summary">
+                                <span ng-bind="property.label" class="property-list-label"></span>:
+                                <span ng-show="!property.text" ng-bind="property.value" class="property-list-value"></span><span ng-show="property.text" ng-bind="property.text" class="property-list-value"></span></span><span ng-show="!$last">, </span>
+                        </span>
+
+                        <i class="icon icon-navigation-down pull-right"></i>
+                    </a>
+                    <a prevent-default href="" ng-click="!hasValue($index) || (expand=!expand)" ng-disabled="!hasValue($index)" ng-show="expand">
+                        Edit  &quot;<span ng-show="hasValue($index)" ng-repeat="property in item | filter:{showsummary: true}">
+                            <span ng-bind="property.label" class="property-list-label"></span>:
+                            <span ng-show="!property.text" ng-bind="property.value" class="property-list-value"></span><span ng-show="property.text" ng-bind="property.text" class="property-list-value"></span><span ng-show="!$last">, </span>
+                        </span><span ng-show="!hasValue($index)">Add New Item</span>&quot;
+                        <i class="icon icon-navigation-up pull-right"></i>
+                    </a>
+                </div>
+
+                <div class="property-detail" ng-show="expand">
+                    <umb-property property="property" ng-repeat="property in item">
+                        <umb-editor model="property"></umb-editor>
+                    </umb-property>
+
+                    <div class="control-group">
+                        <a class="btn" ng-click="!hasValue($index) || (expand=!expand)" ng-disabled="!hasValue($index)">Close</a>
+                    </div>
+                </div>
+
+            </ng-form>
+        </div>
+    </div>
+    <div class="control-group">
+        <i ng-show="model.config.max <= 0 || value.length < model.config.max" ng-click="add()" class="icon icon-add blue"></i>
+    </div>
+</div>

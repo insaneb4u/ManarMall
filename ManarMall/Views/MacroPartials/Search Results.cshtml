@@ -1,0 +1,85 @@
+﻿@using Examine.LuceneEngine.SearchCriteria;
+@using System;
+@using System.Linq;
+@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+    string searchQuery = Request["query"];
+    if (String.IsNullOrWhiteSpace(searchQuery))
+    {
+        searchQuery = "";
+    }
+
+    var searcher = ExamineManager.Instance;
+    var searchCriteria = searcher.CreateSearchCriteria();
+
+    var query = searchCriteria.GroupedOr(new[] { "description1", "description2", "description3", "description4" , "description5" , "brandImage1Text" , "brandImage2Text" , "eventDescription1" , "eventDescription2" , "brandImage2Description" , "brandImage3Description" , "brandImage4Description" , "brandImage5Description" , "brandImage6Description" , "brandImage7Description" }, searchQuery).Compile();
+
+    var searchResults = searcher.Search(query).Where(r => r["__IndexType"] == "content").ToList();
+
+}
+<style>
+    li{
+        padding-top:5px;
+   
+    }
+</style>
+
+@if (searchResults.Any())
+{
+
+<ul>
+    @foreach (var results in searchResults)
+    {
+        var node = Umbraco.TypedContent(results.Id);
+        var pathIds = results["__Path"].Split(',');
+
+        var path = Umbraco.TypedContent(pathIds).Where(p => p != null).Select(p => new { p.Name }).ToList();
+
+        if (node != null)
+        {
+           
+
+            <li><a href="@node.Name" title="">@node.Name</a></li>
+            <li>@node.GetPropertyValue("description1")</li>
+            <li>@node.GetPropertyValue("description2")</li>
+            <li>@node.GetPropertyValue("description3")</li>
+            <li>@node.GetPropertyValue("description4")</li>
+            <li>@node.GetPropertyValue("description5")</li>
+            <li>@node.GetPropertyValue("brandImage1Text")</li>
+            <li>@node.GetPropertyValue("brandImage2Text")</li>
+            <li>@node.GetPropertyValue("eventDescription1")</li>
+            <li>@node.GetPropertyValue("eventDescription2")</li>
+            <li>@node.GetPropertyValue("brandImage2Description")</li>
+            <li>@node.GetPropertyValue("brandImage3Description")</li>
+            <li>@node.GetPropertyValue("brandImage4Description")</li>
+            <li>@node.GetPropertyValue("brandImage5Description")</li>
+            <li>@node.GetPropertyValue("brandImage6Description")</li>
+            <li>@node.GetPropertyValue("brandImage7Description")</li>
+
+        }
+
+    }
+
+</ul>
+
+
+
+}
+else
+{
+
+    <p>
+       
+
+        @if (!String.IsNullOrWhiteSpace(searchQuery))
+        {
+            <text>'No results found for:@searchQuery'</text>
+        }
+
+    </p>
+
+
+}
+
+
+

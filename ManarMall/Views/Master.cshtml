@@ -1,0 +1,1064 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 1090;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+
+    var umbracoHelper1 = new UmbracoHelper(UmbracoContext.Current);
+
+    var page1 = UmbracoContext.Current.PageId;
+    Session["data"] = page1;
+    Session["data2"] = CurrentPage.UrlName;
+
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Manar Mall</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="~/css/settings.css" media="screen" />
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="~/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/slick-theme.css" />
+    <link rel="stylesheet" href="~/css/leaflet.css" />
+    <style type="text/css">
+        /* CSS FOR DEMO ONLY */
+
+        .movie_carasual .owl-dots {
+            width: 10px;
+            text-align: center;
+            height: auto;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 30px;
+        }
+
+        .movie_carasual .owl-dot {
+            width: 8px;
+        }
+
+            .movie_carasual .owl-dot span {
+                display: inline-block;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                width: 8px;
+                height: 5px;
+                margin-left: 2px;
+                margin-right: 2px;
+                background: url(~/img/nav_dot.png) no-repeat;
+                background-position: center;
+                background-size: contain;
+                border: none;
+            }
+
+            .movie_carasual .owl-dot.active span,
+            .movie_carasual .owl-controls.clickable .owl-dot:hover span {
+                background: url(~/img/nav_dot.png);
+                width: 8px;
+                height: 8px;
+                background-position: center;
+                background-size: contain;
+            }
+    </style>
+
+</head>
+<body>
+
+
+
+
+    @{ Html.RenderAction("RenderHeaderContent", "SharedLayouts"); }
+
+    @RenderBody()
+
+    @{ Html.RenderAction("RenderFooterContent", "SharedLayouts"); }
+
+
+
+
+
+
+
+
+
+    <!-- start scrollUp  -->
+    <div id="toTop">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 284.929 284.929"><path d="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665.953-6.567 2.856L2.856 195.285C.95 197.191 0 199.378 0 201.853c0 2.474.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854s4.664-.951 6.567-2.854l112.204-112.202 112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848 2.478 0 4.668-.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566.001-2.476-.944-4.666-2.846-6.569z" fill="#FFF" /></svg>
+    </div>
+    </div>
+    <!-- all js here -->
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/isotope.pkgd.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.meanmenu.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/classie.js"></script>
+    <script src="~/js/jquery.matchHeight-min.js"></script>
+    <script src="~/js/jquery.nice-select.js"></script>
+    <!--Slider -->
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="~/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/js/custome_js.js"></script>
+
+    <script type="text/javascript" src="~/js/slick.min.js"></script>
+    <!-- popup -->
+    <script src="~/js/classie2.js"></script>
+    <!-- popup -->
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Declare Carousel jquery object
+            var owl = $('.movie_carasual');
+            // Carousel initialization
+            owl.owlCarousel({
+                loop: true,
+                margin: 0,
+                navSpeed: 0,
+                nav: false,
+                autoplay: true,
+                rewind: true,
+                singleItem: true,
+                items: 1,
+                rtl: false,
+                dots: true,
+                mouseDrag: false,
+                touchDrag: false,
+                navigation: false,
+                animateIn: 'slideInUp',
+                animateOut: 'slideOutUp',
+            });
+            // add animate.css class(es) to the elements to be animated
+            function setAnimation(_elem, _InOut) {
+
+                var animationEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                _elem.each(function () {
+                    var $elem = $(this);
+                    var $animationType = 'animated ' + $elem.data('animation-' + _InOut);
+                    $elem.addClass($animationType).one(animationEndEvent, function () {
+                        $elem.removeClass($animationType);
+                    });
+                });
+            }
+            owl.on('change.owl.carousel', function (event) {
+                var $currentItem = $('.owl-item', owl).eq(event.item.index);
+                var $elemsToanim = $currentItem.find("[data-animation-out]");
+                setAnimation($elemsToanim, 'slideOutUp');
+            });
+
+            var round = 0;
+            owl.on('changed.owl.carousel', function (event) {
+                var $currentItem = $('.owl-item', owl).eq(event.item.index);
+                var $elemsToanim = $currentItem.find("[data-animation-in]");
+                setAnimation($elemsToanim, 'slideInUp');
+            })
+            owl.on('translated.owl.carousel', function (event) {
+                console.log(event.item.index, event.page.count);
+                if (event.item.index == (event.page.count - 1)) {
+                    if (round < 1) {
+                        round++
+                        console.log(round);
+                    } else {
+                        owl.trigger('stop.owl.autoplay');
+                        var owlData = owl.data('owl.carousel');
+                        owlData.settings.autoplay = false;
+                        owlData.options.autoplay = false;
+                        owl.trigger('refresh.owl.carousel');
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        var vid = document.getElementById("myVideo");
+
+        var ctn = 1;
+        $(window).on('scroll', function () {
+            if (checkVisible($('.info_div'))) {
+                if (ctn == 1) {
+                    vid.play();
+
+                    vid.loop = false;
+                    // $(window).off('scroll');
+                }
+                ctn = ctn + 1;
+
+            }
+
+
+        });
+        function checkVisible(elm, eval) {
+            eval = eval || "object visible";
+            var viewportHeight = $(window).height(), // Viewport Height
+                scrolltop = $(window).scrollTop(), // Scroll Top
+                y = $(elm).offset().top,
+                elementHeight = $(elm).height();
+
+            if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
+            if (eval == "above") return ((y < (viewportHeight + scrolltop)));
+        }
+    </script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#slick-images').on('init', function (e, slick) {
+                var $firstAnimatingElements = $('div.hero-slide:first-child').find('[data-animation]');
+                doAnimations($firstAnimatingElements);
+            });
+            $('#slick-images').on('beforeChange', function (e, slick, currentSlide, nextSlide) {
+                var $animatingElements = $('div.img_contr_parnt[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
+                doAnimations($animatingElements);
+            });
+            $('#slick-images').slick({
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                arrows: false,
+                draggable: false,
+                autoplaySpeed: 10000,
+                speed: 600,
+                vertical: true,
+            });
+            function doAnimations(elements) {
+                var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                elements.each(function () {
+                    var $this = $(this);
+                    var $animationDelay = $this.data('delay');
+                    var $animationType = 'animated ' + $this.data('animation');
+                    $this.css({
+                        'animation-delay': $animationDelay,
+                        '-webkit-animation-delay': $animationDelay
+                    });
+                    $this.addClass($animationType).one(animationEndEvents, function () {
+                        $this.removeClass($animationType);
+                    });
+                });
+            }
+        });
+    </script>
+
+
+    @*entertain*@
+
+    <script type="text/javascript">
+        //owl2row plugin
+        ; (function ($, window, document, undefined) {
+            Owl2row = function (scope) {
+                this.owl = scope;
+                this.owl.options = $.extend({}, Owl2row.Defaults, this.owl.options);
+                //link callback events with owl carousel here
+                this.handlers = {
+                    'initialize.owl.carousel': $.proxy(function (e) {
+                        if (this.owl.settings.owl2row) {
+                            this.build2row(this);
+                        }
+                    }, this)
+                };
+                this.owl.$element.on(this.handlers);
+            };
+            Owl2row.Defaults = {
+                owl2row: false,
+                owl2rowTarget: 'item',
+                owl2rowContainer: 'owl2row-item',
+                owl2rowDirection: 'utd' // ltr
+            };
+            //mehtods:
+            Owl2row.prototype.build2row = function (thisScope) {
+                var carousel = $(thisScope.owl.$element);
+                var carouselItems = carousel.find('.' + thisScope.owl.options.owl2rowTarget);
+                var aEvenElements = [];
+                var aOddElements = [];
+                $.each(carouselItems, function (index, item) {
+                    if (index % 2 === 0) {
+                        aEvenElements.push(item);
+                    } else {
+                        aOddElements.push(item);
+                    }
+                });
+                carousel.empty();
+                switch (thisScope.owl.options.owl2rowDirection) {
+                    case 'ltr':
+                        thisScope.leftToright(thisScope, carousel, carouselItems);
+                        break;
+                    default:
+                        thisScope.upTodown(thisScope, aEvenElements, aOddElements, carousel);
+                }
+            };
+            Owl2row.prototype.leftToright = function (thisScope, carousel, carouselItems) {
+                var o2wContainerClass = thisScope.owl.options.owl2rowContainer;
+                var owlMargin = thisScope.owl.options.margin;
+                var carouselItemsLength = carouselItems.length;
+                var firsArr = [];
+                var secondArr = [];
+                //console.log(carouselItemsLength);
+                if (carouselItemsLength % 2 === 1) {
+                    carouselItemsLength = ((carouselItemsLength - 1) / 2) + 1;
+                } else {
+                    carouselItemsLength = carouselItemsLength / 2;
+                }
+                //console.log(carouselItemsLength);
+                $.each(carouselItems, function (index, item) {
+                    if (index < carouselItemsLength) {
+                        firsArr.push(item);
+                    } else {
+                        secondArr.push(item);
+                    }
+                });
+                $.each(firsArr, function (index, item) {
+                    var rowContainer = $('<div class="' + o2wContainerClass + '"/>');
+                    var firstRowElement = firsArr[index];
+                    firstRowElement.style.marginBottom = owlMargin + 'px';
+                    rowContainer
+                        .append(firstRowElement)
+                        .append(secondArr[index]);
+                    carousel.append(rowContainer);
+                });
+            };
+            Owl2row.prototype.upTodown = function (thisScope, aEvenElements, aOddElements, carousel) {
+                var o2wContainerClass = thisScope.owl.options.owl2rowContainer;
+                var owlMargin = thisScope.owl.options.margin;
+                $.each(aEvenElements, function (index, item) {
+                    var rowContainer = $('<div class="' + o2wContainerClass + '"/>');
+                    var evenElement = aEvenElements[index];
+                    evenElement.style.marginBottom = owlMargin + 'px';
+                    rowContainer
+                        .append(evenElement)
+                        .append(aOddElements[index]);
+                    carousel.append(rowContainer);
+                });
+            };
+            /**
+            * Destroys the plugin.
+            */
+            Owl2row.prototype.destroy = function () {
+                var handler, property;
+                for (handler in this.handlers) {
+                    this.owl.dom.$el.off(handler, this.handlers[handler]);
+                }
+                for (property in Object.getOwnPropertyNames(this)) {
+                    typeof this[property] !== 'function' && (this[property] = null);
+                }
+            };
+            $.fn.owlCarousel.Constructor.Plugins['owl2row'] = Owl2row;
+        })(window.Zepto || window.jQuery, window, document);
+        //end of owl2row plugin
+        //init carousel
+        $(".movie_list").owlCarousel({
+            loop: true,
+            autoplay: true,
+            owl2row: true,
+            nav: true,
+            items: 4,
+            margin: 30,
+            navText: ["&#x3c; Prev", "Next &#x3e;"],
+            responsiveClass: true,
+            responsive: {
+
+                0: {
+                    items: 2
+                },
+                480: {
+                    items: 3
+                },
+
+                560: {
+                    items: 3
+                },
+
+
+                768: {
+                    items: 4
+                }
+
+
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(".disable-owl-swipe").on("drop mousedown", function (e) {
+            // Prevent carousel swipe
+            e.preventDefault();
+        })
+    </script>
+
+
+    @*end*@
+
+
+
+    @*offers*@
+
+    <script src="~/js/salvattore.min.js"></script>
+    <script src="~/js/jquery.nice-select.js"></script>
+    <script type="text/javascript">
+        /* $(document).ready(function () {
+
+             $(".category_select").change(function () {
+
+                 $(this).find("option:selected").each(function () {
+                     var optionValue = $(this).attr("value");
+                     if (optionValue) {
+                         $(".evt_grid").not("." + optionValue).hide();
+                         $("." + optionValue).fadeIn(600);
+                         $("." + optionValue).show();
+
+                     } else {
+                         $(".evt_grid").fadeOut(600);
+                         $(".evt_grid").hide();
+                     }
+                 });
+             }).change();
+         });*/
+    </script>
+
+
+
+
+    @*end*@
+
+
+
+
+    @*about us*@
+
+    <script src="~/js/jquery.nice-select.js"></script>
+    <script type="text/javascript" src="~/js/slick.min.js"></script>
+    <script type="text/javascript">
+        $slideshow = $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: false,
+            draggable: false,
+            swipeToSlide: false,
+            touchMove: false,
+            asNavFor: '.slider-nav, .slider-for'
+        });
+        $('.nt_btn').click(function () {
+            $slideshow.slick('slickNext');
+        });
+
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            centerMode: false,
+            focusOnSelect: true,
+            autoplay: false,
+            arrows: false,
+
+        });
+
+
+
+
+    </script>
+    <script type="text/javascript">
+        $('.zoom_btn').click(function (e) {
+            $('#myDiv').toggleClass('fullscreen');
+            $('.parking_info').toggleClass('manage_info');
+        });
+    </script>
+
+
+
+    @*end*@
+
+
+
+
+    @*contactus*@
+    <script src="js/salvattore.min.js"></script>
+    <script src="js/jquery.nice-select.js"></script>
+    <script type="text/javascript">
+
+
+
+        $('#nxt_btn').hide();
+        $('.required').keyup(function () {
+            var empty_flds = 0;
+            $(".required").each(function () {
+                if (!$.trim($(this).val())) {
+                    empty_flds++;
+                }
+            });
+            if (empty_flds) { $('#nxt_btn').hide(); $("#feed_form").hide(); }
+            else { $('#nxt_btn').show(); }
+
+
+        });
+
+
+        $("#nxt_btn").click(function () {
+
+            $("#feed_form").show();
+            $('html, body').animate({
+                scrollTop: $("#feed_form").offset().top
+            }, 400);
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form ...
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+            // ... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="25" ><path d="M88.6 121.3c.8.8 1.8 1.2 2.9 1.2s2.1-.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8 0l-54 53.9c-1.6 1.6-1.6 4.2 0 5.8l54 53.9z" fill="#464646"/></svg>';
+
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                //document.getElementById("nextBtn").innerHTML = "Submit";
+
+            } else {
+                document.getElementById("nextBtn").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="25"><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z" fill="#464646"/></svg>';
+            }
+            // ... and run a function that displays the correct step indicator:
+            fixStepIndicator(n)
+        };
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("tab");
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+            // if you have reached the end of the form... :
+            if (currentTab < x.length) { var mtb = currentTab + 1; }
+
+            document.getElementById("curr_tb").innerHTML = mtb;
+
+
+            if (currentTab >= x.length) {
+                //...the form gets submitted:
+                document.getElementById("regForm").submit();
+                return false;
+            }
+            // Otherwise, display the correct tab:
+            showTab(currentTab);
+        };
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    // and set the current valid status to false:
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName("step")[currentTab].className += " finish";
+            }
+            return valid; // return the valid status
+        };
+
+        /*hide and show*/
+
+
+        /*hide and show*/
+    </script>
+
+
+
+
+    @*end*@
+
+
+
+    @*shopdetails*@
+    <script>
+        $('.sp_interior_slider').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: true,
+            autoHeight: true,
+            items: 1,
+            navText: ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.494 31.494" width="19" ><path d="M10.273 5.009a1.112 1.112 0 0 1 1.587 0 1.12 1.12 0 0 1 0 1.571l-8.047 8.047h26.554c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H3.813l8.047 8.032c.429.444.429 1.159 0 1.587a1.112 1.112 0 0 1-1.587 0L.321 16.532a1.12 1.12 0 0 1 0-1.571l9.952-9.952z" fill="#FFF"/></svg>', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.49 31.49" width="19" ><path d="M21.205 5.007a1.112 1.112 0 0 0-1.587 0 1.12 1.12 0 0 0 0 1.571l8.047 8.047H1.111A1.106 1.106 0 0 0 0 15.737c0 .619.492 1.127 1.111 1.127h26.554l-8.047 8.032c-.429.444-.429 1.159 0 1.587a1.112 1.112 0 0 0 1.587 0l9.952-9.952a1.093 1.093 0 0 0 0-1.571l-9.952-9.953z" fill="#FFF"/></svg>']
+        });
+
+
+
+        $(function () {
+            var owl = $('.sp_custm_slider');
+            owl.owlCarousel({
+                autoplay: 2000,
+                items: 1,
+                loop: true,
+                onInitialized: counter,
+                onTranslated: counter
+            });
+
+            function counter(event) {
+                var element = event.target;
+                var slds = event.item.count;
+                var sld = event.item.index;
+                if (sld > slds) {
+                    sld = sld - slds
+                }
+
+                if (sld < slds) {
+                    sld1 = sld + 1;
+
+                }
+                else { sld1 = slds - 1; }
+
+
+                if (sld < 9) {
+                    sld = '0' + sld;
+                }
+                if (slds < 9) { slds = '0' + slds; }
+
+                if (sld1 < 9) { sld1 = '0' + sld1; }
+
+                $('#counter2').html("<span class='cntr_no animated   slideInDown   '>" + sld + "" + "</span> <hr> <span class='cntr_no animated   slideInUp '>" + sld1 + "</span>")
+            }
+
+
+        });
+        /*slider counter*/
+    </script>
+
+
+
+    @*end*@
+
+
+
+    @*storelocator*@
+    <script type="text/javascript">
+        $slideshow = $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: false,
+            asNavFor: '.slider-nav, .slider-for'
+        });
+        $('.nt_btn').click(function () {
+            $slideshow.slick('slickNext');
+        });
+
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            centerMode: false,
+            focusOnSelect: true,
+            autoplay: false,
+            arrows: false,
+
+        });
+
+
+
+
+    </script>
+
+    <script>
+
+        $(".tb_link").click(function () {
+            var value = 'url("' + $(this).data("value") + '")';
+
+            $("#div_img_cont").css("background-image", value);
+            // do other stuff.
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $('.zoom_btn').click(function (e) {
+            $('#myDiv').toggleClass('fullscreen');
+            $('.parking_info').toggleClass('manage_info');
+        });
+    </script>
+
+    <script>
+        var accItem = document.getElementsByClassName('accordionItem');
+        var accHD = document.getElementsByClassName('accordionItemHeading');
+        for (i = 0; i < accHD.length; i++) {
+            accHD[i].addEventListener('click', toggleItem, false);
+        }
+        function toggleItem() {
+            var itemClass = this.parentNode.className;
+            for (i = 0; i < accItem.length; i++) {
+                accItem[i].className = 'accordionItem close';
+            }
+            if (itemClass == 'accordionItem close') {
+                this.parentNode.className = 'accordionItem open';
+            }
+        }
+    </script>
+    <script>
+        (function ($) {
+            var allPanels = $(".accordion > dd").hide();
+
+            $(".accordion > dt > a").click(function () {
+                $(".accordion > dt > a").removeClass("activetitle");
+                $this = $(this);
+                $this.addClass("activetitle");
+
+                $target = $this.parent().next();
+
+                if (!$target.hasClass("active")) {
+                    $('.activetitle').focus();
+                    allPanels.removeClass("active").slideUp();
+                    $target.addClass("active").slideDown();
+                }
+
+                return false;
+            });
+        })(jQuery);
+
+    </script>
+    <script>
+
+        $('.tip_label').tooltip();
+
+    </script>
+
+
+
+    <!-- map -->
+    <script>
+        function myMap() {
+            var mapProp = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 5,
+                disableDefaultUI: true
+            };
+            var map = new google.maps.Map(document.getElementById("cp"), mapProp);
+            var mapProp2 = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 5,
+                disableDefaultUI: true
+            };
+            var map = new google.maps.Map(document.getElementById("bp"), mapProp2);
+            var mapProp3 = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 5,
+                disableDefaultUI: true
+            };
+            var map = new google.maps.Map(document.getElementById("sp"), mapProp3);
+            var marker = new google.maps.Marker({
+                position: map.getCenter(),
+                icon: 'img/location.png',
+                map: map
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkr4m8chQdLrP-bLqx6bR2zeX_q3QT3Xc&callback=myMap" async defer></script>
+    <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkr4m8chQdLrP-bLqx6bR2zeX_q3QT3Xc&callback=initMap" async defer></script> -->
+    <!-- map -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/js/imgViewer2.js"></script>
+
+    <script type="text/javascript" src="~/js/leaflet.js"></script>
+
+    <script type="text/javascript">
+        ; (function ($) {
+            $(document).ready(function () {
+                var $img = $("#image1").imgViewer2(
+                    {
+                        zoomMax: 10,
+                        onReady: function () {
+                            this.setZoom(4).panTo(0.6, 0.5);
+                        }
+                    }
+                );
+            });
+        })(jQuery);
+    </script>
+
+    <script>
+        $('.mob_btn_disp1').click(function () {
+            if (!$('.strl_left').hasClass('done')) {
+                $('.strl_left').addClass('done');
+                $('.strl_left').stop().animate({
+                    marginLeft: '-270px'
+                }, 500);
+            } else {
+                $('.strl_left').removeClass('done');
+                $('.strl_left').stop().animate({
+                    marginLeft: '0px'
+                }, 500);
+            }
+
+        });
+    </script>
+
+
+
+    @*end*@
+
+    <script type="text/javascript">
+        /*  $(document).ready(function () {
+
+              $(".category_select").change(function () {
+
+                  $(this).find("option:selected").each(function () {
+                      var optionValue = $(this).attr("value");
+                      if (optionValue) {
+                          $(".evt_grid").not("." + optionValue).hide();
+                          $("." + optionValue).fadeIn(600);
+                          $("." + optionValue).show();
+
+                      } else {
+                          $(".evt_grid").fadeOut(600);
+                          $(".evt_grid").hide();
+                      }
+                  });
+              }).change();
+          });*/
+    </script>
+
+
+
+
+    <script type="text/javascript">
+        /* $(document).ready(function () {
+             $(".category_select").change(function () {
+
+                 $(this).find("option:selected").each(function () {
+                     var optionValue = $(this).attr("value");
+                     if (optionValue) {
+                         $(".evt_grid").not("." + optionValue).hide();
+                         $("." + optionValue).fadeIn(600);
+                         $("." + optionValue).show();
+
+                     } else {
+                         $(".evt_grid").fadeOut(600);
+                         $(".evt_grid").hide();
+                     }
+                 });
+             }).change();
+         });*/
+    </script>
+    <script type="text/javascript">
+        $('.other-blog-slider').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                767: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+    </script>
+
+
+
+
+
+    <!--Search javascript -->
+    <script>
+
+
+        $("#btnload").on("click", function () {
+
+
+
+                var value = '@Request.RequestContext.HttpContext.Session["data"]';
+                var value2 = '@Request.RequestContext.HttpContext.Session["data2"]';
+
+                var data = value + "~" + value2;
+                   $.ajax({
+                        url: "@Url.Action("LoadSearchDatapramod", "NewsSettlerSurface")",
+                       type: "POST",
+                       data: { "send": "" + data + "" },
+                        dataType: "json",
+                       success: function (data) {
+
+                           console.log("this is some text");
+                       }
+
+
+                    });
+
+
+        });
+
+
+    </script>
+
+
+
+    <script>
+        $(document).click(function () { $('.searchresults2').hide(); });
+        $('#txtsearch').keyup(function () {
+            var searchField = $('#txtsearch').val();
+
+            var myExp = new RegExp(searchField, "i");
+
+
+            $.getJSON('/data.json', function (data) {
+                var output = '<ul class="searchresults">';
+                $.each(data, function (key, val) {
+                    if (val.name.search(myExp) != -1) {
+                        output += '<li>';
+                        output += '<a href="' + val.reknown + '"><span>' + val.bio + '</span>';
+                        output += ' <i> -(' + val.pagename + ')</i>';
+                        output += '</a></li>';
+                    }
+                });
+                output += '</ul>';
+                if (searchField != '') { $('#result2').html(output); }
+                else { $('#result2').html('<span style="color:#fbfbfb; margin-top:50px;">No result found</span>'); }
+
+            });
+        });
+        $('.searchresults2').hide();
+
+
+        $('#txtsearch2').keyup(function () {
+
+            var searchField = $('#txtsearch2').val();
+
+            var myExp = new RegExp(searchField, "i");
+
+            $.getJSON('/data.json', function (data) {
+                var output = '<ul class="searchresults2">';
+                $.each(data, function (key, val) {
+                    if (val.name.search(myExp) != -1) {
+                        console.log(val.bio);
+                        output += '<li>';
+                        output += '<a href="' + val.reknown + '"><span>' + val.bio + '</span>';
+                        output += ' <i> -(' + val.shortname + ')</i>';
+                        output += '</a></li>';
+                    }
+                });
+                output += '</ul>';
+                if (searchField != '') {
+
+                    $('#result3').html(output);
+                    $('.searchresults2').show();
+                }
+                else {
+                    $('#result3').html(); $('.searchresults2').hide();
+                }
+
+            });
+        });
+
+
+        $('#search3').keyup(function () {
+            var searchField = $('#search3').val();
+
+            var myExp = new RegExp(searchField, "i");
+
+            $.getJSON('data.json', function (data) {
+                var output = '<ul class="searchresults2">';
+                $.each(data, function (key, val) {
+                    if (val.name.search(myExp) != -1) {
+                        output += '<li>';
+                        output += '<a href="' + val.reknown + '"><span>' + val.bio + '</span>';
+                        output += ' <i> -(' + val.shortname + ')</i>';
+                        output += '</a></li>';
+                    }
+                });
+                output += '</ul>';
+                if (searchField != '') {
+                    $('.searchresults2').show();
+                    $('#result4').html(output);
+
+                }
+                else { $('#result4').html(); $('.searchresults2').hide(); }
+
+            });
+        });
+    </script>
+
+
+    <!--Search javascript -->
+
+    <script>
+
+        $(document).ready(function () {
+            $("#btnload").trigger("click");
+             $.ajax({
+                        url: "@Url.Action("LoadSearchData", "SearchPage")",
+                       type: "POST",
+
+                        dataType: "json",
+                       success: function (data) {
+
+                           console.log("this is some text");
+                       }
+
+
+                    });
+
+        });
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 4455;
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+
+    ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerList ShopLogo = content.GetImagePickerList("shopImage");
+
+}
+
+
+<!-- header end -->
+@{
+    if (BrandImage1.HasImage)
+    {
+        <section class="container-fluid slider-main shops_slider" style="background-image: url(@BrandImage1.Image.Url); ">
+            <div class="row">
+
+                <div class="slider-main-text text-center">
+
+                </div>
+            </div>
+        </section>
+    }
+
+}
+
+
+
+
+<section class="container-fluid brand_list">
+
+    <div class="container  ">
+        <div class="row">
+
+            <div class="food_shops_heading">
+                <h2>
+
+                    Brands
+
+                </h2>
+
+
+
+            </div>
+
+
+
+        </div>
+        @if (ShopLogo.HasItems)
+        {
+            <div class="row">
+                @foreach (ImagePickerItem item in ShopLogo.Items)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="@item.Link.Url">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="@item.Image.Url"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">@item.Title</li>
+                                            <li class="card_time">@item.Description</li>
+                                            <li class="card_location">@item.Link.Name</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                }
+
+                @*<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 brand_main_logo">
+                        <div class="logo_container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card_info_holder">
+                                        <div class="card_img"><img src="/img/clients/1.png"></div>
+                                        <ul class="shop_time_info">
+                                            <li class="card_heading">Shop Name</li>
+                                            <li class="card_time">Daily: 9am - 10pm</li>
+                                            <li class="card_location">second floor - shop no. 21</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <span></span>
+                    </div>*@
+
+
+
+
+
+
+
+            </div>
+        }
+
+    </div>
+</section>
+

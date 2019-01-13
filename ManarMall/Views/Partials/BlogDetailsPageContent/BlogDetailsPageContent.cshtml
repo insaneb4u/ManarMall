@@ -1,0 +1,447 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@using System;
+@using Skybrud.Social.Facebook;
+@using Skybrud.Social.OAuth;
+@using Skybrud.Social.Facebook.OAuth;
+
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = umbracoHelper.AssignedContentItem.Id;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var page1 = UmbracoContext.Current.PageId;
+    IPublishedContent content1 = umbracoHelper.TypedContent(page1);
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerItem brandimage2 = content.GetImagePickerItem("brandImage2");
+    ImagePickerItem brandimage3 = content.GetImagePickerItem("brandImage3");
+    ImagePickerItem brandimage4 = content.GetImagePickerItem("brandImage4");
+    ImagePickerItem brandimage5 = content.GetImagePickerItem("brandImage5");
+
+
+    var data = content.GetPropertyValue<JArray>("blogList");
+    var list = content.GetPropertyValue<string[]>("description2List");
+
+    /*Event Data*/
+    var umbracoPageId2 = 8978;
+
+    IPublishedContent content2 = umbracoHelper.TypedContent(umbracoPageId2);
+    ImagePickerItem eventimage = content2.GetImagePickerItem("brandImage1");
+    string img = eventimage.Image.Url;
+
+    /*End*/
+}
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid slider-main events_slider" style="background-image: url(@brandimage1.Image.Url);">
+        <div class="row">
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text">LET<br>
+                YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+ 
+
+<section class="container-fluid    blog_details">
+    <div class="container">
+
+
+        <div class="   blog_info_hold ">
+            <div class="row ">
+                <div class=" blog_bread_crumb  hidden-xs">
+                    <div class="col-lg-7 col-md-7 col-sm-7 ">
+                        <div class="row">
+                            <ul class="blog_detl_brd_left">
+
+                                <li><a href="">Trending</a></li>
+                                <li><a href="">Beauty & Fitness</a></li>
+                                <li><a href="">Siz-Pack Diet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 ">
+                        <div class="row">
+                            <ul class="blog_detl_brd_right">
+                                <li><a href="">Next</a></li>
+                                <li><a href="">Lorem Ipsum is simply dummy </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-8 blog-main-info">
+                    <div class="row">
+                        <h1 class="blog-main-heading">@content.GetPropertyValue("descriptionTitle1")</h1>
+                        <p>
+                            @content.GetPropertyValue("description1Text")
+                        </p>
+                        @if (brandimage2.HasImage)
+                        {
+                            <div class="blog-dt-img-contr">
+                                <img src="@brandimage2.Image.Url" class="img-responsive">
+                            </div>
+                        }
+
+                        <p>
+                            @content.GetPropertyValue("description2Text")
+                        </p>
+                        <div class="blod-dt-sp-info">
+                            <h2>@content.GetPropertyValue("descriptionTitle2")</h2>
+                            <table>
+
+                                @{ var i = 1;}
+                                @foreach (var newitem in list)
+                                {
+                                    var c = i++;
+                                <tr>
+                                    <td class="li-count-holder"><span>@c</span></td>
+                                    <td>
+                                        @newitem
+                                    </td>
+                                </tr>
+                                        }
+                                   
+
+                                </table>
+                        </div>
+                        @if (brandimage5.HasImage)
+	{
+                        <div class="blog-dt-img-contr2">
+                            <img src="@brandimage5.Image.Url" class="img-responsive">
+                        </div>
+	}   
+                        
+                        <p>
+                           @content.GetPropertyValue("description3")
+                        </p>
+                        <hr class="blog-cont-saperator">
+                        <div class="blog-dt-share-links">
+                            <div class="col-sm-6 col-xs-6 ">
+                                Share if you like!:
+
+                                <ul class="blogs_social_links">
+                                    <li><a href="@content.GetPropertyValue("facebookPageUrl")" class="fb" title="facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="19" viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z" /></svg></a></li>
+                                    <li>
+                                        <a href="@content.GetPropertyValue("twitterPageUrl")" class="tw" target="_blank" title="twitter">
+                                            <svg viewBox="0 -47 512.002 512" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M191.012 419.043c-22.14 0-44.93-1.793-67.856-5.387-40.379-6.336-81.254-27.457-92.82-33.781L0 363.289l32.844-10.8c35.902-11.805 57.742-19.13 84.777-30.598-27.07-13.11-47.933-36.692-57.976-67.176l-7.641-23.195 6.266.957A113.939 113.939 0 0 1 44 214.883c-12.934-19.645-19.781-43.649-18.324-64.219l1.437-20.246 12.121 4.695a113.316 113.316 0 0 1-10.98-30.777c-5.293-26.36-.863-54.363 12.476-78.852L51.29 6.102l14.12 16.96c44.66 53.649 101.227 85.473 168.363 94.79-2.742-18.903-.687-37.145 6.114-53.497 7.918-19.039 22.004-35.183 40.722-46.69 20.79-12.778 46-18.97 70.989-17.435 26.511 1.63 50.582 11.563 69.699 28.747 9.336-2.426 16.215-5.016 25.512-8.516 5.593-2.106 11.937-4.496 19.875-7.23l29.25-10.079-19.075 54.477a96.355 96.355 0 0 1 3.91-.254l31.235-1.414-18.461 25.23c-1.059 1.446-1.328 1.856-1.703 2.422-1.488 2.242-3.34 5.032-28.68 38.867-6.344 8.473-9.512 19.508-8.922 31.079 2.246 43.968-3.148 83.75-16.043 118.234-12.195 32.625-31.093 60.617-56.164 83.2-31.023 27.937-70.582 47.066-117.582 56.847-23.054 4.797-47.812 7.203-73.437 7.203zm0 0" /></svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 text-right">
+                                Next Artical  <a href="blog_details.html" class="next-blog-icon">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" viewBox="0 0 129 129"><path d="M40.4 121.3c-.8.8-1.8 1.2-2.9 1.2s-2.1-.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8 0l53.9 53.9c1.6 1.6 1.6 4.2 0 5.8l-53.9 53.9z" /></svg>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                    <div class="row">
+                        <div class="col-sm-10 pull-right">
+                            <div class="row">
+                                <div class="blog_evt_details mix1 ct1">
+                                    <a href="/eventdetails">
+                                        <div class="events_cont cap-bot">
+                                            <img src="@img" alt="">
+                                            <figcaption>
+                                                <ul>
+                                                    <li><h2>Event Name heading</h2></li>
+                                                    <li class="time">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.061 397.061" width="16"><g fill="#FFF"><path d="M86.204 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.611 2.611 0 0 0 117.551 0H86.204a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612z" /><path d="M367.804 47.02h-38.661v16.718c0 9.927-7.314 19.853-17.241 19.853h-30.824c-10.637-.754-19.099-9.216-19.853-19.853V47.02H135.837v16.718c-.754 10.637-9.216 19.099-19.853 19.853H85.159c-9.927 0-17.241-9.927-17.241-19.853V47.02H29.257C15.9 47.305 5.221 58.216 5.224 71.576v64.261h386.612V71.576c.004-13.36-10.675-24.271-24.032-24.556z" /><path d="M279.51 67.918h31.347a2.612 2.612 0 0 0 2.612-2.612V2.612A2.612 2.612 0 0 0 310.857 0H279.51a2.612 2.612 0 0 0-2.612 2.612v62.694a2.611 2.611 0 0 0 2.612 2.612zM159.347 291.527l-7.314 42.318 37.616-19.853 3.657-1.045 3.657 1.045 37.616 19.853-7.314-42.318a8.88 8.88 0 0 1 2.09-6.792l30.825-29.257-42.318-6.269a7.837 7.837 0 0 1-5.747-4.18l-18.808-38.139-18.808 38.139a7.837 7.837 0 0 1-5.747 4.18l-42.318 6.269 30.825 29.257a8.884 8.884 0 0 1 2.088 6.792z" /><path d="M5.224 373.551c.284 13.068 10.961 23.513 24.033 23.51h338.547c13.071.003 23.748-10.442 24.033-23.51V151.51H5.224v222.041zm97.176-125.91a7.313 7.313 0 0 1 6.269-5.224l53.812-8.359 24.033-48.588a7.837 7.837 0 0 1 13.584 0l24.033 48.588 53.812 8.359a7.313 7.313 0 0 1 6.269 5.224 7.315 7.315 0 0 1-2.09 7.837l-38.661 37.616 9.404 53.812a7.835 7.835 0 0 1-3.135 7.314 8.356 8.356 0 0 1-4.702 1.567 5.219 5.219 0 0 1-3.657-1.045l-48.065-25.078-48.065 25.078a7.315 7.315 0 0 1-8.359-.522 7.84 7.84 0 0 1-3.135-7.314l9.404-53.812-38.661-37.616a7.315 7.315 0 0 1-2.09-7.837z" /></g></svg>  <span>September 29 - October 31, 2018</span>
+                                                    </li>
+                                                    <li>
+                                                        <a href="" class="btn_call">Going</a>
+                                                        <a href="" class="btn_call">Intrested</a>
+                                                    </li>
+                                                </ul>
+                                            </figcaption>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                @if (brandimage3.HasImage)
+                                {
+
+                                    <div class="blog-evt-contr">
+                                        <img src="@brandimage3.Image.Url" class="img-responsive">
+                                    </div>
+                                }
+
+                                <style type="text/css">
+                                </style>
+                                @if (brandimage4.HasImage)
+	{
+                                <div class="blog_newsletter">
+                                    <img src="@brandimage4.Image.Url" class="img-responsive">
+                                    <div class="clearfix"></div>
+                                    <div class="newsletter_form">
+                                        <h3>Subscribe to our <span>newsletter</span></h3>
+                                        <div class="blog_cont_form">
+                                            <input type="text" name="" class="blog_news_form" id="txtEmail" placeholder="Enter Email" autocomplete="off">
+                                        </div>
+
+                                    </div>
+                                    <button type="button" id="btnsubmit" class="blog_news_button" name="">Subscribe</button>
+                                </div>
+	}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="news-details-bottom  eqheight">
+                    <div class="blog-comment-input">
+                        <input type="text" name="comment" placeholder="Add a Comment">
+                    </div>
+                    <div class="blog-top">
+                        <table>
+                            <tr>
+                                <td class="news-allreply">
+
+                                    <div class="review-user-img" style="background: url('img/imguser1.png')no-repeat center; background-size: cover;"></div>
+
+                                </td>
+                                <td>
+                                    <div class="blog-img-details">
+                                        <div class="blog-title">
+
+                                            <h3>jane smith</h3>
+
+
+                                        </div>
+                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, </p>
+                                        <a href="">Reply</a>
+                                    </div>
+
+                                    <div class="comment-reply">
+                                        <table>
+                                            <tr>
+                                                <td class="news-allreply">
+
+                                                    <div class="review-user-img" style="background: url('img/adult-beard-businessman-1138903@1X.png')no-repeat center; background-size: cover;"></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="blog-img-details">
+                                                        <div class="blog-title">
+
+                                                            <h3>Mandar Joshi</h3>
+
+
+                                                        </div>
+                                                        <p>
+                                                            <a href="">@@Hemanta S.</a> All the Lorem Ipsum generators on the
+                                                            Internet tend to repeat predefined chunks as necessary.
+                                                        </p>
+                                                        <a href="">Reply</a>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="news-allreply">
+
+                                    <div class="review-user-img" style="background: url('img/adult-attractive-beautiful-415829@1X.png')no-repeat center; background-size: cover;"></div>
+
+                                </td>
+                                <td>
+                                    <div class="blog-img-details">
+                                        <div class="blog-title">
+
+                                            <h3>Jennyh 8758.</h3>
+
+
+                                        </div>
+                                        <p>To generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always </p>
+                                        <a href="">Reply</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-sm-5">
+                <div class="feature-stories-holder eqheight">
+                    <div class="frt-str-heading">
+                        <h3>Featured Stories</h3>
+                    </div>
+
+                    <div class="fr-stories">
+                        <div class="story-img" style="background: url(@brandimage2.Image.Url);"></div>
+                        <div class="fr-str-desc">
+                            <div class="desc-contr">
+                                <h4>Lorem Ipsum</h4>
+                                <p> @content.GetPropertyValue("description1Text")</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="fr-stories">
+                        <div class="story-img" style="background: url(@brandimage5.Image.Url);"></div>
+                        <div class="fr-str-desc">
+                            <div class="desc-contr">
+                                <h4>Lorem Ipsum</h4>
+                                <p> @content.GetPropertyValue("description1Text")</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+           
+           
+
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container">
+
+        <div class="owl-carousel owl-theme other-blog-slider">
+            <div class="item">
+
+                <div class="other-blogs-list">
+                    <div class="otr-blg-img-contr">
+                        <div class="oth-blg-img" style="background-image: url(img/MM-Blog-Page-Image8-.png);">
+                            <div class="img-overlay"></div>
+                        </div>
+
+                    </div>
+                    <div class="otr-blg-desc">
+                        <div class="oth-blg-list-heading eqheight">
+                            <h3>Proper time to</h3>
+                            <p>eat fast food</p>
+                        </div>
+                        <div class="oth-blg-dt-time">
+                            <div class="blg-written-by">written by andrew ridgeley </div>
+                            <div class="blg-post-on">25:25  Mon, June, 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+
+                <div class="other-blogs-list">
+                    <div class="otr-blg-img-contr">
+                        <div class="oth-blg-img" style="background-image: url(img/MM-Blog-Page-Image9-.png);">
+                            <div class="img-overlay"></div>
+                        </div>
+
+                    </div>
+                    <div class="otr-blg-desc">
+                        <div class="oth-blg-list-heading eqheight">
+                            <h3>MAKING CORRECT</h3>
+                            <p>QUALIFLOWER</p>
+                        </div>
+                        <div class="oth-blg-dt-time">
+                            <div class="blg-written-by">written by andrew ridgeley </div>
+                            <div class="blg-post-on">25:25  Mon, June, 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+
+                <div class="other-blogs-list">
+                    <div class="otr-blg-img-contr">
+                        <div class="oth-blg-img" style="background-image: url(img/MM-Blog-Page-Image10-.png);">
+                            <div class="img-overlay"></div>
+                        </div>
+
+                    </div>
+                    <div class="otr-blg-desc">
+                        <div class="oth-blg-list-heading eqheight">
+                            <h3>Home made reciepe</h3>
+                            <p>Lorem Pure itpsum</p>
+                        </div>
+                        <div class="oth-blg-dt-time">
+                            <div class="blg-written-by">written by andrew ridgeley </div>
+                            <div class="blg-post-on">25:25  Mon, June, 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+
+                <div class="other-blogs-list">
+                    <div class="otr-blg-img-contr">
+                        <div class="oth-blg-img" style="background-image: url(img/MM-Blog-Page-Image11-.png);">
+                            <div class="img-overlay"></div>
+                        </div>
+
+                    </div>
+                    <div class="otr-blg-desc">
+                        <div class="oth-blg-list-heading eqheight">
+                            <h3>fress recipie</h3>
+                            <p>for gymers</p>
+                        </div>
+                        <div class="oth-blg-dt-time">
+                            <div class="blg-written-by">written by andrew ridgeley </div>
+                            <div class="blg-post-on">25:25  Mon, June, 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    $("#btnsubmit").click(function () {
+
+        var data = $("#txtEmail").val();
+          $.ajax({
+                        url: "@Url.Action("SubmitData", "BlogDetailsPageContent")",
+                       type: "POST",
+                       data: { "send": "" + data + "" },
+              dataType: "json",
+              success: function (data) { alert(data)}
+                    });
+    });
+</script>

@@ -1,0 +1,5014 @@
+/* Normal desktop :1200. */
+@media (min-width:1800px) {
+  .fun_cont_bg {
+    width: 65%
+  }
+
+}
+
+@media (min-width:1500px) {
+  .fun_cont_bg {
+    width: 68%
+  }
+
+  .ent_fun_info {
+    padding: 114px 0px 190px 114px;
+  }
+
+}
+
+@media (min-width:1200px) and (max-width:1500px) {
+  .ent_fun_info {
+    text-align: right;
+    padding: 114px 0px 140px 114px;
+  }
+
+  .waraper {
+    padding: 0 50px;
+  }
+
+  .single-slider {
+    height: 500px;
+  }
+
+  .waraper .header-sticky.sticky {
+    padding: 0px 50px;
+  }
+
+  .ptb-255 {
+    padding: 165px 0;
+  }
+
+}
+
+@media (min-width:1199px) and (max-width:1270px) {
+  .container-fluid {
+    padding-right: 10px;
+    padding-left: 10px
+  }
+
+  .ent_details,
+  .fun_ent_place,
+  .entr_details {
+    padding-right: 15px;
+  }
+.cont_feedback_form {    padding: 145px 100px 115px 14.3%;}
+.cont_rate{margin: 30px 1% 0px 30px; }
+
+}
+
+/* Normal desktop :992px. */
+@media (min-width:992px) and (max-width:1200px) {
+  .sp_dt_top{padding: 70px 0px 0px 80px; }
+  .welcom_info .col-md-4 {
+    height: 550px;
+  }
+
+  .welcom_info {
+    background-size: contain;
+    height: 550px;
+  }
+
+  .info_div {
+    position: absolute;
+    bottom: 13%;
+    font-family: Helvetica;
+  }
+
+  .blog-right-sidebar-bottom a {
+    padding: 8px 11px;
+  }
+
+  .bg-img {
+    height: inherit;
+    padding: 300px 0;
+  }
+
+  .price-btn .button {
+    padding: 13px 30px;
+  }
+
+  .container-fluid .blog-meta > span {
+    padding-right: 9px;
+  }
+
+  .container-fluid .blog-meta i {
+    padding-right: 5px;
+  }
+
+  .waraper {
+    padding: 0 35px;
+  }
+
+  .waraper .header-sticky.sticky {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  .single-slider {
+    height: 600px;
+  }
+
+  .slider-active.owl-theme .owl-controls .owl-nav div.owl-prev {
+    right: 90%;
+  }
+
+  .menu-style-toggle.main-menu ul li {
+    margin-left: 25px;
+  }
+
+  .team-icon > a {
+    margin: 0 2px;
+  }
+
+  .about-monika {
+    margin-bottom: 50px;
+  }
+
+  .ptb-255 {
+    padding: 100px 0;
+  }
+
+  .main-menu ul li {
+    margin-left: 22px;
+  }
+
+  .ptb-250 {
+    padding: 160px 0;
+  }
+
+  .blog-active.owl-theme .owl-controls .owl-nav div {
+    right: 0px;
+  }
+
+  .blog-active.owl-theme .owl-controls .owl-nav div.owl-prev {
+    left: 0px;
+  }
+
+  .blog-middel {
+    margin-left: 3px;
+  }
+
+  .blog-meta {
+    padding: 10px 5px;
+  }
+
+  .blog-style-7 .blog-middel {
+    display: none;
+  }
+
+  .slider-text-9 h3 {
+    font-size: 32px;
+  }
+
+  .main-menu-10 ul li a {
+    padding: 10px 50px;
+  }
+
+  .blog-full-4 .blog-middel {
+    display: none;
+  }
+
+  .blog-full-4 .blog-info-top {
+    padding: 14px;
+  }
+
+  .main-menu-10 {
+    padding-top: 90px;
+  }
+
+  .main-menu ul li ul {
+    left: -50px;
+  }
+
+  .slider-text > p {
+    width: 74%;
+  }
+
+  .slider-img {
+    width: 50%;
+  }
+
+  .breadcrumbs-area.pt-150 {
+    padding-top: 150px;
+  }
+
+  .slider-text {
+    width: 50%;
+  }
+
+  h3.heading-sub-title {
+    font-size: 24px;
+  }
+
+  .slider-title-4 > p {
+    width: 58%;
+  }
+
+  .single-slider-4 {
+    height: inherit;
+    height: 600px;
+  }
+
+  .slider-bg-6 {
+    height: 600px;
+  }
+
+  .slider-text-5 > p {
+    width: 82%;
+  }
+
+  .slider-text-8 > p {
+    width: 82%;
+  }
+
+  .slider-bg-9 {
+    height: 520px;
+  }
+
+  .modal-dialog {
+    top: -350px;
+  }
+
+  .portfolio-title-2 {
+    padding: 20px 5px;
+  }
+
+  .title-color-2 h3 {
+    font-size: 16px;
+  }
+
+  .try-kenburne {
+    height: inherit;
+    padding: 296px 0;
+  }
+
+  #player {
+    height: 377px !important;
+  }
+
+  .height-social {
+    height: 130px !important
+  }
+
+  .height-social strong {
+    margin-top: 0px;
+  }
+
+  .social_cont >.height-social {
+    margin-top: -20px;
+  }
+
+  .hide_bx {
+    display: none
+  }
+
+  .top_br_links {
+    padding-left: 15px
+  }
+
+  .top_br_linksright {
+    padding-right: 15px;
+  }
+
+  .slider-main-text h1 {
+    font-size: 65px;
+  }
+
+  .ent_fun_info {
+    padding: 78px 0px 50px 83px;
+  }
+
+  .container-fluid.slider-main {
+    height: 550px;
+  }
+
+  .container-fluid.slider-main.event_slider,
+  .container-fluid.slider-main.food_banner {
+    height: 550px;
+  }
+ .container-fluid.slider-main.contact_banner {
+    height: 360px;
+}
+
+  .sp_about_info {
+    padding: 80px 65px 80px 65px;
+  }
+
+  .abt_info_contr {
+    padding: 100px 84px 0px;
+  }
+
+  .abt_info_contr .tab-content {
+    padding: 65px 37px;
+  }
+
+  .open_hr {
+    padding: 19px 5px 19px 20px;
+    letter-spacing: 3px;
+  }
+
+  .ab_open_info .opening_time {
+    margin: 0px 40px 130px 40px;
+  }
+
+  .ab_sr_slider2 {
+    padding: 90px 60px 100px 60px;
+  }
+
+}
+
+@media (max-width:1023px) {
+  .restaurants_info {
+    padding: 40px 12.3% 68px 75px;
+  }
+
+  .dine_info {
+    width: 75%
+  }
+
+  .food_seciality {
+    height: 463px;
+    margin-bottom: 92px;
+  }
+
+  .event_info {
+    width: 90%
+  }
+
+  .venu_time {
+    width: 80%
+  }
+
+  .main_mv_img {
+    display: block;
+    height: 420px;
+  }
+
+  .movie_list .item .col-sm-12 {
+    height: 194px
+  }
+
+  .fun_ent_place {
+    height: auto;
+  }
+
+  .ent_fun_info {
+    padding: 54px 0px 50px 27px;
+  }
+
+  .colimg {
+    height: 310px;
+  }
+
+  .mv_slider_cont {
+    width: 70%
+  }
+
+  .fun_cont_bg {
+    width: 62%
+  }
+
+  .shopping_category_info {
+    padding: 50px 22% 60px 10%
+  }
+
+  .sh_caption {
+    padding: 20px;
+  }
+
+  .appr_acces {
+    font-size: 15px;
+    bottom: 10px;
+    left: 20px;
+  }
+
+  .sp_about_info {
+    padding: 50px 30px 80px 47px;
+  }
+
+  .sp_dt_top {
+    padding: 50px 0px 0px 50px;
+  }
+
+  .sh_dt_bg,
+  .sh_dt_bg_cntr {
+    height: 485px;
+  }
+.sh_details_contr {
+    margin-top: -485px;
+}
+  .abt_info_contr {
+    padding: 100px 70px 0px;
+  }
+
+.abt_info_contr{padding: 100px 70px 0px}
+}
+
+/* Tablet desktop :768px. */
+@media (min-width:768px) and (max-width:991px) {
+  .restrn_cafe p,
+  .dine_info p,
+  .speciality_info p,
+  .event_info p,
+  .food_spec_info p,
+  .info_div p,
+  .sp_about_info p,
+  .sp_tagline p,
+  .sp_open_hr h3,
+  .sp_open_hr .nice-select,
+  .sp_adress li.address,
+  .sp_adress li.contacts, .sp_addr_time li {
+    font-size: 15px;
+    line-height: 20px
+  }
+  figcaption .time{font-size: 12px}
+.cap-bot  figcaption{padding: 130px 10px 35px}
+  .mobile_menu {
+    padding-top: 22px;
+  }
+
+  .header-container {
+    padding-top: 12px;
+  }
+
+  #search_bar {
+    padding: 10px 25px;
+    height: 105px;
+  }
+
+  .logo {
+    margin-bottom: 0px;
+    padding-top: 8px;
+  }
+
+  .sticky .header-container .logo {
+    padding-top: 0px
+  }
+
+  .sticky .header-container .mobile_menu {
+    padding-top: 14px;
+  }
+
+  .sticky .header-container {
+    padding-top: 13px;
+    padding-bottom: 10px;
+  }
+
+  .pt-75 {
+    padding-top: 0px
+  }
+
+  .logo img {
+    height: 70px;
+  }
+
+  .welcom_info .col-md-4 {
+    height: 500px;
+  }
+
+  .welcom_info {
+    background-size: contain;
+  }
+
+  .container-fluid.slider-main {
+    height: 400px;
+    margin-top: 133px
+  }
+
+  .container-fluid.slider-main.event_slider,
+  .container-fluid.slider-main.food_banner {
+    height: 450px;
+  }
+   .container-fluid.slider-main.contact_banner {
+    height: 300px;
+}
+.container-fluid.slider-main.abt_banner{  height: 400px;}
+
+  .slider-main-text {
+    top: 50%;
+    transform: translateX(-50%) translateY(-25%);
+  }
+
+  .banner_object {
+    bottom: 0px !important;
+  }
+
+  .slider-main-text h1 {
+    font-size: 80px;
+  }
+
+  .mean-container a.meanmenu-reveal {
+    margin-top: -32px;
+  }
+
+  .header-area {
+    padding: 0 0 0px;
+  }
+
+  .section-title {
+    width: 80%;
+  }
+
+  .team-icon > a {
+    margin: 0;
+  }
+
+  .analysis-box {
+    padding: 80px 30px;
+  }
+
+  .team-wrapper:hover .team-icon > a {
+    margin: 0;
+  }
+
+  .full-width-sm {
+    width: 100%
+  }
+
+  .single-skill-about {
+    margin-bottom: 45px;
+  }
+
+  .mrg-sm {
+    margin-bottom: 30px;
+  }
+
+  .ptb-100 {
+    padding: 60px 0;
+  }
+
+  .mb-60 {
+    margin-bottom: 30px;
+  }
+
+  .blog-meta > span {
+    padding-right: 12px;
+  }
+
+  .pt-60 {
+    padding-top: 30px;
+  }
+
+  .conract-area-bottom {
+    margin-top: 30px;
+  }
+
+  h3.main-contact {
+    margin-bottom: 20px;
+  }
+
+  .main-input.mrg-eml.mrg-contact {
+    margin-top: 20px;
+  }
+
+  .blog-right-sidebar {
+    margin-top: 30px;
+  }
+
+  .blog-right-sidebar-bottom li.nn {
+    margin-right: 14px;
+  }
+
+  .bg-img {
+    height: inherit;
+    padding: 270px 0;
+  }
+
+  .portfolio-right-bar-top.pb-100,
+  .portfolio-left-bar-top.pb-100 {
+    padding-bottom: 50px;
+  }
+
+  .portfolio-right-bar-top > h3 {
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+
+  .portfolio-left-bar-bottom > h3 {
+    margin-bottom: 5px;
+  }
+
+  .ptb-150 {
+    padding: 100px 0;
+  }
+
+  .header-space.nn7 {
+    height: 90px;
+  }
+
+  .res7.mean-container a.meanmenu-reveal {
+    margin-top: -27px;
+  }
+
+  .blog-leftbar .blog-right-sidebar-bottom a {
+    padding: 5px 4px;
+  }
+
+  .blog-leftbar .blog-right-sidebar-bottom li {
+    margin-right: 2px;
+  }
+
+  .blog-leftbar .blog-right-sidebar-bottom li.nn {
+    margin-right: 0;
+  }
+
+  .container-fluid .blog-meta > span {
+    padding-right: 8px;
+  }
+
+  .waraper {
+    padding: inherit;
+  }
+
+  .slider-active.owl-theme .owl-controls .owl-nav div.owl-prev {
+    right: 87.5%;
+  }
+
+  .single-slider {
+    height: 500px;
+  }
+
+  .waraper .header-sticky.sticky {
+    padding-left: inherit;
+    padding-right: inherit;
+  }
+
+  .meta-2 {
+    margin-top: 30px;
+  }
+
+  .ptb-255 {
+    padding: 80px 0;
+  }
+
+  .ptb-250 {
+    padding: 110px 0;
+  }
+
+  .owl-nav {
+    display: none;
+  }
+
+  .movie_list .owl-controls .owl-nav {
+    display: block;
+  }
+
+  .blog-middel {
+    margin-left: 16px;
+  }
+
+  .footer-icon.footer-2 li {
+    margin-right: 4px;
+  }
+
+  .footer-icon.footer-2 li:last-child {
+    margin-right: 0px;
+  }
+
+  .footer-2-menu li {
+    margin: 0 2px;
+  }
+
+  .menu-mobile-3.mean-container a.meanmenu-reveal {
+    right: 50px;
+  }
+
+  .menu-mobile-3.mean-container a.meanmenu-reveal {
+    margin-top: -28px;
+  }
+
+  .single-slider-4 {
+    height: 500px;
+  }
+
+  .header-area-4 .mean-container a.meanmenu-reveal {
+    border: 1px solid #fff;
+    color: #fff;
+  }
+
+  .header-area-4 .mean-container a.meanmenu-reveal span {
+    background-color: #fff;
+  }
+
+  .header-area-4.sticky .mean-container a.meanmenu-reveal {
+    border: 1px solid #333;
+    color: #333;
+  }
+
+  .header-area-4.sticky .mean-container a.meanmenu-reveal span {
+    background-color: #333;
+  }
+
+  .slider-bg-6 {
+    height: 600px;
+  }
+
+  .all-content {
+    padding: 0 10px;
+  }
+
+  .slider-bg-9 {
+    height: 500px;
+  }
+
+  .slider-text-9 {
+    width: 100%;
+  }
+
+  p.sm-none {
+    display: none;
+  }
+
+  .blog-right-sidebar.blog-res2 {
+    margin-bottom: 50px;
+    margin-top: 0;
+  }
+
+  .portfolio-meta {
+    margin-top: 30px;
+  }
+
+  .portfolio-slider .owl-nav {
+    display: block;
+  }
+
+  .header-style-10 .logo {
+    float: left;
+  }
+
+  .menu-area-10 .mean-container a.meanmenu-reveal {
+    right: 50px;
+  }
+
+  .header-area.header-style-10.sticky {
+    padding: 20px 0 7px;
+  }
+
+  .slider-text > p {
+    width: 90%;
+  }
+
+  .slider-img {
+    width: 50%;
+  }
+
+  .breadcrumbs-area.pt-150 {
+    padding-top: 150px;
+  }
+
+  .slider-text {
+    width: 50%;
+  }
+
+  .heading-sub-title {
+    font-size: 21px;
+  }
+
+  .slider-text > h2 {
+    font-size: 30px;
+  }
+
+  .slider-text h1 {
+    font-size: 30px;
+  }
+
+  .slider-text > a {
+    margin-top: 0;
+  }
+
+  .slider-title-4 > p {
+    width: 70%;
+  }
+
+  .slider-title-4 h2 {
+    font-size: 40px;
+  }
+
+  .slider-text-5 > h3 {
+    font-size: 30px;
+  }
+
+  .slider-text-5 > p {
+    width: 85%;
+  }
+
+  .slider-text-5 > h2 {
+    font-size: 40px;
+  }
+
+  .modal-view.nav-btn {
+    float: inherit;
+    margin-left: 85px;
+  }
+
+  .menu-style-modal-3.modal-view.nav-btn {
+    float: inherit;
+    margin-left: 136px;
+  }
+
+  .modal-dialog {
+    top: -250px;
+  }
+
+  .single-testimonial > p {
+    padding: 0 95px;
+  }
+
+  .try-kenburne {
+    height: inherit;
+    padding: 296px 0;
+  }
+
+  .logo_sen {
+    display: none
+  }
+
+  .mobile-menu {
+    margin-top: -20px;
+  }
+
+  .form_750_disp {
+    display: block;
+    width: 746px !important
+  }
+
+  .form_750_hide {
+    display: none
+  }
+
+  .small_bx_height {
+    height: 240px !important;
+    overflow: hidden
+  }
+
+  .small_bx_height_225 {
+    height: 184px;
+    overflow: hidden
+  }
+
+  .small_bx_height_200 {
+    height: 180px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 {
+    height: 406px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 img {
+    height: 406px;
+  }
+
+  .small_bx_height_455 {
+    height: 377px !important;
+    overflow: hidden
+  }
+
+  #player {
+    height: 377px !important;
+  }
+
+  .height-social {
+    height: 166px !important;
+  }
+
+  .height-social strong {
+    margin-top: 0px;
+  }
+
+  .social_cont >.height-social {
+    margin-top: 0px;
+  }
+
+  .hide_bx {
+    display: none
+  }
+
+  .info_div {
+    margin-top: 70px;
+  }
+
+  .bg_welcome_img {
+    padding-top: 0px;
+    height: auto;
+    padding-bottom: 0px;
+  }
+
+  .top_link_service img {
+    height: 40px;
+  }
+
+  .top_link_service {
+    margin-top: 70px;
+    margin-bottom: 40px;
+  }
+
+ .large_bold_grey {
+    font-size: 60px !important;
+    line-height: 55px !important;
+  }
+
+  .shop_main_logo span::after {
+    display: block;
+  }
+
+  .shop_main_logo span::before {
+    display: block;
+  }
+
+  .shop_main_logo:nth-child(4):after {
+    content: "";
+    background-image: url(../img/vertical_line.png);
+  }
+
+  .shop_main_logo:nth-child(3n):after {
+    content: none;
+  }
+
+  .shop_main_logo:nth-child(3n) span::after,
+  .shop_main_logo:nth-child(7) span::after,.shop_main_logo:last-child span::after {
+    display: none !important;
+  }
+
+  .shop_main_logo:nth-child(3n+1) span::before,.shop_main_logo:last-child span::before {
+    display: none !important;
+  }
+
+  .shopping_category_info {
+    padding: 50px 15% 0px 6%;
+  }
+
+  .shopping_sec_1 {
+    height: 306px;
+  }
+
+  .shopping_sec_3 {
+    height: 373px;
+  }
+
+  .shopping_sec_2 {
+    height: 203px;
+  }
+
+  .shopping_sec_4 {
+    height: 420px
+  }
+
+  .slider-main-text h1 {
+    font-size: 55px;
+    line-height: 54px;
+  }
+
+  .brand_list {
+    padding: 0px 15px
+  }
+
+  .ent_fun_info {
+    padding: 30px 0px 40px 20px;
+  }
+
+  .movie_carasual .item {
+    padding: 15px;
+    background-size: cover !important
+  }
+
+  .share_heading h2 {
+    margin-top: 35px;
+  }
+
+  .fun_info_overlay {
+    display: block;
+  }
+
+  .mv_slider_cont {
+    position: absolute;
+  }
+
+  .main_mv_img {
+    height: 420px;
+  }
+
+  .row_img_capt {
+    margin-left: -15px;
+    margin-right: -15px
+  }
+
+  .logos_brd_list {
+    padding: 0px 0px
+  }
+
+  .venu_time {
+    width: 84%
+  }
+
+  .appr_acces {
+    font-size: 14px;
+    bottom: 5px;
+    left: 15px;
+  }
+
+  .sp_dt_top {
+    padding: 50px 0px 0px 0px;
+  }
+
+  .sh_dt_bg,
+  .sh_dt_bg_cntr {
+    height: 485px;
+    width: 100%
+  }
+.sh_details_contr {
+    margin-top: -485px;
+}
+  .sp_interior_slider  .owl-nav {
+    display: block;
+  }
+
+  .shop_details_baner {
+    margin-top: 150px;
+  }
+
+  .sp_adress {
+    padding: 90px 0px 0px 40px;
+  }
+
+  .tour_event_img {
+    height: 750px;
+  }
+
+  .abt_info_contr {
+    padding: 50px 50px 0px;
+  }
+
+  .open_hr {
+    padding: 19px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-align: right;
+  }
+
+  .ab_open_info .opening_time {
+    margin: 0px 0px 90px 0px;
+    padding: 43px 8%;
+  }
+
+  .info_img {
+    width: 90%;
+  }
+
+  .ab_sr_slider1 {
+    padding: 100px 10% 100px 40px;
+  }
+
+  .ab_sr_slider2 {
+    padding: 90px 60px 100px 40px;
+  }
+
+  .bg_ab_sr {
+    margin: 0px -15px;
+  }
+
+  .ab_sr_heading_holder {
+    padding-left: 18px;
+  }
+
+  .tile_container .event_btn {
+    margin: 5px 1px;
+  }
+.mv_desc_heading{    font-size: 35px;
+    line-height: 41px;}
+
+    .event_search {
+   
+    padding: 24px 18px;
+    background: #f1f1f1;
+}
+.srch_btn {
+    margin-right: -7px;
+}
+.events_heading{letter-spacing: 5px}
+.footer-area-2 .social_links li svg{width: 20px}
+.abt_info_contr .tab-content{padding: 50px 15px;}
+.abt_info_contr .nav-tabs>li>a,
+.abt_info_contr .nav-tabs>li.active>a{letter-spacing: 4px; font-size: 16px;}
+.ab_section_info_child_cntr{    padding: 48px 48px 65px;}
+
+
+}
+
+/* small mobile :320px. */
+@media (max-width:767px) {
+  .restrn_cafe p,
+  .dine_info p,
+  .speciality_info p,
+  .event_info p,
+  .food_spec_info p,
+  .info_div p,
+  .sp_about_info p,
+  .sp_tagline p,
+  .sp_open_hr h3,
+  .sp_open_hr .nice-select,
+  .sp_adress li.address,
+  .sp_adress li.contacts, .mv_desc_info, .sp_addr_time li, .question_tl {
+    font-size: 15px;
+    line-height: 20px
+  }
+
+  .field input:placeholder-shown + label, .field .nice-select:placeholder-shown + label{font-size: 14px;}
+
+  .search-box {
+    width: 340px;
+    margin: 0 auto;
+  }
+
+  #search_bar {
+    padding: 10px 25px;
+    height: 105px;
+  }
+
+  .footer-area-2 .col-sm-3:last-child {
+    margin-bottom: 10px
+  }
+
+  .footer-area-2 .pb-40 {
+    padding-bottom: 0px
+  }
+
+  .input_box {
+    width: 89% !important;
+  }
+
+  /*Slider*/
+  .header-container {
+    padding-top: 5px;
+  }
+
+  .info_div a {
+    text-align: center;
+  }
+
+  .header-area {
+    padding-bottom: 0px
+  }
+
+  /*.container-fluid.slider-main { height: 500px; position: relative; }*/
+  .container-fluid.slider-main {
+    height: 400px;
+    margin-top: 139px;
+  }
+
+  .slider-main-text {
+    top: 30%;
+  }
+
+  .banner_object {
+    bottom: 0px !important;
+  }
+
+  .slider-main-text h1 {
+    font-size: 60px;
+  }
+
+  /*Slider*/
+  .slider-main {
+
+    /*position: relative;*/
+    height: auto;     /*  overflow: hidden;
+       background: #fff url(../../img/slider/1.jpg)no-repeat center center   ; 
+       background-size: cover*/
+  }
+
+  /* .container {width:300px} */
+  .container {
+
+    /*width: 680px;*/
+  }
+
+  .xs-m3 {
+    margin-top: 30px;
+  }
+
+  .sm-mb30 {
+    margin-bottom: 30px !important;
+  }
+
+  .single-counter h3 {
+    font-size: 35px;
+  }
+
+  .single-counter p {
+    font-size: 14px;
+  }
+
+  .header-position {
+    position: static;
+  }
+
+  .waraper {
+    padding: 0 30px;
+  }
+
+  .monika-slider-text {
+    padding-top: 55px;
+  }
+
+  .custom-pad {
+    padding: 90px 10px;
+  }
+
+  .footer-area .col-md-4 {
+    margin-bottom: 40px;
+  }
+
+  .footer-area .col-md-4:last-child {
+    margin-bottom: 0px;
+  }
+
+  .section-title {
+    width: 100%;
+  }
+
+  .header-area {
+    padding: 0px 0 0px;
+  }
+
+  .intelligent-header .header-area {
+    padding: 10px 0 7px;
+  }
+
+  .logo {
+    margin-top: 7px;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .mobile_menu {
+    padding-top: 18px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .header-container {
+    padding-top: 20px;
+  }
+
+  #search_bar {
+    padding: 10px 25px;
+    height: 105px;
+  }
+
+  .sticky .header-container .logo {
+    padding-top: 0px;
+    margin-top: 6px;
+  }
+
+  .sticky .header-container .mobile_menu {
+    padding-top: 16px;
+  }
+
+  .sticky .header-container {
+    padding-top: 13px;
+    padding-bottom: 10px;
+  }
+
+  .mean-container a.meanmenu-reveal {
+    margin-top: -32px;
+  }
+
+  .header-sticky.sticky {
+    padding: 0;
+  }
+
+  .my-info-text {
+    background: rgba(255, 255, 255, 0.65) none repeat scroll 0 0;
+    display: table;
+    height: 220px;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+  }
+
+  .xs-100 {
+    width: 100%
+  }
+
+  .ptb-100 {
+    padding: 30px 0;
+  }
+
+  .pb-90 {
+    padding-bottom: 30px;
+  }
+
+  .pb-30 {
+    padding-bottom: 10px;
+  }
+
+  .mrg-xs {
+    margin-bottom: 30PX;
+  }
+
+  .pt-175 {
+    padding-top: 50px;
+  }
+
+  .pb-100 {
+    padding-bottom: 50px;
+  }
+
+  .blog-meta > span {
+    padding-right: 2px;
+  }
+
+  .blog-meta i {
+    padding-right: 2px;
+  }
+
+  .blog-meta a i {
+    padding-right: 2px;
+  }
+
+  .mb-60 {
+    margin-bottom: 30px;
+  }
+
+  .pt-60 {
+    padding-top: 30px;
+  }
+
+  .ptb-90 {
+    padding: 40px 0;
+  }
+
+  h3.main-contact {
+    margin-bottom: 20px;
+  }
+
+  .main-input.mrg-eml.mrg-contact {
+    margin-top: 20px;
+  }
+
+  .text-leave2 textarea {
+    margin-bottom: 20px;
+  }
+
+  blockquote {
+    padding: 14px 20px;
+  }
+
+  .mtb-60 {
+    margin: 20px 0;
+  }
+
+  .blog-middle-mrg {
+    margin: 32px 0 33px;
+  }
+
+  .blog-right-sidebar-top {
+    margin-top: 30px;
+  }
+
+  h3.leave-comment-text {
+    margin-bottom: 20px;
+  }
+
+  .blog-right-sidebar-bottom li.nn {
+    margin-right: 14px;
+  }
+
+  .bread-card h2.page-title {
+    font-size: 20px;
+  }
+
+  .portfolio-menu button {
+    margin: 0 4px 10px;
+  }
+
+  .mt-90 {
+    margin-top: 40px;
+  }
+
+  .bg-img {
+    height: inherit;
+    padding: 100px 0;
+  }
+
+  .pt-90 {
+    padding-top: 40px;
+  }
+
+  .single-service.xs-service {
+    margin-bottom: 0;
+  }
+
+  .slider-text h2 {
+    font-size: 22px;
+    margin-bottom: 3px;
+  }
+
+  .info-inner-3.slider-text h2 {
+    font-size: 32px;
+    margin-bottom: 3px;
+    font-weight: 700;
+  }
+
+  .mrg-tb {
+    margin: 30px 0;
+  }
+
+  .price-btn .button {
+    padding: 13px 20px;
+  }
+
+  .portfolio-right-bar-top.pb-100,
+  .portfolio-left-bar-top.pb-100 {
+    padding-bottom: 30px;
+  }
+
+  .portfolio-right-bar-top li span.portfolio-span {
+    width: 32%;
+  }
+
+  .portfolio.hover-style.mrg-tb {
+    margin: 30px 0;
+  }
+
+  .portfolio-left-bar-bottom > h3 {
+    margin-bottom: 10px;
+  }
+
+  .portfolio-right-bar-top > h3 {
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+
+  .mb-50 {
+    margin-bottom: 35px;
+  }
+
+  .ptb-150 {
+    padding: 60px 0;
+  }
+
+  .hm-blog {
+    margin-bottom: 40px;
+  }
+
+  .pb-95 {
+    padding-bottom: 50px;
+  }
+
+  .pb-105 {
+    padding-bottom: 50px;
+  }
+
+  .breadcrumbs-area.ptb-100 {
+    padding: 50px 0;
+  }
+
+  .pattern-bread h2.page-title {
+    float: inherit;
+  }
+
+  .pattern-bread .breadcrumbs > ul {
+    float: inherit;
+  }
+
+  .bread-bg h2.page-title {
+    font-size: 20px;
+  }
+
+  .header-space.nn7 {
+    height: 90px;
+  }
+
+  .blog-res {
+    margin-top: 20px;
+  }
+
+  .container-fluid .blog-meta i,
+  .blog-meta a i {
+    font-size: 11px;
+  }
+
+  .page li {
+    float: left;
+    margin-right: 11px;
+  }
+
+  .blog-search.mb-60 {
+    margin-top: 30px;
+  }
+
+  .waraper {
+    padding: inherit;
+  }
+
+  .single-slider {
+    height: 200px;
+  }
+
+  .slider-title h2 {
+    font-size: 25px;
+  }
+
+  .waraper .header-sticky.sticky {
+    padding-left: inherit;
+    padding-right: inherit;
+  }
+
+  .slider.ptb-200 {
+    padding: 80px 0;
+  }
+
+  .footer-4 .social-icon {
+    float: left;
+    margin-top: 15px;
+  }
+
+  .footer-4 .social-icon a {
+    float: left;
+    margin: 0 12px 0 0;
+  }
+
+  .my-info-text.slider-style-5 {
+    background-color: rgba(255, 255, 255, 0.8) url("../../img/sep.html") no-repeat scroll left top;
+    background-image: none;
+    margin: auto;
+    position: static;
+    transform: inherit;
+  }
+
+  .slider-style-5 h1 {
+    font-size: 29px;
+  }
+
+  .copyright {
+    text-align: center;
+  }
+
+  .social-icon {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .about-monika {
+    margin-bottom: 40px;
+  }
+
+  .analysis-box {
+    padding: 80px 30px;
+  }
+
+  .single-skill-about {
+    margin-bottom: 30px;
+  }
+
+  .meta-2 {
+    margin-top: 30px;
+  }
+
+  .slider-text h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+
+  .slider-text > a {
+    margin-top: 10px;
+    padding: 8px 15px;
+  }
+
+  .ptb-255 {
+    padding: 27px 0;
+  }
+
+  .footer-icon {
+    float: inherit;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .owl-nav {
+    display: none;
+  }
+
+  .ptb-250 {
+    padding: 100px 0;
+  }
+
+  .blog-middel {
+    display: none;
+  }
+
+  .footer-icon.footer-2 {
+    float: inherit;
+  }
+
+  .footer-2-ex {
+    overflow: hidden;
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .footer-2-menu li {
+    margin: 0 2px;
+  }
+
+  .footer-2-address {
+    display: block;
+    float: inherit;
+    padding-top: 30px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-2-menu {
+    margin-bottom: 10px;
+    padding: 10px 0;
+  }
+
+  .ptb-165 {
+    padding: 60px 0;
+  }
+
+  .sidebar-search.animated.slideOutUp {
+    display: none;
+  }
+
+  .foot-3 .footer-2-logo {
+    margin-top: 0;
+  }
+
+  .view-more > a {
+    margin-top: 0;
+  }
+
+  .view-more.no-gut > a {
+    margin-top: 30px;
+  }
+
+  .header-area-4 .mean-container a.meanmenu-reveal {
+    border: 1px solid #fff;
+    color: #fff;
+  }
+
+  .header-area-4 .mean-container a.meanmenu-reveal span {
+    background-color: #fff;
+  }
+
+  .header-area-4.sticky .mean-container a.meanmenu-reveal {
+    border: 1px solid #333;
+    color: #333;
+  }
+
+  .header-area-4.sticky .mean-container a.meanmenu-reveal span {
+    background-color: #333;
+  }
+
+  .single-slider-4 {
+    height: 400px;
+  }
+
+  .slider-title-4 h2 {
+    font-size: 30px;
+    letter-spacing: 0;
+  }
+
+  .section-title {
+    margin: auto auto 40px;
+    width: 100%;
+  }
+
+  .footer-top-info ul li {
+    margin-bottom: 10px;
+    padding-right: 0;
+  }
+
+  .footer-top-info ul li.res-mrg {
+    margin-right: 10px;
+  }
+
+  .slider-6 {
+    padding: 40px 0;
+    width: 250px;
+  }
+
+  .slider-bg-6 {
+    height: 400px;
+  }
+
+  .all-content {
+    padding: 0 0px;
+  }
+
+  .slider-bg-9 {
+    height: 400px;
+  }
+
+  .slider-text-9 {
+    width: 100%;
+  }
+
+  .slider-text-9 h3 {
+    font-size: 26px;
+  }
+
+  .brth-style-2 .breadcrumbs > ul {
+    float: right;
+    margin-top: 0;
+  }
+
+  .brth-style-2 h2.page-title {
+    margin-bottom: 0;
+  }
+
+  .about-text-all {
+    margin-top: 30px;
+  }
+
+  .about-text > h2 {
+    margin-bottom: 45px;
+  }
+
+  .process-steps.process-5-steps .step {
+    width: 50%;
+  }
+
+  .pb-60 {
+    padding-bottom: 40px;
+  }
+
+  .page.mt-30 {
+    margin-top: 0;
+  }
+
+  .footer-address {
+    padding: 30px 0 20px;
+  }
+
+  .blog-top.margin-middle {
+    margin-left: 0;
+  }
+
+  .blog-right-sidebar.blog-res2 {
+    margin-bottom: 30px;
+    margin-top: 0;
+  }
+
+  .blog-search.mb-60.search-res {
+    margin-top: 0;
+  }
+
+  .blog-right-sidebar-bottom.tag-res {
+    margin-bottom: 30px;
+  }
+
+  .portfolio-meta.info-res {
+    margin-top: 30px;
+  }
+
+  .header-space.res-hd {
+    height: 83px;
+  }
+
+  .bread-card h2.page-title {
+    font-size: 19px;
+  }
+
+  .col-sm-4.pro-res {
+    margin: 50px 0;
+  }
+
+  .about-text-all .progress {
+    margin-bottom: 50px;
+  }
+
+  .sm-mb0 {
+    margin-bottom: 0px !important;
+  }
+
+  .progress {
+    margin-bottom: 20px;
+  }
+
+  .elements-tab-area .tab-list li a {
+    padding: 0px 14px;
+  }
+
+  .ptb-80 {
+    padding: 50px 0;
+  }
+
+  .portfolio-meta {
+    margin-top: 30px;
+  }
+
+  .portfolio-pre-next li {
+    margin: 0 4px;
+  }
+
+  .portfolio-pre-next a {
+    font-size: 14px;
+  }
+
+  h3.desc {
+    margin-bottom: 30px;
+  }
+
+  .newsletter form input {
+    padding-right: 124px;
+  }
+
+  .portfolio-slider .owl-nav {
+    display: block;
+  }
+
+  .header-style-10 .logo {
+    float: left;
+  }
+
+  .menu-area-10 .mean-container a.meanmenu-reveal {
+    right: 15px;
+  }
+
+  .header-style-10 .col-md-4.col-md-offset-4.col-sm-4.col-xs-12.text-center {
+    overflow: hidden;
+  }
+
+  .header-style-10.sticky .col-md-4.col-md-offset-4.col-sm-4.col-xs-12.text-center .logo {
+    margin-top: 13px;
+  }
+
+  .slider-text > p {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .slider-img {
+    width: 100%;
+  }
+
+  .breadcrumbs-area.pt-150 {
+    padding-top: 150px;
+  }
+
+  .slider-text {
+    width: 100%;
+  }
+
+  h3.heading-sub-title {
+    font-size: 21px;
+  }
+
+  .slider-text > h2 {
+    font-size: 27px;
+  }
+
+  .slider-text h1 {
+    font-size: 27px;
+  }
+
+  .slider-text > a,
+  .slider-text-8 a {
+    margin-top: 10px;
+  }
+
+  .pl-40 {
+    padding-left: 15px;
+  }
+
+  .slider-text {
+    padding-bottom: 42px;
+  }
+
+  .slider-title-4 > p {
+    display: none;
+  }
+
+  .slider-title-4 h2 {
+    font-size: 19px;
+    margin: 0;
+  }
+
+  .info-inner-3 h1 {
+    font-size: 21px;
+  }
+
+  .info-inner-3 h2 {
+    font-size: 14px;
+  }
+
+  .slider-text-5 > h3 {
+    font-size: 23px;
+    line-height: 35px;
+    margin: 10px 0 0;
+  }
+
+  .slider-text-5 > p {
+    display: none;
+  }
+
+  .slider-text-5 > h2 {
+    font-size: 30px;
+  }
+
+  .owl-theme .owl-controls .owl-nav div {
+    font-size: 22px;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+  }
+
+  .movie_list.owl-theme .owl-controls .owl-nav div {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .slider-text-8 > p {
+    display: none;
+  }
+
+  .slider-text-8 h1 {
+    font-size: 20px;
+  }
+
+  .slider-text-9 h1 {
+    font-size: 35px;
+  }
+
+  .modal-view.nav-btn {
+    display: none;
+  }
+
+  /*updated*/
+  .try-kenburne {
+    height: 90vh;
+    padding: 0px 0;
+  }
+
+  .slider-text-9 {
+    left: 50%;
+    top: 70% !important;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+
+  .search_control {
+    color: #1e1e1e;
+    font-size: 20px;
+    border: 0px;
+    background: none;
+  }
+
+  ::placeholder {
+    color: #1e1e1e;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    color: #1e1e1e;
+  }
+
+  ::-ms-input-placeholder {
+    color: #1e1e1e;
+  }
+
+  .search_btn {
+    font-size: 28px;
+    color: #1e1e1e;
+  }
+
+  .bg_welcome_img {
+    background-position: right top;
+    height: auto;
+  }
+
+  .welcom_info {
+    position: relative;
+    background-size: contain;
+    height: 400px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+
+  .welcom_info .col-md-4 {
+    height: 400px;
+  }
+
+  .info_div {
+    bottom: 50%;
+    transform: translateY(50%) translateX(-1%);
+    text-align: center;
+  }
+
+  .overlay_cont {
+    display: block;
+  }
+
+  .info_div p {
+    color: #fff
+  }
+
+  .info_div a {
+    letter-spacing: 7px;
+    color: #c80325;
+    font-family: bold_helvetica;
+  }
+
+  .top_link_service {
+    margin-bottom: 35px !important;
+  }
+
+  .top_link_service a {
+    padding: 7px;
+  }
+
+  .top_link_service img {
+    height: 20px;
+  }
+
+  .ticker_info {
+    max-height: 490px
+  }
+
+  .ticker_info img {
+    width: 100%;
+  }
+
+  .tile_item {
+    padding: 0px 5px;
+  }
+
+  .no-padding {
+    padding: 0px
+  }
+
+  .slider1 {
+    height: 250px
+  }
+
+  .slider1 img {
+    height: 250px
+  }
+
+  .footer-area-2 {
+    text-align: center;
+  }
+
+  .large_bold_grey {
+    color: #fff !important;
+    font-size: 50px !important;
+    margin-top: -30px !important;
+    line-height: 55px !important;
+    font-family: bold_helvetica !important
+  }
+
+  .slider_btn {
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    background: none;
+    line-height: 36px;
+    text-align: center;
+    width: 150px;
+    height: 36px;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  .slider_btn a {
+    color: #fff
+  }
+
+  .footer-area-2 h4 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-family: bold_helvetica;
+    color: #8c8c8c;
+    line-height: 1.75;
+  }
+
+  .footer-area-2 .col-sm-3 {
+    margin-bottom: 50px
+  }
+
+  .footer-area-2 strong {
+    color: #8c8c8c;
+    font-size: 12px;
+    font-family: bold_helvetica;
+  }
+
+  .footer-area-2 p {
+    color: #a5a5a5;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .social_links li {
+    display: inline-block;
+    margin: 0px 8px
+  }
+
+  .social_links li i {
+    font-size: 20px
+  }
+
+  .footer_menu_linnk li {
+    padding: 5px 0px;
+    color: #a5a5a5;
+    font-size: 12px
+  }
+
+  .footer_menu_linnk li:first-child {
+    margin-left: 0px
+  }
+
+  .footer_news_input {
+    width: 100%;
+    height: 41px;
+    border: 1px solid;
+    border-color: rgb(204, 204, 204);
+    background-color: #f3f3f3
+  }
+
+  .footer_news_input::placeholder {
+    color: #a5a5a5;
+    font-size: 12px;
+  }
+
+  .footer_news_btn {
+    background-color: rgb(180, 37, 45);
+    line-height: 30px;
+    text-align: center;
+    width: 41px;
+    height: 41px;
+  }
+
+  .social_cont {
+    color: #fff;
+    padding: 9px;
+    height: 224px;
+    overflow: hidden
+  }
+
+  .social_cont i {
+    color: #fff
+  }
+
+  .social_cont p {
+    color: #fff
+  }
+
+  .social_cont strong {
+    margin-top: 15px;
+    display: block;
+    font-family: bold_helvetica;
+  }
+
+  .event_title {
+    font-size: 17px;
+    color: #fff;
+    margin-top: 15px;
+    font-family: bold_helvetica;
+  }
+
+  .event_btn {
+    min-width: 75px;
+  }
+
+  */
+
+  /*updated*/
+  .header-area {
+    padding-top: 0px;
+  }
+
+  .shop_main_logo span::after {
+    display: block;
+  }
+
+  .shop_main_logo span::before {
+    display: block;
+  }
+
+  .shop_main_logo:nth-child(even) span::after,
+  .shop_main_logo:nth-child(7) span::after {
+    display: none !important;
+  }
+
+  .shop_main_logo:nth-child(odd) span::before,.shop_main_logo:last-child span::before {
+    display: none !important;
+  }
+
+  .shop_main_logo span::before {
+    display: block;
+  }
+
+  .shop_main_logo:nth-child(2n)::after {
+    content: none;
+  }
+
+  .dine_section_links li {
+    padding: 20px;
+  }
+
+  .brand_list  .brand_main_logo:nth-child(n):after,
+  .brand_list  .brand_main_logo:nth-child(3n):after,
+  .brand_list  .brand_main_logo:nth-child(3n):before {
+    display: block !important;
+  }
+
+  .brand_list  .brand_main_logo:nth-child(2n):after,
+  .brand_list  .brand_main_logo:nth-child(2n):before,.brand_list  .brand_main_logo:last-child:after {
+    display: none !important;
+  }
+
+  .brand_list  .brand_main_logo span:after {
+    display: block
+  }
+
+  .brand_list  .brand_main_logo span:before {
+    display: block
+  }
+
+  .brand_list  .brand_main_logo:nth-child(3n) span:after {
+    display: block !important;
+  }
+
+  .brand_list  .brand_main_logo:nth-child(even) span:after,.brand_list  .brand_main_logo:last-child span:after {
+    display: none !important;
+  }
+
+  .brand_list  .brand_main_logo:nth-child(odd) span:before,.brand_list  .brand_main_logo:last-child span:before {
+    display: none !important;
+  }
+
+  .brand_list  .brand_main_logo:nth-child(4) span:before {
+    display: block !important;
+  }
+
+  /*brand */
+  .shopping_category_info {
+    padding: 30px 0px 30px 0%;
+  }
+
+  .shopping_sec_1 {
+    height: 306px;
+  }
+
+  .shopping_sec_3 {
+    height: 373px;
+  }
+
+  .shopping_sec_2 {
+    height: 203px;
+  }
+
+  .shopping_sec_4 {
+    height: 420px
+  }
+
+  .wrap-select {
+    margin-top: 0px;
+  }
+
+  .events_heading {
+    margin-top: 0px;
+   margin-bottom: 12px;
+    padding-left: 10px;
+  }
+.evt_offr_holder{margin-top: 20px;}
+  .event_info {
+    width: 100%
+  }
+
+  .venu_time {
+    width: 100%;
+    text-align: center;
+  }
+
+  .venu {
+    padding: 0px 0px 15px 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #ccc
+  }
+
+  .venu h2 {
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 0px
+  }
+
+  .address_time {
+    text-align: center;
+    padding: 15px 0px 0px 0px
+  }
+
+  .event_details {
+    margin: 47px 0px 57px 0px;
+  }
+
+  .top_br_linksright {
+    text-align: center
+  }
+
+  .c--anim-btn:hover .c-anim-btn {
+    margin-left: 0px;
+  }
+
+  .img_contnr.eqheight {
+    height: auto !important;
+  }
+
+  .img_contnr img {
+    display: block;
+    width: 100%;
+  }
+
+  .fun_ent_place {
+    height: auto !important;
+    background-image: none !important;
+    margin-bottom: 40px;
+  }
+
+  .img_contnr {
+    display: block;
+    margin: 0px -15px;
+  }
+
+  .ent_fun_info {
+    text-align: center;
+  }
+
+  .mv_info_main {
+    position: relative;
+  }
+
+  .ent_fun_info hr {
+    margin: 20px auto 0px;
+    float: none;
+  }
+
+  .entr_details .container {
+    padding: 0px
+  }
+
+  .movie_carasual .item {
+    padding: 15px;
+    background-size: cover !important
+  }
+
+  .share_heading h2 {
+    margin-top: 35px;
+  }
+
+  .mv_desc_heading {
+    font-size: 30px;
+    line-height: 35px;
+}
+
+  .mv_desc_info {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .share_heading {
+    margin-bottom: 30px
+  }
+
+  .fun_info_overlay {
+    display: block;
+  }
+
+  .mv_slider_cont {
+    position: absolute;
+  }
+
+  .movie_carasual .item {
+    height: 450px
+  }
+
+  .main_mv_img {
+    background-size: cover !important;
+  }
+
+  .movie_list .item .col-sm-12:nth-child(odd) {
+    padding-bottom: 0px;
+    margin-bottom: 0px
+  }
+
+  .movie_list .owl-controls .owl-nav {
+    display: block;
+  }
+
+  .slide_capt .hover_info,
+  .ent_fun_info p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .fun_cont_bg {
+    display: none;
+  }
+
+  .ent_fun_info {
+    padding-bottom: 20px !important
+  }
+
+  .brand_list {
+    margin-top: 50px;
+  }
+
+  .food_spec_info p {
+    padding-right: 0px;
+  }
+
+  .shop_details_baner,
+  .sp_addrress_info_cont {
+    padding: 0px
+  }
+ figcaption .time{font-size: 12px}
+.cap-bot  figcaption{padding: 130px 10px 35px}
+
+}
+
+/*767 max*/
+
+/* Large Mobile :480px. */
+@media only screen and (min-width:480px) and (max-width:767px) {
+  .sticky .header-container {
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+
+  .tile_container .col-lg-5ths {
+    width: 100% !important
+  }
+
+  .top_link_service a {
+    padding-bottom: 0px;
+  }
+
+  .search_contr {
+    padding: 10px;
+    height: 68px
+  }
+
+  /*Slider*/
+  .container-fluid.slider-main {
+    margin-top: 127px;
+  }
+
+  .slider-main-text {
+    top: 50%;
+    transform: translateX(-50%) translateY(-25%);
+  }
+
+  .banner_object {
+    bottom: 0px !important;
+  }
+
+  .slider-main-text h1 {
+    font-size: 55px;
+    line-height: 54px;
+  }
+
+  /*Slider*/
+  .footer-area-2 {
+    text-align: center;
+  }
+
+  .slider-text-9 h1 {
+    font-size: 55px;
+  }
+
+  .slider-text-9 {
+    top: 45% !important;
+    width: 90%;
+  }
+
+  .container {
+
+    /* width: 450px*/
+  }
+
+  .waraper {
+    padding: 0 50px;
+  }
+
+  .blog-meta > span {
+    padding-right: 20px;
+  }
+
+  .blog-meta i {
+    padding-right: 10px;
+  }
+
+  .blog-meta a i {
+    padding-right: 10px;
+  }
+
+  .portfolio-menu button {
+    margin: 0 10px;
+  }
+
+  .slider-active.owl-theme .owl-controls .owl-nav div.owl-prev {
+    right: 82.5%;
+  }
+
+  .footer-4 .social-icon a {
+    float: left;
+    margin: 0 17px 0 0;
+  }
+
+  .logo_sen {
+    display: none
+  }
+
+  .mobile-menu {
+    margin-top: -20px;
+  }
+
+  .form_750_disp {
+    display: block;
+    width: 446px !important
+  }
+
+  .form_750_hide {
+    display: none
+  }
+
+  .small_bx_height {
+    height: 213px !important;
+    overflow: hidden
+  }
+
+  .small_bx_height_225 {
+    height: 184px;
+    overflow: hidden
+  }
+
+  .small_bx_height_200 {
+    height: 180px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 {
+    height: 340px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 img {
+    height: 340px;
+  }
+
+  .small_bx_height_455 {
+    height: 250px !important;
+    overflow: hidden
+  }
+
+  .height-social {
+    height: 156px !important;
+  }
+
+  #player {
+    height: 250px !important;
+  }
+
+  .social_cont {
+    height: 213px;
+  }
+
+  .height-social strong {
+    margin-top: 0px;
+  }
+
+  .social_cont >.height-social {
+    margin-top: 0px;
+  }
+
+  #play {
+    height: 250px !important;
+  }
+
+  .hide_bx {
+    display: none
+  }
+
+  .info_div {
+    margin-top: 70px;
+  }
+
+  .bg_welcome_img {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .top_link_service img {
+    height: 23px;
+  }
+
+  .top_link_service {
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+
+  .restrn_cafe {
+    padding-top: 0px;
+    padding-bottom: 40px;
+  }
+
+  .cafe_info_heading {
+    margin-bottom: 15px;
+  }
+
+  .dine_heading {
+    margin-bottom: 15px
+  }
+
+  .dine {
+    margin-bottom: 50px
+  }
+
+  .restaurants_info {
+    padding: 0px 25px 20px;
+    text-align: center;
+  }
+
+  .restaurants_info h2 {
+    padding: 0px 12px 12px 12px;
+    margin-bottom: 15px;
+  }
+
+  .restaurants_info hr {
+    margin: 16px auto 0px;
+  }
+
+  .restaurants_img {
+    margin-bottom: 50px;
+    height: 360px;
+  }
+
+  .dine_section_links {
+    margin-top: 15px
+  }
+
+  .cafe_img {
+    width: 40%;
+    float: left;
+    height: 300px;
+  }
+
+  .cafe_info .cafe_desc {
+    width: 59%;
+    float: left;
+    padding-top: 20%;
+  }
+
+  .seciality_img {
+    height: 318px;
+  }
+
+  .speciality_info {
+    padding: 40px 25px;
+    margin: -50px 40px 50px;
+    background: #fff;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .dine_info {
+    width: 100% !important;
+    padding: 0px 25px;
+  }
+
+  .speciality_info p {
+    text-align: center;
+  }
+
+  .food_spec_info {
+    padding: 15px 15px 15px 0px;
+    width: 40%;
+  }
+
+  .food_seciality {
+    height: 298px;
+    margin-bottom: 50px;
+  }
+
+  .food_shops {
+    padding: 0px 20px;
+    margin-bottom: 0px;
+  }
+
+  .speciality_info h2 {
+    text-align: center;
+  }
+
+  .speciality_info hr {
+    margin: 0px auto;
+    position: relative;
+  }
+
+  .colimg {
+    height: 327px !important;
+  }
+
+  .logos_brd_list {
+    padding: 0px
+  }
+
+  .brand_list .food_shops_heading {
+    margin-bottom: 10px;
+  }
+
+  .header-container {
+    padding-top: 13px
+  }
+
+  .sh_dt_bg,
+  .sh_dt_bg_cntr {
+    height: 470px;
+    width: 100%;
+  }
+.sh_details_contr {
+    margin-top: -470px;
+}
+  .sp_dt_top {
+    padding: 35px 0px 0px 0px;
+  }
+
+  .sp_about_info {
+    padding: 35px 0px 85px 39px;
+  }
+
+  .sp_interior_slider {
+    width: 90%;
+    float: right;
+    height: 350px
+  }
+
+  .sp_interior_slider .item {
+    height: 350px
+  }
+
+  .sp_open_hr .nice-select {
+    float: none;
+    width: auto;
+    display: inline-block;
+  }
+
+  .sp_open_hr h3 {
+    margin-bottom: 15px
+  }
+
+  .sp_open_hr hr {
+    margin: 0 auto
+  }
+
+  .sp_dt_top {
+    padding: 50px 0px 0px
+  }
+
+  .sp_tagline {
+    margin-bottom: 15px
+  }
+
+  .sp_open_hr {
+    margin-bottom: 50px
+  }
+
+  .shop_details_baner {
+    margin-top: 133px;
+  }
+
+  .tour_event_img {
+    height: 550px
+  }
+
+  .abt_info_contr {
+    padding: 50px 40px 0px;
+  }
+
+  .abt_info_contr .tab-content {
+    padding: 40px 20px 60px;
+  }
+
+  .ab_open_info .opening_time {
+    margin: 0px 0px 70px;
+  }
+
+  .slider_bg_sr {
+    width: 100%;
+  }
+
+  .ab_sr_slider2 {
+    display: none;
+  }
+
+  .sr_detials_mobile_view {
+    display: block;
+  }
+
+  .ab_sr_slider1 {
+    padding: 50px 50px;
+  }
+
+  .ab_sr_slider1 .slider_cont {
+    padding: 0px
+  }
+
+  .nt_btn {
+    display: none;
+  }
+
+  .event_btn {
+    padding-top: 5px;
+    line-height: 20px;
+  }
+
+  .events_grid .nice-select.category_select.selectpicker {
+    margin: 0 auto;
+    float: none
+  }
+.events_heading_top{margin-bottom: 40px}
+.footer-area-2 .social_links li{padding: 2px 7px;}
+.footer-area-2 .social_links li svg{width: 17px}
+}
+
+@media only screen and (min-width:360px) and (max-width:479px) {
+  .search-box {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  /*Slider*/
+  .container-fluid.slider-main {
+
+    /*height: 420px;*/
+  }
+
+  .slider-main-text {
+    top: 50%;
+    transform: translateX(-50%) translateY(-25%);
+  }
+
+  .banner_object {
+    bottom: 0px !important;
+  }
+
+  .slider-main-text h1 {
+    font-size: 60px;
+  }
+
+  /*Slider*/
+  .slider-text-9 h1 {
+    font-size: 48px;
+  }
+
+  .slider-text-9 {
+    top: 45% !important;
+    width: 90%;
+  }
+
+  .ticker_info img {
+    height: auto;
+  }
+
+  .form_750_disp {
+    display: block;
+    width: 356px !important
+  }
+
+  .form_750_hide {
+    display: none
+  }
+
+  .small_bx_height {
+    height: 200px;
+    overflow: hidden
+  }
+
+  .social_cont {
+    height: 200px
+  }
+
+  .small_bx_height {
+    height: 200px;
+    overflow: hidden
+  }
+
+  .small_bx_height_225 {
+    height: 160px;
+    overflow: hidden
+  }
+
+  .small_bx_height_200 {
+    height: 160px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 {
+    height: 310px !important;
+    overflow: hidden
+  }
+
+  .small_bx_height_455 {
+    height: 258px !important;
+    overflow: hidden
+  }
+
+  #player {
+    height: 258px !important;
+  }
+
+  .height-social {
+    height: 140px !important;
+    font-size: 11px
+  }
+
+  .social_cont >.height-social {
+    margin-top: -20px;
+    font-size: 12px
+  }
+
+  .event_btn {
+    font-size: 12px;
+    margin-top: -8px;
+    min-width: 70px;
+  }
+
+  #play {
+    height: 210px !important;
+  }
+
+  /*grid*/
+}
+
+@media (min-width:768px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left;
+  }
+
+  .col-md-two5ths {
+    width: 40%;
+    float: left;
+  }
+
+  .col-md-three5ths {
+    width: 60%;
+    float: left;
+  }
+
+  .col-md-four5ths {
+    width: 80%;
+    float: left;
+  }
+
+}
+
+@media only screen and (min-width:360px) and (max-width:419px) {
+  .search-box {
+    width: 100% !important;
+    margin: 0 auto;
+  }
+
+  .nes-icon {
+    display: none;
+  }
+
+  .logo_sen {
+    display: none
+  }
+
+  .mobile-menu {
+    margin-top: -20px;
+  }
+
+  .form_750_disp {
+    display: block;
+    width: 356px !important
+  }
+
+  .form_750_hide {
+    display: none
+  }
+
+  .small_bx_height {
+    height: 168px !important;
+    overflow: hidden
+  }
+
+  .small_bx_height_225 {
+    height: 178px;
+    overflow: hidden
+  }
+
+  .small_bx_height_200 {
+    height: 170px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 {
+    height: 320px;
+    overflow: hidden
+  }
+
+  .small_bx_height_345 img {
+    height: 310px;
+  }
+
+  .small_bx_height_455 {
+    height: 250px !important;
+    overflow: hidden
+  }
+
+  .height-social {
+    height: 168px !important;
+  }
+
+  #player {
+    height: 250px !important;
+  }
+
+  .social_cont {
+    height: 168px;
+  }
+
+  .height-social strong {
+    margin-top: 0px;
+  }
+
+  .social_cont >.height-social {
+    margin-top: -20px;
+    font-size: 12px
+  }
+
+  .event_btn {
+    font-size: 12px;
+    margin-top: -8px;
+    min-width: 60px;
+  }
+
+  #play {
+    height: 178px !important;
+  }
+
+  .hide_bx {
+    display: none
+  }
+
+  .info_div {
+    margin-top: 150px;
+  }
+
+  .bg_welcome_img {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .top_link_service img {
+    height: 20px;
+  }
+
+  .top_link_service {
+    margin-bottom: 20px;
+  }
+
+ .large_bold_grey {
+    font-size: 30px !important;
+    line-height: 35px !important;
+  }
+
+  .slider_btn {
+    margin-top: -20px;
+  }
+
+}
+
+.margin-5tile {
+  margin: 6px;
+}
+
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths,
+.col-xl-5ths,
+.col-xs-two5ths,
+.col-sm-two5ths,
+.col-md-two5ths,
+.col-lg-two5ths,
+.col-xl-two5ths,
+.col-xs-three5ths,
+.col-sm-three5ths,
+.col-md-three5ths,
+.col-lg-three5ths,
+.col-xl-three5ths,
+.col-xs-four5ths,
+.col-sm-four5ths,
+.col-md-four5ths,
+.col-lg-four5ths,
+.col-xl-four5ths,
+.col-xs-five5ths,
+.col-sm-five5ths,
+.col-md-five5ths,
+.col-lg-five5ths,
+.col-xl-five5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/*
+@media (min-width: 576px) {
+.col-sm-5ths {width: 20%;float: left;}
+.col-sm-two5ths {width: 40%;float: left;}
+.col-sm-three5ths {width: 60%;float: left;}
+.col-sm-four5ths {width: 80%;float: left;}
+}
+*/
+@media(max-width:1199px) {
+  .top-bar .container {
+    padding: 0px 15px
+  }
+
+  .disp_min_sm {
+    display: block
+  }
+
+  .disp_min_bg {
+    display: none
+  }
+
+  .tile_blank2 {
+    min-height: 220px;
+  }
+
+.sh_dt_bg_cntr{margin-left: -15px;}
+}
+
+.last_tile {
+  height: 180px;
+  overflow: hidden;
+}
+
+@media (max-width:1199px) {
+  .container {
+    width: 100%
+  }
+
+  .slider_contr {
+    height: 190px;
+  }
+
+  .first_tile {
+    height: 306px;
+    overflow: hidden;
+  }
+
+  .last_tile {
+    height: 130px;
+    overflow: hidden;
+  }
+
+  .tile_blank {
+    height: 170px;
+    overflow: hidden;
+  }
+
+  .tile_video {
+    height: 352px;
+    overflow: hidden;
+  }
+
+  .tile_big {
+    height: 298px;
+    overflow: hidden;
+  }
+
+  .tile_big_footer {
+    height: 298px;
+    overflow: hidden;
+  }
+.venu h2{padding-left: 20px}
+
+.cont_info_overlay{    padding: 149px 18% 35px 18%;}
+.cont_feedback_form {
+    padding: 111px 80px 96px 13.3%;}
+   /* .cont_rate {
+    margin: 30px 8% 0px 30px;
+    width: 516px;
+    height: 429px;}*/
+    .cont_rate {
+    margin: 15px 0px 0px 15px;
+    width: 470px;
+    height: 430px;
+}
+    .cont_rate p{    top: 44%;}
+}
+
+@media (min-width:992px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left;
+  }
+
+  .col-lg-two5ths {
+    width: 40%;
+    float: left;
+  }
+
+  .col-lg-three5ths {
+    width: 60%;
+    float: left;
+  }
+
+  .col-lg-four5ths {
+    width: 80%;
+    float: left;
+  }
+
+}
+
+.dis_mid_width {
+  display: none;
+}
+
+@media (max-width:991px) {
+.cont_feedback_form {
+    padding: 74px 9.3% 50px;
+}
+.cont_info_overlay {
+    padding: 149px 10% 35px 5%;
+}
+.cont_feedback_form h3{letter-spacing: 5px;}
+
+.cont_rate {
+    margin: 15px 15px 0px 15px;
+    width: 430px;
+    height: 361px;
+}
+.cont_rate p{letter-spacing: 3px;}
+.cont_rate hr{width:160px;}
+.cont_wizard_holder {
+    padding: 50px 50px 25px 50px;
+}
+}
+@media (max-width:870px) {
+  .ptb-30 {
+    padding: 5px 0px
+  }
+
+  .footer-area-2 h4 {
+    letter-spacing: 3px;
+  }
+
+  .tile_container .container {
+    padding: 0px 6px;
+    overflow: hidden
+  }
+
+  .search_max {
+    display: none !important
+  }
+
+  .search_min {
+    display: block !important
+  }
+
+  /*.tile_container .container{padding:0px 12px;}*/
+  .tp-bullets {
+    right: 38px;
+  }
+
+  .search_contr {
+    height: 78px;
+    padding: 20px 20px;
+  }
+
+  .slider_contr {
+    height: 190px;
+  }
+
+  .first_tile {
+    height: 290px;
+    overflow: hidden;
+  }
+
+  .first_tile.pad_6 {
+    margin-bottom: 6px;
+  }
+
+  .last_tile {
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .tile_blank {
+    min-height: 220px;
+    overflow: hidden;
+  }
+
+  .tile_video {
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .tile_big {
+    height: 330px;
+    width: 80%;
+    overflow: hidden;
+  }
+
+  .tile_big_footer {
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .mid_width {
+    width: 50%
+  }
+
+  .hide_bloc_mid {
+    display: none;
+  }
+
+  .dis_mid_width {
+    display: block;
+  }
+
+  .tile_blank2 {
+    height: auto;
+  }
+
+  .tile_container .col-xs-12 {
+    width: 100%;
+  }
+
+  .tile_container .col-xs-6,
+  .tile_container .mid_width_50 {
+    width: 50%;
+  }
+
+  .width_mid_30 {
+    width: 30% !important
+  }
+
+  .width_mid_70 {
+    width: 70% !important
+  }
+
+  .width_mid_30 .tile_big,
+  .width_mid_70 .tile_big {
+    width: 100%
+  }
+
+  .tile_container .col-xs-4 {
+    width: 50%;
+  }
+
+  .tile_container .col-xs-3 {
+    width: 50%;
+  }
+
+  .tile_container .col-lg-5ths {
+    width: 50%;
+  }
+
+  .tile_container .col-lg-5ths .col-xs-6 {
+    width: 100%
+  }
+
+  .tile_container .col-lg-three5ths {
+    width: 100%
+  }
+
+  .tile_container {
+    padding: 0px
+  }
+
+  .input_box {
+    width: 80%
+  }
+
+  .event_info {
+    width: 100%
+  }
+
+  .venu_time {
+    width: 100%
+  }
+
+  .container-fluid.slider-main.event_slider,
+  .container-fluid.slider-main.food_banner {
+    height: 279px;
+  }
+
+   .container-fluid.slider-main.contact_banner {
+    height: 250px;
+}
+.container-fluid.slider-main.abt_banner{    height: 340px;}
+  .container-fluid.slider-main.shops_slider {
+    height: 245px;
+  }
+
+  .container-fluid.slider-main.events_slider {
+    height: 290px;
+  }
+
+  .main_mv_img {
+    display: block;
+    height: 350px;
+  }
+
+  .movie_list .item .col-sm-12 {
+    height: 160px
+  }
+
+  .fun_ent_place {
+    height: auto;
+  }
+
+  .ent_fun_info {
+    padding: 40px 0px 40px 0px;
+  }
+
+  .colimg {
+    height: 280px;
+  }
+
+  .mv_slider_cont {
+    width: 80%;
+    text-align: left:left:0px;
+  }
+
+  .slide_capt .hover_info {
+    padding: 25px
+  }
+
+  .shopping_category_info {
+    padding: 50px 10% 20px 10%;
+  }
+
+  .event_btn {
+    margin-top: 5px
+  }
+
+  .restrn_cafe,
+  .dine,
+  .court_speciality {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .shopping_information {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .shopping_category_info p {
+    margin-bottom: 8px;
+  }
+
+  .shopping_category_info h2 {
+    margin-bottom: 35px
+  }
+
+  .tile_container .event_btn {
+    margin: 5px;
+  }
+figcaption .btn_call {
+    width: 40%;}
+    .sp_interior_slider, .sp_interior_slider .item{height: 330px;}
+
+    .sp_about_info {
+    padding: 50px 30px 57px 47px;
+}
+.cont_rate {
+    margin: 15px 0px 0px 15px;
+    width: 350px;
+    height: 361px;
+}
+.cont_rate p {
+    letter-spacing: 1px;
+}
+.cont_info_overlay {
+    padding: 149px 6% 35px 0%;
+}
+.cont_wizard_holder {
+    padding: 50px 10px 25px 10px;
+}
+.cont_feedback_form {
+    padding: 50px 9.3% 50px;
+}
+}
+
+@media(max-width:767px) {
+  .shopping_category_info {
+    padding: 30px 0% 10px 15px;
+  }
+
+  .tile_container .col-lg-5ths .col-xs-6 {
+    width: 50%
+  }
+ .restaurants_info h2, .cafe_info h2, .dine_heading, .speciality_info h2, .food_spec_info h2, .food_shops h2,
+
+.share_heading h2, .movie_heading h2, .events_heading, figcaption h2, .cont_wizard_holder h3, .cont_wizard_holder h3.tk_feedback_area, .cont_feedback_form h3, .cont_info_overlay h2, .about_info h2, .brand_list h2, .event_details_heading h2, .venu h2, .sp_about_info h2, .sp_addr_time h2
+  {font-size: 15px;  }
+.events_heading, .brand_list h2, .cont_info_overlay h2{letter-spacing: 5px;}
+
+.sp_interior_slider .owl-nav{display: block;}
+
+.cont_info_overlay {
+    padding: 100px 200px;
+    text-align: center;
+}
+.field:nth-child(even), .field:nth-child(odd){padding: 0px;}
+.cont_feedback_form_holder{    margin-top: 50px;}
+.cont_map_contr{margin-top: 50px;}
+.contact_n_map{margin-bottom: 0px;}
+.cont_rate{display: none;}
+.question_tl{text-align: center;}
+.input_holder{text-align: center; margin-top: 2px; margin-left: 0px;}
+.cont_wizard_holder h3, .cont_wizard_holder h3.tk_feedback_area{letter-spacing: 1px;}
+.cont_info_overlay{bottom: unset;}
+.cont_info_holder{    margin-top: -50px;}
+
+}
+
+@media(max-width:680px) {
+  .brand_list {
+    padding: 0px 25px;
+  }
+
+  .dine_section_links li {
+    padding: 20px 10px
+  }
+
+  .dine_section_links li a svg {
+    height: 50px;
+  }
+
+  .container-fluid.slider-main {
+    height: 350px;
+    margin-top: 116px
+  }
+
+  .tile_container .mid_width_50 {
+    width: 50%
+  }
+
+  .welcom_info {
+    background-size: contain;
+    height: 330px;
+  }
+
+  .welcom_info {
+    height: 330px;
+  }
+
+  .welcom_info .col-md-4 {
+    height: 330px;
+  }
+
+  .header-container {
+    padding-top: 10px;
+  }
+
+  .mobile_menu {
+    padding-top: 17px;
+  }
+
+  .sticky .header-container {
+    padding-top: 7px;
+    padding-bottom: 9px;
+  }
+
+  .sticky .header-container .logo {
+    margin-top: 0px
+  }
+
+  .sticky .header-container .mobile_menu {
+    padding-top: 9px;
+  }
+
+  .slider_btn {
+    margin-top: 0px;
+  }
+
+  .slider-main-text h1 {
+    font-size: 40px;
+  }
+
+  .large_bold_grey {
+    font-size: 45px !important;
+  }
+
+  .shopping_category_info {
+    padding: 10px 0px 0px 0%;
+  }
+
+  .shopping_category_info h2 {
+    margin-bottom: 20px;
+  }
+
+  .shopping_category_info p {
+    margin-bottom: 0px
+  }
+
+  .event_info h1 {
+    font-size: 37px;
+    line-height: 47px
+  }
+
+  .mv_slider_cont {
+    width: 80%;
+    text-align: left:left:0px;
+  }
+
+  .mv_desc_heading {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .share_heading h2,
+  .movie_heading h2 {
+    font-size: 15px;
+    padding-bottom: 6px;
+  }
+
+  .shopping_sec_3 {
+    height: 490px;
+  }
+
+  .shopping_sec_2 {
+    height: 290px
+  }
+
+  .sp_about_info {
+    padding: 35px 0px 50px 75px;
+  }
+
+  .sp_adress {
+    padding: 100px 0 0px 40px;
+  }
+
+  .tour_event_img {
+    height: 440px
+  }
+
+  .event_btn {
+    line-height: 20px;
+  }
+  .cont_info_overlay {
+    padding: 100px 0px; left:unset; right: unset; width: 100%;}
+.cont_info_holder{margin-right: 0px}
+.cont_map_contr iframe {
+    height: 320px;}
+    .cont_wizard_holder{padding:50px 0px 25px;}
+    .input_holder li{padding-right: 20px}
+}
+
+@media(max-width:580px) {
+  .restaurants_info h2, .cafe_info h2, .dine_heading, .speciality_info h2, .food_spec_info h2, .food_shops h2,
+
+.share_heading h2, .movie_heading h2, .events_heading, figcaption h2,  .cont_info_overlay h2, .cont_wizard_holder h3, .cont_wizard_holder h3.tk_feedback_area, .cont_feedback_form h3, .about_info h2, .brand_list h2, .event_details_heading h2, .venu h2, .sp_about_info h2, .sp_addr_time h2
+  {font-size: 14px;  }
+
+  .events_heading, .brand_list h2{letter-spacing: 2px; margin-bottom: 10px;     padding-left: 5px;}
+  .cont_info_overlay h2{letter-spacing: 2px;}
+  .events_hr{  width: 90px;}
+.mv_desc_heading
+{    font-size: 20px;
+    line-height: 26px;}
+  .logo_container .card_heading{margin-bottom: 3px;}
+  .tile_big { 
+    height: 250px;
+  }
+
+  .img_shop {
+    display: none;
+  }
+
+  .tile_container .mid_width_50 {
+    width: 100%
+  }
+
+  .tp-bullets {
+    right: 18px;
+  }
+
+  .large_bold_grey {
+    font-size: 38px !important;
+    line-height: 35px !important
+  }
+
+  .restrn_cafe p,
+  .dine_info p,
+  .speciality_info p,
+  .event_info p,
+  .food_spec_info p,
+  .info_div p,
+  .sp_about_info p,
+  .sp_tagline  p,
+  .sp_open_hr h3,
+  .sp_open_hr .nice-select,
+  .sp_adress li.address,
+  .sp_adress li.contacts,
+.slide_capt .hover_info, .ent_fun_info p, .sp_addr_time li,  .mv_desc_info
+  {
+    font-size: 13px;
+
+  }
+
+  .event_info h1 {
+    font-size: 26px;
+    line-height: 33px;
+    margin-bottom: 25px;
+  }
+
+  .event_info p {
+    padding: 0px
+  }
+
+  .food_spec_info h2 {
+    border-bottom-color: #fff;
+    padding: 0px 20px 12px
+  }
+
+  .cafe_img {
+    height: 272px;
+  }
+
+  .card:hover .shop_time_info {
+    transition: none
+  }
+
+  /*    .cafe_info .cafe_desc{    padding: 0px 0px 0px 31px;}*/
+  .seciality_img {
+    height: 286px;
+  }
+
+  .tour_event_img {
+    height: 350px
+  }
+
+  .food_seciality .overlay_cont {
+    display: block;
+  }
+
+  .food_spec_info {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: inline-block;
+    left: 50%;
+    color: #fff;
+    text-align: center;
+    transform: translate(-50% -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .food_spec_info h2,
+  .food_spec_info p {
+    color: #fff;
+  }
+
+  .food_spec_info hr {
+    border-top: #fff;
+  }
+
+  .restaurants_img {
+    height: 295px
+  }
+
+  .restaurants_info {
+    padding: 0px 0px 50px;
+  }
+
+  .dine_info {
+    padding: 0px 15px
+  }
+
+  .speciality_info {
+    padding: 30px 25px 30px;
+    margin: -50px 30px 50px;
+  }
+
+  .food_seciality {
+    background-size: cover;
+  }
+
+  /*logo container food*/
+  .shop_main_logo {
+    padding-bottom: 10px;
+  }
+
+  .logo_container {
+    height: 250px;
+  }
+
+  .brand_list .logo_container {
+    height: 270px;
+    padding-top: 10px;
+  }
+
+  /* .brand_list .card:hover .shop_time_info { bottom: 40px; }
+   .logo_container a { width: 100% }
+   .card { position: relative; height: 270px; transform: none; padding-top: 0px; }
+   .card_img { position: relative; display: block; top: 50%; left: 50%; transform: translate(-50%, -89%); }
+   .card_img img { width: 88px; }
+   .shop_time_info { opacity: 1; bottom: 30px; }
+   .card:hover { box-shadow: none; height: 270px; z-index: 2; top: 0; left: 0; -webkit-transition: none; -webkit-transform: none; -ms-transition: none; -ms-transform: none; -moz-transition: none; -moz-transform: none; transition: none; transform: none; }
+   .card:hover .card_img { position: relative; display: block; top: 50%; left: 50%; transform: translate(-50%, -89%); }
+  */
+  .card {
+    position: absolute;
+    height: 250px;
+    background: #fff;
+    -webkit-transition:none;
+    -webkit-transform:none;
+    -ms-transition:none;
+    -ms-transform: none;
+    -moz-transition:none
+    -moz-transform:none;
+    transition:none;
+    transform:none;
+    z-index: 0;
+    padding-top: 30px;
+  }
+
+  .card:hover {
+    box-shadow:none;
+    height: 250px;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    -webkit-transition:none;
+    -webkit-transform:none;
+    -ms-transition:none;
+    -ms-transform: none;
+    -moz-transition:none
+    -moz-transform:none;
+    transition:none;
+    transform:none;
+    margin-left: 0px;
+  }
+
+  .card_img {
+    position: relative;
+    display: block;
+    top:0;
+    left: 0;
+    height: 100px;
+    margin-bottom: 25px;
+    -webkit-transition:none;
+    -webkit-transform:none;
+    -ms-transition:none;
+    -ms-transform: none;
+    -moz-transition:none
+    -moz-transform:none;
+    transition:none;
+    transform:none;
+  }
+.card_img  img{width: 85px;  top: 50%;
+        position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .card:hover .card_img {
+    position: relative;
+    top: 0;
+    left:0;
+  -webkit-transition:none;
+    -webkit-transform:none;
+    -ms-transition:none;
+    -ms-transform: none;
+    -moz-transition:none
+    -moz-transform:none;
+    transition:none;
+    transform:none;
+  }
+
+  .shop_time_info {
+    position: relative;
+    bottom:0;
+    left: 0;
+    opacity: 1;
+    width: 100%;
+    -webkit-transition:none;
+    -webkit-transform:none;
+    -ms-transition:none;
+    -ms-transform: none;
+    -moz-transition:none
+    -moz-transform:none;
+    transition:none;
+    transform:none;
+  }
+
+  .card:hover .shop_time_info {
+    position: relative;
+    opacity: 1;
+    -webkit-transition:none;
+    -webkit-transform:none;
+    -ms-transition:none;
+    -ms-transform: none;
+    -moz-transition:none
+    -moz-transform:none;
+    transition:none;
+    transform:none;
+  }
+.logo_container .card_time{font-size: 13px;}
+  /*logo container food*/
+  .sop_cat_cont {
+    width: 100%;
+    padding: 50px 15px 35px;
+  }
+
+  .shopping_category_info {
+    padding: 5px 15px 0px 15px;
+    text-align: center;
+  }
+
+  .shopping_category_info h2 {
+    margin-bottom: 20px;
+  }
+
+  .shopping_category_info p {
+    margin-bottom: 0px;
+    font-size: 15px;
+  }
+
+  
+.brand_list  .card {
+  position: relative;
+  height: 250px;
+  width: 100%;
+     left:0;
+   top: 0;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+  z-index: 1;
+   
+}
+
+.brand_list  .card:hover {
+  box-shadow:none;
+ 
+  z-index: 2;
+   left:0;
+   top: 0;
+  -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+}
+
+.brand_list  .card .card_info_holder {
+  position: relative;
+  height: 230px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: 0px;
+  background: none;
+  border-radius: 10px;
+  -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+}
+
+.brand_list  .card:hover .card_info_holder {
+ position: relative;
+  height: 230px;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: none;
+  border-radius: 10px;
+  -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+  box-shadow: none;
+}
+
+.brand_list .card_img img {
+  -webkit-filter:unset; /* Safari 6.0 - 9.0 */
+  filter: unset;
+ width: auto;
+ height: 85px;
+      left: 0;
+    top: 0;
+    position: relative;
+   -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+}
+
+.brand_list  .card_img {
+ 
+  height: 100px;
+  position: relative; 
+    top: 0%;
+    left: 0%;
+    display: block;
+   -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+}
+
+.brand_list  .card:hover .card_img {
+  
+position: relative; 
+    top: 0%;
+    left: 0%;
+    margin-top: 0px;
+    display: block;
+   -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+  box-shadow: none;
+}
+
+.brand_list .card:hover .card_img img {
+  
+  -webkit-filter:unset; /* Safari 6.0 - 9.0 */
+  filter:unset;
+   -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+}
+
+.brand_list  .shop_time_info {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  opacity:1;
+  width: 100%;
+   
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+}
+
+.brand_list  .card:hover .shop_time_info {
+  position: relative;
+  opacity: 1;
+  bottom: 0;
+  left: 0;
+     -webkit-transition: none;
+  -webkit-transform:none;
+  -ms-transition: none;
+  -ms-transform:none;
+  -moz-transition: none;
+  -moz-transform:none;
+  transition: none;
+  transform:none;
+}
+
+
+  .container-fluid.slider-main.event_slider,
+  .container-fluid.slider-main.events_slider,
+  .container-fluid.slider-main.food_banner,
+  .container-fluid.slider-main.mv_main_banner,
+ .container-fluid.slider-main.contact_banner
+   {
+    height: 200px;
+  }
+
+.container-fluid.slider-main.abt_banner{    height: 250px;}
+
+  .container-fluid.slider-main.shops_slider {
+    height: 190px;
+  }
+
+  .mv_bg_img,
+  .mv_bg_img_slider {
+    width: 100%
+  }
+
+  .main_mv_img {
+    background-size: contain !important;
+    margin-left: 0px;
+  }
+
+  .mv_bg_img_slider {
+    margin-top: 60px
+  }
+
+  .movie_list .item .col-sm-12 {
+    height: 240px
+  }
+
+  .logos_brd_list {
+    padding: 0px;
+  }
+
+  .sp_dt_top {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mob_sp_abt {
+    display: none !important;
+  }
+
+  .sp_image {
+    margin: 0 auto 45px;
+  }
+
+  .mob_sp_abt_old {
+    display: block !important;
+  }
+
+  .sp_about_info {
+    padding: 0px 0px 50px;
+    text-align: center;
+  }
+
+  .sp_about_info hr {
+    margin: 0 auto;
+  }
+
+  .sp_about_info h2,
+  .sp_about_info p {
+    margin-bottom: 15px;
+  }
+
+  .sp_interior_slider {
+    width: 90%;
+    float: right;
+    height: 250px
+  }
+
+  .sp_interior_slider .item,
+  .sp_custm_slider,
+  .sp_custm_slider_container {
+    height: 250px
+  }
+
+  .sp_interior_slider .owl-prev,
+  .sp_interior_slider .owl-next {
+    margin-left: -55px
+  }
+
+  .sp_mp_cont,
+  .sp_addr_cont {
+    width: 100%
+  }
+
+  .sp_map {
+    height: 250px;
+    margin-bottom: 25px;
+  }
+
+  .sp_adress {
+    padding: 0px;
+    text-align: center;
+  }
+
+  .g_map {
+    height: 250px;
+  }
+
+  .sp_adress li.address {
+    height: 40px
+  }
+
+  .sp_adress h2 {
+    letter-spacing: 2px;
+  }
+
+  .shadow_slider {
+    padding: 15px;
+  }
+figcaption .btn_call {
+    width: 30%;}
+}
+
+@media(max-width:480px) {
+  .events_grid .nice-select.category_select.selectpicker {
+    margin: 0 auto;
+    float: none;
+}
+  .mv_desc_heading
+{    font-size: 16px;
+    line-height: 22px;}
+  .tile_container .col-lg-5ths .col-xs-6 {
+    width: 100%
+  }
+
+  .restaurants_info hr {
+    margin: 16px auto 0px;
+  }
+
+  .restaurants_img {
+    height: 251px;
+    margin-bottom: 70px
+  }
+
+  .restrn_cafe {
+    padding-bottom: 55px;
+  }
+
+  .cafe_info .cafe_desc {
+    padding: 50px 0px 0px;
+  }
+
+  .dine_info {
+    width: 100%
+  }
+
+  .dine_section_links li {
+    padding: 15px 10px;
+  }
+
+  .dine_section_links li a svg {
+    height: 40px
+  }
+
+  .seciality_img {
+    height: 250px;
+  }
+
+  .speciality_info {
+    margin-bottom: 50px;
+    padding: 25px;
+    margin: -30px 20px 50px;
+    background: #fff;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .speciality_info  p {
+    text-align: center
+  }
+
+  .food_seciality {
+    margin-bottom: 50px
+  }
+
+  .food_spec_info {
+    padding: 20px;
+  }
+
+  .food_shops_heading {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .card {
+    height: 240px;
+  }
+
+  .logo_container {
+    height: 240px;
+  }
+
+  .food_seciality {
+    background-size: cover;
+    background-position: center;
+    height: 280px;
+  }
+
+  .food_spec_info h2,
+  .food_spec_info p {
+    color: #fff;
+    text-align: center;
+  }
+
+  .food_spec_info h2 {
+    border-bottom-color: #fff;
+    text-align: center;
+  }
+
+  .food_spec_info hr {
+    border-top-color: #fff;
+    color: #fff;
+    margin: 16px auto 0px;
+  }
+
+ .large_bold_grey {
+    font-size: 35px !important;
+    line-height: 40px !important;
+  }
+
+  .slider_btn {
+    margin-top: 10px !important;
+  }
+
+  .search-box {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+   .large_bold_grey {
+    font-size: 25px !important;
+    line-height: 20px;
+  }
+
+  .slider_btn {
+    margin-top: 0px;
+  }
+
+  .top_link_service {
+    margin-top: 50px;
+  }
+
+  .tp-bullets {
+    right: 10px;
+  }
+
+  .width_mid_30 {
+    display: none;
+  }
+
+  .width_mid_70 {
+    width: 100% !important
+  }
+
+  .tile_container .col-xs-12 {
+    width: 100%;
+  }
+
+  .tile_container .col-xs-6 {
+    width: 100%;
+  }
+
+  .tile_container .col-xs-4 {
+    width: 100%;
+  }
+
+  .tile_container .col-xs-3 {
+    width: 100%;
+  }
+
+  .tile_container .col-lg-5ths {
+    width: 100%;
+  }
+
+  .tile_container .col-lg-three5ths {
+    width: 100%
+  }
+
+  .shopping_sec_1 {
+    height: 306px;
+  }
+
+  .shopping_sec_3 {
+    height: 289px;
+  }
+
+  .shopping_sec_2 {
+    height: 172px;
+  }
+
+  .shopping_sec_4 {
+    height: 300px;
+  }
+
+  .restrn_cafe {
+    padding-top: 0px;
+    padding-bottom: 50px;
+  }
+
+  .dine_heading {
+    margin-bottom: 15px;
+  }
+
+  .dine_info p {
+    padding-bottom: 10px;
+  }
+
+  .dine_section_links {
+    margin-top: 25px;
+  }
+
+  .dine {
+    margin-bottom: 50px;
+    padding: 0px 15px;
+  }
+
+  .restaurants_info {
+    padding: 0px 0px 50px;
+    text-align: center;
+  }
+
+  .restaurants_info h2 {
+    padding: 0px 12px 12px 12px;
+    margin-bottom: 15px;
+  }
+
+  .restaurants_info hr {
+    margin: 16px auto 0px;
+  }
+
+  .speciality_info h2 {
+    text-align: center;
+  }
+
+  .speciality_info hr {
+    margin: 0px auto;
+    position: relative;
+  }
+
+  .cafe_info .cafe_desc {
+    text-align: center;
+    text-align: center;
+    padding: 25px;
+    margin: -30px 20px 0px;
+    background: #fff;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .cafe_info .footer_lines {
+    margin: 20px auto 0px;
+    position: relative;
+  }
+
+  .dine_section_links {
+    padding: 0px
+  }
+
+  .dine_section_links li img {
+    height: 45px
+  }
+
+  .mv_desc_info {
+    display: none;
+  }
+
+  .movie_carasual .item {
+    height: 300px
+  }
+
+ 
+
+  .movie_list .item .col-sm-12 {
+    height: 200px
+  }
+
+  .colimg {
+    width: 100%;
+    height: auto; 
+  }
+
+  .photo-container {
+    position: relative;
+    height: 250px;
+  }
+
+  .slide_capt {
+    position: relative;
+    color: #4d4d4d;
+    transition: none;
+    visibility: visible;
+    background: none;
+    transform: none;
+    opacity: 1
+  }
+
+  .slide_capt hr {
+    border-top: 1px solid #4d4d4d;
+    margin: 20px auto 0px;
+  }
+
+  .slide_capt .hover_info {
+    position: relative;
+    color: #4d4d4d;
+    text-align: center;
+    padding: 25px ;
+ 
+    margin: -30px 10px 50px;
+    background: #fff;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .row_img_capt:hover ~ .row_img_capt .slide_capt {
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .row_img_capt:hover .slide_capt {
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .row_img_capt:hover .colimg:hover ~ .colimg .slide_capt {
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .slider_movie1 {
+    margin-bottom: 50px;
+  }
+
+  .img_contnr {
+    margin: 0px;
+  }
+
+  .entr_details {
+    padding: 0px
+  }
+
+  .share_heading h2,
+  .movie_heading h2 {
+    font-size: 14px;
+    padding-bottom: 6px;
+  }
+
+  .img_contnr.eqheight {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .sp_about_info {
+    padding: 0px 0px 50px;
+    text-align: center;
+  }
+
+  .sp_about_info hr {
+    margin: 0 auto;
+  }
+
+  .sp_about_info h2,
+  .sp_about_info p {
+    margin-bottom: 15px;
+  }
+
+  .sp_interior_slider {
+    width: 100%;
+    float: right;
+    height: 250px
+  }
+
+  .sp_interior_slider .item,
+  .sp_custm_slider,
+  .sp_custm_slider_container {
+    height: 200px
+  }
+
+  .sp_interior_slider .owl-prev,
+  .sp_interior_slider .owl-next {
+    margin-left: 0px;
+    bottom: 0px;
+    right: 0px;
+    top: auto;
+    display: inline-block;
+    float: left;
+  }
+
+  .sp_interior_slider .owl-prev {
+    right: 50px;
+  }
+
+  .sp_interior_slider .owl-nav {
+    display: none;
+  }
+
+  .sp_custm_slider_container #counter2 {
+    width: 120px;
+    right: 4%
+  }
+
+  .sp_custm_slider_container #counter2 hr {
+    width: 60px
+  }
+
+  .sh_dt_bg,
+  .sh_dt_bg_cntr {
+    width: 100%;
+  }
+
+  .sp_open_hr .nice-select {
+    float: none;
+    width: auto;
+    display: inline-block;
+  }
+
+  .sp_open_hr h3 {
+    margin-bottom: 15px
+  }
+
+  .sp_open_hr hr {
+    margin: 0 auto
+  }
+
+  .sp_dt_top {
+    padding: 50px 0px 0px
+  }
+
+  .sp_tagline {
+    margin-bottom: 15px
+  }
+
+  .sp_open_hr {
+    margin-bottom: 50px
+  }
+
+  .shop_details_baner {
+    margin-top: 133px;
+  }
+
+  .tour_event_img {
+    height: 300px
+  }
+
+  .abt_info_contr {
+    padding: 50px 40px 0px;
+  }
+
+  .abt_info_contr .tab-content {
+    padding: 40px 20px 60px;
+  }
+
+  .ab_open_info .opening_time {
+    margin: 0px 0px 70px;
+  }
+
+  .slider_bg_sr {
+    width: 100%;
+  }
+
+  .ab_sr_slider2 {
+    display: none;
+  }
+
+  .sr_detials_mobile_view {
+    display: block;
+  }
+
+  .ab_sr_slider1 {
+    padding: 50px 50px;
+  }
+
+  .ab_sr_slider1 .slider_cont {
+    padding: 0px
+  }
+
+  .nt_btn {
+    display: none;
+  }
+
+  .about_info,
+  .ab_open_info,
+  .ab_sr_slider1 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .tile_container .event_btn {
+    margin: 5px;
+    line-height: 32px;
+  }
+.events_heading_top {
+   margin-bottom: 40px;  
+}
+.cont_map_contr iframe {
+    height: 250px;}
+    .input_holder input[type="radio"] + label span {
+    background-color: #a9a9a9;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+}
+.input_holder input[type="radio"]:checked + label span{ width: 25px;
+    height: 25px;}
+}
+
+@media (max-width:390px) {
+  
+  .event_info h1 {
+    font-size: 21px;
+    line-height: 27px;
+    margin-bottom: 18px;
+  }
+
+  .events_heading {
+ letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding-left: 3px;
+  }
+.events_hr {
+    width: 75px;
+}
+
+  .dine_section_links li {
+    padding: 5px 7px;
+  }
+
+  .dine_section_links li a svg {
+    height: 28px
+  }
+
+  .restaurants_info {
+    padding: 0px 0px 20px;
+  }
+
+  .restaurants_img {
+    height: 161px;
+  }
+
+  .cafe_img {
+    height: 336px;
+  }
+
+  .seciality_img {
+    height: 172px;
+  }
+
+  .top_link_service {
+    padding-left: 10px;
+    padding-right: 10px
+  }
+
+  .first_tile {
+    height: 160px;
+    overflow: hidden;
+  }
+
+  .last_tile {
+    height: 110px;
+    overflow: hidden;
+  }
+
+  .col-xs-6 {
+    width: 100%;
+  }
+
+  .slider-main-text {
+    top: 50%;
+    transform: translateX(-50%) translateY(-25%);
+  }
+
+  .slider-main-text h1 {
+    font-size: 30px;
+    font-weight: 900
+  }
+
+  .top-bar .col-sm-6,
+  .top-bar .container {
+    padding: 0px;
+  }
+
+  .top_br_linksright {
+    text-align: center !important;
+  }
+
+  .top_br_linksright li {
+    margin: 0px 3px;
+  }
+
+  .welcom_info,
+  .welcom_info .col-md-4 {
+    min-height: 350px;
+    background-size: cover;
+  }
+
+  .info_div p {
+    font-size: 14px;
+  }
+
+  .top_link_service {
+    margin-top: 40px;
+  }
+
+  .top_link_service img {
+    margin-bottom: 5px;
+  }
+
+  .top_link_service {
+    margin-bottom: 15px !important;
+  }
+
+  .img-mobile {
+    display: none;
+  }
+
+  .large_bold_grey {
+    margin: 0 auto;
+    font-size: 60px;
+    text-align: center !important;
+    width: 90%;
+    font-size: 30px;
+    line-height: 35px;
+    left: 50% !important;
+    text-align: left;
+    transform: translateX(-50%) !important;
+  }
+
+  .movie_banner .tp-caption.text_button {
+    margin: 0 auto;
+    text-align: center !important;
+    width: 90%;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .movie_banner .tp-caption.img_contr {
+    display: none !important
+  }
+
+  .tp-bullets {
+    right: 10px !important;
+  }
+
+  .tile_big_footer {
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .container-fluid.slider-main {
+    height: 230px;
+    margin-top: 111px;
+  }
+
+  .logo {
+    margin-top: 2px;
+  }
+
+  .mobile_menu {
+    padding-top: 14px;
+  }
+
+  .food_shops {
+    padding: 0px 25px
+  }
+
+  .shop_main_logo  span:after {
+    right: 50%;
+  }
+
+  .shop_main_logo span:before {
+    left: 50%;
+  }
+
+  .shop_main_logo:nth-child(n) span::after {
+    display: block !important;
+  }
+
+  .shop_main_logo:nth-child(n) span::before {
+    display: block !important;
+  }
+
+  .shop_main_logo:last-child span::after {
+    display: none !important;
+  }
+
+  .shop_main_logo:last-child span::before {
+    display: none !important;
+  }
+
+  .shop_main_logo:after {
+    content: none;
+  }
+
+  /*brand*/
+  .brand_list  .brand_main_logo:after,
+  .brand_list  .brand_main_logo:before {
+    display: none !important;
+    content: none;
+  }
+
+  .brand_list  .brand_main_logo:nth-child(n) span:after {
+    display: block !important;
+    right: 50%;
+    content: ""
+  }
+
+  .brand_list  .brand_main_logo:nth-child(n) span:before {
+    display: block !important;
+    left: 50%;
+    content: ""
+  }
+
+  .dine_section_links li img {
+    height: 38px
+  }
+
+ 
+  .movie_list .item .col-sm-12 {
+    height: 190px
+  }
+
+  .shop_details_baner {
+    margin-top: 123px;
+  }
+
+  .sp_image img {
+    width: 160px;
+  }
+
+  .sp_image {
+    width: 210px;
+    height: 210px;
+    padding: 25px;
+  }
+
+  .sh_dt_bg,
+  .sh_dt_bg_cntr {
+    height: 430px;
+  }
+.sh_details_contr {
+    margin-top: -430px;
+}
+  .tour_event_img {
+    height: 244px;
+  }
+
+}
+
+@media(max-width:320px) {
+  .tile_container .event_btn {
+    margin: 5px 1px
+  }
+
+  .width_mid_30 {
+    width: 50% !important
+  }
+
+  .container-fluid.slider-main {
+    height: 200px;
+  }
+
+  .event_btn {
+    margin-bottom: 8px
+  }
+
+  .tour_event_img {
+    height: 200px;
+  }
+figcaption .btn_call {
+    width: 40%;}
+
+    .sp_image {
+    width: auto;
+    height: auto;
+    padding: 15px;
+    max-height: 180px;
+  }
+  .sp_image img {
+    width: auto;
+    max-height: 160px;
+}
+.sh_details_contr {
+   margin-top: -364px;
+}
+.sh_dt_bg, .sh_dt_bg_cntr {
+    height: 330px;
+}
+.sp_addr_time {
+    margin-bottom: 50px;
+}
+}

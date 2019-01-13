@@ -1,0 +1,178 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8651;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+
+    ImagePickerItem BrandImage1 = content.GetImagePickerItem("brandImage1");
+    ImagePickerItem BrandImage2 = content.GetImagePickerItem("voucherImage");
+}
+
+@if (BrandImage1.HasImage)
+{
+    <section class="container-fluid slider-main event_slider" style="background-image: url(@BrandImage1.Image.Url);">
+        <div class="row">
+
+            <div class="slider-main-text text-center">
+
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<section class="container-fluid  event_details">
+    <div class="container">
+        <div class="row">
+
+            <div class="event_details_heading text-center">
+                <h2>
+
+                   @content.GetPropertyValue("title")
+
+                </h2>
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="row ">
+            <div class="event_info ">
+                <h1>
+
+                    @content.GetPropertyValue("descriptionTitle")
+                </h1>
+                <p class="text-center">  @content.GetPropertyValue("description")</p>
+
+
+
+            </div>
+
+
+            @if (BrandImage2.HasImage)
+            {
+                <div class="evt_off_addn_info">
+                    <img src='@BrandImage2.Image.Url' class="img-responsive">
+                </div>
+            }
+
+            </div>
+
+    </div>
+</section>
+
+
+
+<footer class="footer-bg bg-opacity footer-border pt-70 pb-20  " style="background:#e6e6e6">
+    <div class="footer-area-2">
+        <div class="container">
+            <div class="row pb-40">
+                <div class='col-sm-3' id="mall_time">
+                    <h4>Mall Timings</h4>
+                    <p>
+                        <strong>Mall</strong><br>
+                        We are open 7 days a week!
+                    </p>
+                    <p>
+                        <strong>All Retail Shops & Kiosk</strong><br>
+                        Sunday to Wednesday - 10am to 10pm<br>
+                        Thursday -Saturday - 10am to 11pm
+                    </p>
+                    <p>
+                        <strong>Foodcourt, Cafe, Restaurant & Hypermarket</strong><br>
+                        All Days - 9am to 12am
+                    </p>
+                    <p>
+                        <strong>Cinema</strong><br>
+                        Sunday to Wednesday - 12pm to 3am<br>
+                        Thursday-Saturday - 9am to 3am
+                    </p>
+                    <p>
+                        <strong>Fun City</strong><br>
+                        Saturday to Wednesday - 10am to 11pm<br>
+                        Thursday & Friday -10am-12am
+                    </p>
+                </div>
+                <div class='col-sm-3'>
+                    <h4>Service</h4>
+                    <p>
+                        <ul class="footer_menu_linnk">
+                            <li><a href="shopping.html">Shopping</a></li>
+                            <li><a href="food.html">Food</a></li>
+                            <li><a href="entertainment.html">Entertainment</a></li>
+                            <li><a href="offers.html">Offers & Promotions</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="tourist_desk.html">Tourist Desk</a></li>
+                            <li><a href="">Store Locator / Mall Map</a></li>
+                            <ul>
+                    </p>
+                </div>
+                <div class='col-sm-3'>
+                    <h4>CONTACT US</h4>
+                    <p>
+                        <strong>Manar Mall</strong><br>
+                        P.O.Box 10500, RAK, U.A.E.<br>
+                        Tel: <a href="tel:02265142582">+ 971 7 227 0000</a> <br>
+                        Fax: + 971 7 228 9888 <br>
+                        E-mail: <a href="mailto:info@manarmall.com">info@manarmall.com</a>
+                    </p>
+                    <p>
+                        <strong>Al Hamra Group</strong><br>
+                        P.O.Box 12222, RAK, U.A.E.<br>
+                        Tel: <a href="tel:02265142582">+ 971 7 243 2594</a> <br>
+                        Fax: + 971 7 243 3065 <br>
+                        E-mail: <a href="mailto:info@alhamragroup.ae">info@alhamragroup.ae</a><br>
+                        Website : <a href="www.alhamragroup.ae" target="_blank">www.alhamragroup.ae</a>
+                    </p>
+                </div>
+                <div class='col-sm-3'>
+                    <h4>Social</h4>
+                    <div class="clearfix">
+                        <p>
+                            <strong>Subscribe Newsletter</strong><br>
+                            <div class='search-box'>
+                                <form class="form_footer">
+                                    <input type="text" class="footer_news_input" placeholder="example@gmail.com">
+                                    <button class="footer_news footer_news_btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="19"><g fill="#FFF"><path d="M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm0 50C12.767 50 2 39.233 2 26S12.767 2 26 2s24 10.767 24 24-10.767 24-24 24z" /><path d="M38.252 15.336l-15.369 17.29-9.259-7.407a1 1 0 0 0-1.249 1.562l10 8a.999.999 0 0 0 1.373-.117l16-18a1 1 0 1 0-1.496-1.328z" /></g></svg></button>
+                                </form>
+                            </div>
+                        </p>
+                    </div> <br>
+                    <p>
+                        <strong>Follow us on:</strong><br>
+                        <ul class="social_links">
+                            <li><a href="" title="facebook" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="19" viewBox="0 0 96.124 96.123"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z" /></svg></a></li>
+                            <li>
+                                <a href="" target="_blank" title="twitter">
+                                    <svg viewBox="0 -47 512.002 512" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M191.012 419.043c-22.14 0-44.93-1.793-67.856-5.387-40.379-6.336-81.254-27.457-92.82-33.781L0 363.289l32.844-10.8c35.902-11.805 57.742-19.13 84.777-30.598-27.07-13.11-47.933-36.692-57.976-67.176l-7.641-23.195 6.266.957A113.939 113.939 0 0 1 44 214.883c-12.934-19.645-19.781-43.649-18.324-64.219l1.437-20.246 12.121 4.695a113.316 113.316 0 0 1-10.98-30.777c-5.293-26.36-.863-54.363 12.476-78.852L51.29 6.102l14.12 16.96c44.66 53.649 101.227 85.473 168.363 94.79-2.742-18.903-.687-37.145 6.114-53.497 7.918-19.039 22.004-35.183 40.722-46.69 20.79-12.778 46-18.97 70.989-17.435 26.511 1.63 50.582 11.563 69.699 28.747 9.336-2.426 16.215-5.016 25.512-8.516 5.593-2.106 11.937-4.496 19.875-7.23l29.25-10.079-19.075 54.477a96.355 96.355 0 0 1 3.91-.254l31.235-1.414-18.461 25.23c-1.059 1.446-1.328 1.856-1.703 2.422-1.488 2.242-3.34 5.032-28.68 38.867-6.344 8.473-9.512 19.508-8.922 31.079 2.246 43.968-3.148 83.75-16.043 118.234-12.195 32.625-31.093 60.617-56.164 83.2-31.023 27.937-70.582 47.066-117.582 56.847-23.054 4.797-47.812 7.203-73.437 7.203zm0 0" /></svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <hr style=" border-top: 1px solid #a5a5a5;">
+            <div class="col-md-12 col-sm-12 col-xs-12 ptb-30">
+                <div class="footer-2-logo">
+                    <p style="color:#a5a5a5"> Privacy Policy | Copyright © <span id="curr_year"></span> Manar Mall All rights reserved. </p>
+                </div>
+            </div>
+        </div>
+    </div>

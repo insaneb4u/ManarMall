@@ -1,0 +1,58 @@
+﻿<div class="umb-editor umb-nesteddatatype" ng-controller="Umbraco.PrevalueEditors.PropertyListController">
+    <div ui-sortable="sortableOptions">
+        <div class="property-group" ng-repeat="item in model.value" ng-init="expand=item.alias==''">
+            <ng-form name="keyvalueForm">
+                <div class="property-list">
+                    <i class="icon icon-navigation handle"></i>
+                
+                    <i class="pull-right icon icon icon-delete red" ng-show="model.value.length > 1" ng-click="remove($index)"></i>
+                    <a prevent-default href="" ng-click="expand=!expand" ng-show="!expand">
+                        <span ng-bind="item.label"></span> (<span ng-bind="item.alias"></span>), Type: <span ng-bind="(datatypes | filter:{id:item.datatype})[0].name"></span><span ng-show="item.required">, Required</span>
+                        <i class="icon icon-navigation-down pull-right"></i>
+                    </a>
+                    <a prevent-default href="" ng-click="!item.alias || (expand=!expand)" ng-disabled="!item.alias" ng-show="expand">
+                        Edit "<span ng-bind="item.label"></span><span ng-show="!item.label">Add New Property</span>" 
+                        <i class="icon icon-navigation-up pull-right"></i>
+                    </a>
+                </div>
+          
+                <div class="property-detail" ng-show="expand">
+                    <umb-control-group label="Name" alias="">
+                        <input type="text" ng-model="item.label" name="label" val-server="item_{{$index}}" required ng-change="setAlias($index)" />
+                        <span class="help-inline" val-msg-for="label" val-toggle-msg="required">Required</span>
+                    </umb-control-group>
+                    <umb-control-group label="Alias" alias="">
+                        <input type="text" ng-model="item.alias" name="alias" val-server="item_{{$index}}" required  val-regex="^[a-zA-Z0-9]*$" val-unique="true"/>
+                        <span class="help-inline" val-msg-for="alias" val-toggle-msg="required">Required</span>
+                        <span class="help-inline" val-msg-for="alias" val-toggle-msg="valRegex">The value entered is not valid alias</span>
+                        <span class="help-inline" val-msg-for="alias" val-toggle-msg="unique">The alias must be unique</span>
+                    </umb-control-group>
+                    <umb-control-group label="Type" alias="">
+                        <select ng-model="item.datatype" name="datatype" val-server="item_{{$index}}" required val-regex="^[-0-9]*$" ng-options="item.id as item.name for item in datatypes | orderBy:'name'">
+                        </select>
+                        <span class="help-inline" val-msg-for="datatype" val-toggle-msg="required">Required</span>
+                    </umb-control-group>
+                    <umb-control-group label="Mandatory" alias="">
+                        <input type="checkbox" ng-model="item.required" val-server="item_{{$index}}" />
+                    </umb-control-group>
+                    <umb-control-group label="Validation" alias="">
+                        <textarea ng-model="item.validation" val-server="item_{{$index}}" />
+                    </umb-control-group>
+                    <umb-control-group label="Show in Summary" alias="">
+                        <input type="checkbox" ng-model="item.showsummary" val-server="item_{{$index}}" />
+                    </umb-control-group>
+                    <umb-control-group label="Description" alias="">
+                        <textarea ng-model="item.description" val-server="item_{{$index}}" />
+                    </umb-control-group>
+                    
+                    <div class="control-group">
+                        <a class="btn" ng-click="!item.alias || (expand=!expand)" ng-disabled="!item.alias">Close</a>
+                    </div>
+                </di>
+            </ng-form>
+        </div>
+    </div>
+    <div class="control-group">
+        <i ng-click="add()" class="icon icon-add blue"></i>
+    </div>
+</div>

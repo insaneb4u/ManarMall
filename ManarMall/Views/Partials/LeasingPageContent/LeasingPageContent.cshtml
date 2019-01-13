@@ -1,0 +1,144 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 8706;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandimage1");
+
+}
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid contact_banner slider-main " style="background: url(@brandimage1.Image.Url) no-repeat center; background-size: cover;  ">
+        <div class="row">
+            <div class="slider-main-text text-center">
+
+            </div>
+        </div>
+    </section>
+}
+
+
+<section class="container-fluid  str_info_contr ">
+    <div class="col-md-9 col-sm-9 hidden-xs  eqheight1" style="background: url(img/part-of-us.png) no-repeat center; background-size: cover; right: 0;   position: absolute;  "></div>
+
+    <div class="container ">
+
+        <div class="  eqheight1">
+
+            <div class="col-lg-5 col-md-5 col-sm-5 eqheight1">
+                <div class="row">
+                    <div class="enqr_form_holder">
+
+                        <div class='enqr_form'>
+                            <div class="  movie_heading">
+                                <h2>Make Enquiry</h2>
+                                <hr>
+                            </div>
+
+                            <form class="cont_form ">
+                                <div class="col-sm-12 field">
+
+                                    <input type="text" class="required" name="fullname" id="Name" required>
+                                    <label for="fullname" class="floating-label">Name</label>
+
+
+                                </div>
+                                <div class="col-sm-12 field ">
+
+                                    <input type="text" class="required" name="fullname" id="Mobile" required>
+                                    <label for="fullname" class="floating-label">Mobile No.</label>
+                                </div>
+                                <div class="col-sm-12 field oddchild">
+
+                                    <input type="text" class="required" name="fullname" id="Email" required>
+                                    <label for="fullname" class="floating-label">Email</label>
+                                </div>
+                                <div class="col-sm-12 field">
+
+                                    <input type="text" class="required" name="fullname" id="Company" required>
+                                    <label for="fullname" class="floating-label">Company Name</label>
+                                </div>
+
+
+
+
+                                <button class="next_btn pull-right" id="btnsubmit" type="button">Submit</button>
+
+
+
+                            </form>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7 col-md-7 col-sm-7 ">
+                <div class="row">
+                    <div class="col-sm-12 enery_info_contr">
+                        <div class="movie_heading">
+                            <h1>leasing</h1> - Be a part of us
+                            <hr>
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <ul class="enery_info">
+                            @content.GetPropertyValue("description")
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<script type="text/javascript">
+    $("#btnsubmit").click(function () {
+
+        var Name = $("#Name").val();
+        var Mobile = $("#Mobile").val();
+        var Email = $("#Email").val();
+        var Company = $("#Company").val();
+
+        var data = Name + "~" + Mobile + "~" + Email + "~" + Company;
+
+          $.ajax({
+                        url: "@Url.Action("SubmitData", "LeasingPageContent")",
+                       type: "POST",
+                       data: { "send": "" + data + "" },
+              dataType: "json",
+              success: function (data) { alert(data)}
+                    });
+    });
+</script>

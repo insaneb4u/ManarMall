@@ -1,0 +1,19 @@
+﻿.umb-nesteddatatype .property-group, .umb-nesteddatatype .property-list {
+    margin-bottom: 20px;
+}
+.umb-nesteddatatype .property-list a .icon {
+    padding-right: .5em;
+    text-decoration: none;
+}
+.umb-nesteddatatype .property-detail {
+    margin-left: 18px;
+}
+.umb-nesteddatatype .property-list-summary {
+    white-space: nowrap
+}
+.umb-nesteddatatype .property-list-label {
+    font-weight: bold;
+}
+i[ng-click] {
+    cursor: pointer;
+}

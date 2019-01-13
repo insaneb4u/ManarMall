@@ -1,0 +1,46 @@
+﻿{
+	 propertyEditors: [      
+        {
+            /*this must be a unique alias*/ 
+            alias: "NestedDataType",
+            /*the name*/
+            name: "Nested Data Type",
+            /*the html file we will load for the editor*/
+            editor: {
+                view: "~/App_Plugins/NestedDataType/views/propertyeditors/nesteddatatype.html",
+				valueType: "JSON",
+            },
+			prevalues:{
+				fields: [
+					{
+					   label: "Minimum number of items",
+					   description: "",
+					   key: "min",
+					   view: "number"
+					},
+					{
+					   label: "Maximum number of items",
+					   description: "",
+					   key: "max",
+					   view: "number"
+					},
+					{
+					   label: "Add nested items",
+					   description: "Add and remove values for the model",
+					   key: "items",
+					   view: "~/App_Plugins/NestedDataType/views/prevalueeditors/propertylist.html"
+					}  
+				]
+			}
+        }
+    ],
+    javascript: [
+        '~/App_Plugins/NestedDataType/views/propertyeditors/nesteddatatype.controller.js',
+        '~/App_Plugins/NestedDataType/views/prevalueeditors/propertylist.controller.js',
+        '~/App_Plugins/NestedDataType/common/resources/datatypendt.resource.js',
+        '~/App_Plugins/NestedDataType/common/directives/valunique.directive.js'
+    ],
+	css: [
+		'~/App_Plugins/NestedDataType/css/nesteddatatype.css'
+	]
+}

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+	<info>
+		<package>
+			<name>Stacked Content</name>
+			<version>2.0.0</version>
+			<license url="http://opensource.org/licenses/MIT">MIT license</license>
+			<url>https://github.com/umco/umbraco-stacked-content</url>
+			<requirements type="strict">
+				<major>7</major>
+				<minor>7</minor>
+				<patch>0</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>Matt Brailsford, Lee Kelleher</name>
+			<website>https://github.com/umco/umbraco-stacked-content/graphs/contributors</website>
+		</author>
+		<readme><![CDATA[Stacked Content is an Umbraco property-editor for creating stacked content blocks.]]></readme>
+	</info>
+
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+
+	<Actions />
+
+	<control />
+
+	<files><file><guid>9963696e-9d89-44ba-bf98-d6f68303741d.css</guid><orgPath>/App_Plugins/StackedContent/css</orgPath><orgName>stackedcontent.css</orgName></file><file><guid>48a1f51c-4587-4858-bced-cf121b77cd6a.js</guid><orgPath>/App_Plugins/StackedContent/js</orgPath><orgName>stackedcontent.js</orgName></file><file><guid>73baabe4-f3fa-490a-83a2-3ea98aa2742e.manifest</guid><orgPath>/App_Plugins/StackedContent</orgPath><orgName>package.manifest</orgName></file><file><guid>a7ede529-b1b3-4ff4-803d-f806deabad3c.html</guid><orgPath>/App_Plugins/StackedContent/views</orgPath><orgName>stackedcontent.html</orgName></file><file><guid>76838f60-a2bd-4c0e-8ec0-473bbb6b9d81.dll</guid><orgPath>/bin</orgPath><orgName>Our.Umbraco.StackedContent.dll</orgName></file></files>
+
+</umbPackage>

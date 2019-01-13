@@ -1,0 +1,123 @@
+﻿@using ManarMall.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@using umbraco.cms.businesslogic.web;
+@using Skybrud.ImagePicker;
+@using Skybrud.ImagePicker.Extensions;
+@using Newtonsoft.Json.Linq;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    /**/
+
+    var langs = Umbraco.TypedContentAtRoot();
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+    var umbracoPageId = 5061;
+    IPublishedContent content = umbracoHelper.TypedContent(umbracoPageId);
+
+    var currentPage = Umbraco.Content(umbraco.NodeFactory.Node.GetCurrent().Id);
+    var page1 = UmbracoContext.Current.PageId;
+    IPublishedContent CurrentPage = UmbracoContext.Current.PublishedContentRequest.PublishedContent;
+    Session["data"] = umbracoPageId;
+    Session["data2"] = content.UrlName;
+    ImagePickerItem brandimage1 = content.GetImagePickerItem("brandimage1");
+    ImagePickerList customerservices = content.GetImagePickerList("addCustomerServices");
+    ImagePickerList manarmallpolicies = content.GetImagePickerList("addManarmallPolicies");
+
+}
+@if (brandimage1.HasImage)
+{
+    <section class="container-fluid abt_banner slider-main " style="background-image: url(@brandimage1.Image.Url);">
+        <div class="row">
+            <div class="slider-main-text text-center">
+                <!-- <h1 class="white-text ">LET<br>
+                YOURSELF<br>GO!</h1> -->
+            </div>
+        </div>
+    </section>
+}
+
+<section class="container-fluid  about_info ">
+    <div class="container">
+
+        <!--top -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-xs  ">
+            <h1>About</h1>
+
+            <!-- <div class="open_hr">Mall Opening Hours <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="15" ><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#dbdbdb"/></svg></div> -->
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12  ">
+
+            <div class="row">
+                <div class="abt_info_contr  ">
+                    <div class="col-sm-12 hidden-lg hidden-md hidden-sm visible-xs mob_abt">
+                        <h1>About</h1>
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">MANAR MALL</a></li>
+                        <li><a data-toggle="tab" href="#menu1">al hamra</a></li>
+                    </ul>
+                    <div class="tab-content  ">
+                        <div id="home" class="tab-pane   in active    ">
+                            <p>
+                                @content.GetPropertyValue("manarMall")
+                            </p>
+                            <hr>
+                        </div>
+                        <div id="menu1" class="tab-pane    ">
+                            <p>
+                                @content.GetPropertyValue("alHamra")
+                            </p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--top -->
+
+    </div>
+</section>
+<section class="container-fluid ab_open_info">
+    <div class="container">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 hidden-xs  ">
+
+            <div class="open_hr">Mall Opening Hours <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" width="15" ><path d="M121.3 34.6c-1.6-1.6-4.2-1.6-5.8 0l-51 51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8l53.9 53.9c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2.1-5.8z" fill="#dbdbdb"/></svg> --></div>
+        </div>
+        <div class="opening_time">
+            <div class="col-sm-12 text-center">
+                <h2>We are open 7 Days per week</h2>
+            </div>
+            <div class="row">
+
+                @{ ImagePickerList Schedule = content.GetImagePickerList("timeSchedule"); }
+
+                @if (Schedule.Count > 0)
+                {
+
+                    foreach (ImagePickerItem item in Schedule.Items)
+                    {
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 eqheight">
+                            <div class="img_ab_cont">
+                                <img src="@item.Image.Url">
+                            </div>
+                            <div class="info_img">
+                                <ul>
+                                    <li class="ab_time_heading">@item.Title</li>
+                                    <li class="ab_time">@item.Description</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+
+
+                }
+
+
+
+
+
+            </div>
+
+        </div>
+</section> 
